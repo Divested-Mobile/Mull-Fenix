@@ -1,0 +1,74 @@
+AntiFeatures:
+  - UpstreamNonFree
+AuthorName: 'Divested Computing Group'
+Categories:
+- DivestOS Official
+- Internet
+SourceCode: 'https://gitlab.com/divested-mobile/mull-fenix'
+IssueTracker: 'https://gitlab.com/divested-mobile/mull-fenix/issues'
+WebSite: 'https://divestos.org/'
+Name: Mull
+License: MPL-2.0
+Summary: 'Privacy oriented web browser'
+Description: "This is a privacy oriented and deblobbed web browser based on Mozilla technology. It enables many features upstreamed by the Tor Uplift project using preferences from the [https://github.com/arkenfox/user.js arkenfox-user.js project]. It is compiled from source and proprietary blobs are removed using scripts by Relan from [https://gitlab.com/relan/fennecbuild here]. It is recommended to install 'uBlock Origin'."
+
+RepoType: git
+Repo: https://github.com/mozilla-mobile/fenix
+
+Builds:
+  - versionName: 84.1.0
+    versionCode: 2841000
+    commit: v84.1.0
+    timeout: 14400
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v67.0.11
+      - MozAndroidComponentsAS@v63.0.0
+      - MozAppServices@v67.0.0
+      - MullBuild@71fceb79eccecb653efbf0f1901297925bde2271
+      - MozFennec@FIREFOX_84_0_BUILD3
+      - MozGlean@v33.0.4
+      - pyenv@v1.2.21
+      - rustup@1.23.1
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 84.1.0
+    versionCode: 2841020
+    commit: v84.1.0
+    timeout: 14400
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v67.0.11
+      - MozAndroidComponentsAS@v63.0.0
+      - MozAppServices@v67.0.0
+      - MullBuild@71fceb79eccecb653efbf0f1901297925bde2271
+      - MozFennec@FIREFOX_84_0_BUILD3
+      - MozGlean@v33.0.4
+      - pyenv@v1.2.21
+      - rustup@1.23.1
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+MaintainerNotes: |4-
+
+    Version code scheme:
+    XYZAR, where X.Y.Z is upstream version, A is architecture (0 = ARMv7, 1 = x86, 2 = ARMv8), R is revision (if we need to re-release).
+    * Example: 530210 = Firefox 53.0.2 for x86, initial revision
+    * Example: 550021 = Firefox 55.0 for ARMv8, second revision
+
+    Android Components version:
+    grep VERSION build/us.spotco.fennec_dos/buildSrc/src/main/java/AndroidComponents.kt
+
+    Application Services, Glean and GeckoView versions:
+    grep 'mozilla_appservices =' build/srclib/MozAndroidComponents/buildSrc/src/main/java/Dependencies.kt
+    grep 'mozilla_glean =' build/srclib/MozAndroidComponents/buildSrc/src/main/java/Dependencies.kt
+    grep 'release_version =' build/srclib/MozAndroidComponents/buildSrc/src/main/java/Gecko.kt
+
+ArchivePolicy: 4 versions
+AutoUpdateMode: None
+UpdateCheckMode: None
+CurrentVersion: 84.1.0
+CurrentVersionCode: 2841000
