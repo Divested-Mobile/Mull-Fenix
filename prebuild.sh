@@ -41,12 +41,14 @@ function localize_maven {
 
 # Set up the app ID, version name and version code
 sed -i \
-    -e 's|\.firefox|.fennec_fdroid|' \
+    -e 's|applicationId "org.mozilla"|applicationId "us.spotco"|' \
+    -e 's|applicationIdSuffix ".firefox"|applicationIdSuffix ".fennec_dos"|' \
+    -e 's|"sharedUserId": "org.mozilla.firefox.sharedID"|"sharedUserId": "us.spotco.fennec_dos.sharedID"|' \
     -e "s/Config.releaseVersionName(project)/'$1'/" \
     -e "s/Config.generateFennecVersionCode(abi)/$2/" \
     app/build.gradle
 sed -i \
-    -e '/android:targetPackage/s/firefox/fennec_fdroid/' \
+    -e '/android:targetPackage/s/org.mozilla.firefox/us.spotco.fennec_dos/' \
     app/src/release/res/xml/shortcuts.xml
 
 # Remove proprietary and tracking libraries
@@ -80,14 +82,18 @@ sed -i \
 # Patch the use of proprietary and tracking libraries
 patch -p1 --no-backup-if-mismatch --quiet < "$patches/fenix-liberate.patch"
 
-# Let it be Fennec
-sed -i -e 's/Firefox Daylight/Fennec/; s/Firefox/Fennec/g' \
+# Let it be Mull
+sed -i \
+    -e 's/Firefox Daylight/Mull/; s/Firefox/Mull/g' \
+    -e '/about_content/s/Mozilla/Divested Computing Group/' \
     app/src/*/res/values*/*strings.xml
 
 # Replace proprietary artwork
 rm app/src/release/res/drawable/ic_launcher_foreground.xml
 rm app/src/release/res/mipmap-*/ic_launcher.png
 sed -i -e '/android:roundIcon/d' app/src/main/AndroidManifest.xml
+sed -i -e '/"ic_launcher_background"/s/#ff20123a/#F5F5F5/' \
+    app/src/release/res/values/colors.xml
 find "$patches/fenix-overlay" -type f | while read -r src; do
     dst="app/src/release/${src#$patches/fenix-overlay/}"
     mkdir -p "$(dirname "$dst")"
@@ -108,7 +114,7 @@ sed -i \
     app/src/main/java/org/mozilla/fenix/settings/SettingsFragment.kt
 
 # Set up target parameters
-case $(echo "$2" | cut -c 5) in
+case $(echo "$2" | cut -c 6) in
     0)
         abi=armeabi-v7a
         target=arm-linux-androideabi
@@ -216,10 +222,16 @@ cat << EOF > mozconfig
 ac_add_options --disable-crashreporter
 ac_add_options --disable-debug
 ac_add_options --disable-nodejs
+ac_add_options --disable-profiling
+ac_add_options --disable-rust-debug
 ac_add_options --disable-tests
 ac_add_options --disable-updater
 ac_add_options --enable-application=mobile/android
+ac_add_options --enable-hardening
+ac_add_options --enable-optimize
 ac_add_options --enable-release
+ac_add_options --enable-rust-simd
+ac_add_options --enable-strip
 ac_add_options --target=$target
 ac_add_options --with-android-min-sdk=$minsdk
 ac_add_options --with-android-ndk="$ndk"
@@ -252,5 +264,8 @@ pref("media.gmp-gmpopenh264.enabled", false);
 // Disable casting (Roku, Chromecast)
 pref("browser.casting.enabled", false);
 EOF
+
+cat "$patches/preferences/userjs-arkenfox.js" >> mobile/android/app/mobile.js
+cat "$patches/preferences/userjs-brace.js" >> mobile/android/app/mobile.js
 
 popd
