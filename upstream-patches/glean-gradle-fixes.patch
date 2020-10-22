@@ -1,0 +1,39 @@
+From 1edca93ae5363f9a3f161e4d3d45e74c1ec3b066 Mon Sep 17 00:00:00 2001
+From: Alessio Placitelli <alessio.placitelli@gmail.com>
+Date: Fri, 7 Aug 2020 07:45:21 +0200
+Subject: [PATCH] Adjust the build system to work with Gradle 6.5.1
+
+The `STABLE_PUBLISHING` is now enabled by default, so
+no need to manually enable it.
+---
+ glean-core/android/build.gradle | 2 +-
+ settings.gradle                 | 3 ---
+ 2 files changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/glean-core/android/build.gradle b/glean-core/android/build.gradle
+index 3e630c23c..fb7fec936 100644
+--- a/glean-core/android/build.gradle
++++ b/glean-core/android/build.gradle
+@@ -237,7 +237,7 @@ ext.configurePublish(
+         /* jnaForTestConfiguration= */ configurations.jnaForTest
+ )
+ 
+-task docs(type: org.jetbrains.dokka.gradle.DokkaAndroidTask, overwrite: true) {
++tasks.register("docs", org.jetbrains.dokka.gradle.DokkaAndroidTask) {
+     moduleName = "glean"
+     outputDirectory = "$buildDir/../../../build/docs/javadoc"
+     outputFormat = "html"
+diff --git a/settings.gradle b/settings.gradle
+index 4d9e30bf3..9ef246efe 100644
+--- a/settings.gradle
++++ b/settings.gradle
+@@ -13,9 +13,6 @@ buildscript {
+ }
+ rootProject.name = "glean"
+ 
+-// See https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:deferred_configuration.
+-enableFeaturePreview('STABLE_PUBLISHING')
+-
+ def setupProject(name, projectProps) {
+     def path = projectProps.path
+     def description = projectProps.description
