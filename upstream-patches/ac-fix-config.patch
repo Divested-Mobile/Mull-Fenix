@@ -1,0 +1,132 @@
+From be89cf9054ebb47a91a2fba8be29bfe75de21cd9 Mon Sep 17 00:00:00 2001
+From: Tiger Oakes <toakes@mozilla.com>
+Date: Thu, 6 Aug 2020 16:20:10 -0700
+Subject: [PATCH] Convert config to yaml
+
+---
+ .config.yml                           |  7 ++++++
+ buildSrc/src/main/java/Config.kt      | 18 --------------
+ components/browser/state/build.gradle |  6 ++---
+ docs/changelog.md                     |  8 +++---
+ settings.gradle                       | 35 ++++++++++++++++++++++++++-
+ taskcluster/ci/toolchain/android.yml  |  2 +-
+ 6 files changed, 49 insertions(+), 27 deletions(-)
+ create mode 100644 .config.yml
+ delete mode 100644 buildSrc/src/main/java/Config.kt
+
+diff --git a/.config.yml b/.config.yml
+new file mode 100644
+index 0000000000..60be9b097f
+--- /dev/null
++++ b/.config.yml
+@@ -0,0 +1,7 @@
++# Maven group ID used for all components
++componentsGroupId: "org.mozilla.components"
++
++# Synchronized build configuration for all modules
++compileSdkVersion: 29
++minSdkVersion: 21
++targetSdkVersion: 29
+diff --git a/buildSrc/src/main/java/Config.kt b/buildSrc/src/main/java/Config.kt
+deleted file mode 100644
+index 68be65fa2e..0000000000
+--- a/buildSrc/src/main/java/Config.kt
++++ /dev/null
+@@ -1,18 +0,0 @@
+-/* This Source Code Form is subject to the terms of the Mozilla Public
+- * License, v. 2.0. If a copy of the MPL was not distributed with this
+- * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+-
+-// Synchronized library configuration for all modules
+-// This "componentsVersion" number is defined in ".buildconfig.yml" and should follow
+-// semantic versioning (MAJOR.MINOR.PATCH). See https://semver.org/
+-class Config(val componentsVersion: String) {
+-    companion object {
+-        // Maven group ID used for all components
+-        const val componentsGroupId = "org.mozilla.components"
+-
+-        // Synchronized build configuration for all modules
+-        const val compileSdkVersion = 29
+-        const val minSdkVersion = 21
+-        const val targetSdkVersion = 29
+-    }
+-}
+diff --git a/components/browser/state/build.gradle b/components/browser/state/build.gradle
+index 2e69f2b8ff..1dd9922382 100644
+--- a/components/browser/state/build.gradle
++++ b/components/browser/state/build.gradle
+@@ -7,11 +7,11 @@ apply plugin: 'kotlin-android'
+ apply plugin: 'kotlin-android-extensions'
+ 
+ android {
+-    compileSdkVersion Config.compileSdkVersion
++    compileSdkVersion config.compileSdkVersion
+ 
+     defaultConfig {
+-        minSdkVersion Config.minSdkVersion
+-        targetSdkVersion Config.targetSdkVersion
++        minSdkVersion config.minSdkVersion
++        targetSdkVersion config.targetSdkVersion
+     }
+ 
+     buildTypes {
+diff --git a/settings.gradle b/settings.gradle
+index a6e8dfa49f..2d0c0c5060 100644
+--- a/settings.gradle
++++ b/settings.gradle
+@@ -21,6 +21,32 @@ buildCache {
+     }
+ }
+ 
++// Synchronized library configuration for all modules
++// This "componentsVersion" number is defined in ".buildconfig.yml" and should follow
++// semantic versioning (MAJOR.MINOR.PATCH). See https://semver.org/
++class Config {
++
++    public final String componentsVersion
++    public final String componentsGroupId
++    public final Integer compileSdkVersion
++    public final Integer minSdkVersion
++    public final Integer targetSdkVersion
++
++    Config(
++        String componentsVersion,
++        String componentsGroupId,
++        Integer compileSdkVersion,
++        Integer minSdkVersion,
++        Integer targetSdkVersion
++    ) {
++        this.componentsVersion = componentsVersion
++        this.componentsGroupId = componentsGroupId
++        this.compileSdkVersion = compileSdkVersion
++        this.minSdkVersion = minSdkVersion
++        this.targetSdkVersion = targetSdkVersion
++    }
++}
++
+ def setupProject(name, path, description) {
+     settings.include(":$name")
+ 
+@@ -43,6 +69,7 @@ buildconfig.projects.each { project ->
+ }
+ 
+ gradle.projectsLoaded { ->
++    def configData = yaml.load(new File(rootDir, '.config.yml').newInputStream())
+     String version = buildconfig.componentsVersion
+ 
+     if (gradle.rootProject.hasProperty("nightlyVersion")) {
+@@ -55,7 +82,13 @@ gradle.projectsLoaded { ->
+     // Wait until root project is "loaded" before we set "config"
+     // Note that since this is set on "rootProject.ext", it will be "in scope" during the evaluation of all projects'
+     // gradle files. This means that they can just access "config.<value>", and it'll function properly
+-    gradle.rootProject.ext.config = new Config(version)
++    gradle.rootProject.ext.config = new Config(
++        version,
++        configData.componentsGroupId,
++        configData.compileSdkVersion,
++        configData.minSdkVersion,
++        configData.targetSdkVersion
++    )
+     gradle.rootProject.ext.buildConfig = buildconfig
+ }
+
