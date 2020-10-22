@@ -1,0 +1,4 @@
+RepoType: git
+Repo: https://github.com/WebAssembly/wasi-sdk.git
+Prepare: |
+  git submodule update --init
