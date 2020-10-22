@@ -27,8 +27,13 @@ source "$(dirname "$0")/paths.sh"
 # plugins (Glean).
 
 # Set up Android SDK
-sdkmanager 'build-tools;31.0.0'
-sdkmanager 'ndk;25.0.8775105' # for Glean
+if grep -q "Fedora" /etc/os-release; then
+	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'build-tools;31.0.0'
+	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'ndk;25.0.8775105'
+else
+	sdkmanager 'build-tools;31.0.0'
+	sdkmanager 'ndk;25.0.8775105' # for Glean
+fi;
 
 # Set up Rust
 "$rustup"/rustup-init.sh -y
