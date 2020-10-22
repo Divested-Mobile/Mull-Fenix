@@ -1,0 +1,73 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Tad <tad@spotco.us>
+Date: Sat, 11 Dec 2021 14:53:02 -0500
+Subject: [PATCH] Set strict ETP by default
+
+Signed-off-by: Tad <tad@spotco.us>
+---
+ app/src/main/java/org/mozilla/fenix/utils/Settings.kt      | 4 ++--
+ app/src/main/res/layout/onboarding_tracking_protection.xml | 4 ++--
+ app/src/main/res/xml/tracking_protection_preferences.xml   | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/app/src/main/java/org/mozilla/fenix/utils/Settings.kt b/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
+index 34df18fa7..f406ebc62 100644
+--- a/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
++++ b/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
+@@ -538,12 +538,12 @@ class Settings(private val appContext: Context) : PreferencesHolder {
+ 
+     val useStandardTrackingProtection by booleanPreference(
+         appContext.getPreferenceKey(R.string.pref_key_tracking_protection_standard_option),
+-        true
++        false
+     )
+ 
+     val useStrictTrackingProtection by booleanPreference(
+         appContext.getPreferenceKey(R.string.pref_key_tracking_protection_strict_default),
+-        false
++        true
+     )
+ 
+     val useCustomTrackingProtection by booleanPreference(
+diff --git a/app/src/main/res/layout/onboarding_tracking_protection.xml b/app/src/main/res/layout/onboarding_tracking_protection.xml
+index be5a33bea..f8cb6d9f0 100644
+--- a/app/src/main/res/layout/onboarding_tracking_protection.xml
++++ b/app/src/main/res/layout/onboarding_tracking_protection.xml
+@@ -46,7 +46,7 @@
+         android:layout_marginTop="16dp"
+         android:layout_marginBottom="16dp"
+         android:background="@android:color/transparent"
+-        android:checked="true"
++        android:checked="false"
+         android:foreground="@drawable/rounded_ripple"
+         android:gravity="top"
+         android:paddingStart="8dp"
+@@ -67,7 +67,7 @@
+         android:layout_marginTop="16dp"
+         android:layout_marginBottom="16dp"
+         android:background="@android:color/transparent"
+-        android:checked="false"
++        android:checked="true"
+         android:foreground="@drawable/rounded_ripple"
+         android:gravity="top"
+         android:paddingStart="8dp"
+diff --git a/app/src/main/res/xml/tracking_protection_preferences.xml b/app/src/main/res/xml/tracking_protection_preferences.xml
+index f53ca38e6..012d9afbb 100644
+--- a/app/src/main/res/xml/tracking_protection_preferences.xml
++++ b/app/src/main/res/xml/tracking_protection_preferences.xml
+@@ -15,13 +15,13 @@
+         android:key="@string/pref_key_tracking_protection"
+         android:title="@string/preference_enhanced_tracking_protection" />
+     <org.mozilla.fenix.settings.RadioButtonInfoPreference
+-        android:defaultValue="true"
++        android:defaultValue="false"
+         android:dependency="@string/pref_key_tracking_protection"
+         android:key="@string/pref_key_tracking_protection_standard_option"
+         android:summary="@string/preference_enhanced_tracking_protection_standard_description_4"
+         android:title="@string/preference_enhanced_tracking_protection_standard_default_1" />
+     <org.mozilla.fenix.settings.RadioButtonInfoPreference
+-        android:defaultValue="false"
++        android:defaultValue="true"
+         android:dependency="@string/pref_key_tracking_protection"
+         android:key="@string/pref_key_tracking_protection_strict_default"
+         android:summary="@string/preference_enhanced_tracking_protection_strict_description_3"
