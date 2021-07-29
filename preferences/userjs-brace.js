@@ -16,7 +16,6 @@ pref("browser.snippets.syncPromo.enabled", false);
 pref("browser.snippets.updateUrl", "");
 pref("general.useragent.updates.enabled", false);
 pref("network.negotiate-auth.trusted-uris", "");
-pref("network.security.esni.enabled", true);
 pref("network.trr.custom_uri", "https://dns.quad9.net/dns-query");
 pref("plugin.expose_full_path", false);
 pref("extensions.enigmail.autoWkdLookup", 0);
