@@ -194,6 +194,50 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r21e
 
+  - versionName: 91.2.0-3
+    versionCode: 2912003
+    commit: v91.2.0
+    timeout: 14400
+    sudo:
+      - apt-get update || apt-get update
+      - apt-get install -y g++ python-setuptools tcl gyp ninja-build libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v91.0.13
+      - MozAndroidComponentsAS@v75.0.0
+      - MozAppServices@v79.0.0
+      - MullBuild@v91.2.0-3
+      - MozFennec@FIREFOX_91_0_1_RELEASE
+      - MozGlean@v39.0.3
+      - MozGleanAS@v35.0.0
+      - pyenv@v2.0.4
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 91.2.0-3
+    versionCode: 2912023
+    commit: v91.2.0
+    timeout: 14400
+    sudo:
+      - apt-get update || apt-get update
+      - apt-get install -y g++ python-setuptools tcl gyp ninja-build libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v91.0.13
+      - MozAndroidComponentsAS@v75.0.0
+      - MozAppServices@v79.0.0
+      - MullBuild@v91.2.0-3
+      - MozFennec@FIREFOX_91_0_1_RELEASE
+      - MozGlean@v39.0.3
+      - MozGleanAS@v35.0.0
+      - pyenv@v2.0.4
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
 MaintainerNotes: |4-
 
     Version code scheme:
@@ -216,5 +260,5 @@ MaintainerNotes: |4-
 ArchivePolicy: 4 versions
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 91.2.0
-CurrentVersionCode: 2912020
+CurrentVersion: 91.2.0-3
+CurrentVersionCode: 2912023
