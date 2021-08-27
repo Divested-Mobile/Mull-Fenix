@@ -117,6 +117,11 @@ sed -i \
     -e 's/!defaultBrowserNotificationDisplayed && !isDefaultBrowserBlocking()/false/' \
     app/src/main/java/org/mozilla/fenix/utils/Settings.kt
 
+# Always show the Quit button
+sed -i \
+    -e 's/if (settings.shouldDeleteBrowsingDataOnQuit) quitItem else null/quitItem/' \
+    app/src/main/java/org/mozilla/fenix/home/HomeMenu.kt
+
 # Set up target parameters
 case $(echo "$2" | cut -c 6) in
     0)
