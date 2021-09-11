@@ -40,15 +40,18 @@ Here are some steps to get you in the right direction.
 - Fedora 33 and Debian 10 have been tested to work
 - `git clone https://gitlab.com/fdroid/fdroidserver.git`
 - `git clone https://gitlab.com/fdroid/fdroiddata.git`
-- Install JDK 8
-- Install Gradle 6.7
+- Install JDK 8 and 11, set 8 as default
+- Put this in your path as your gradle, make sure the folder above it is writable for its cache:
+```
+wget https://gitlab.com/fdroid/fdroidserver/-/raw/master/gradlew-fdroid -O gradle
+```
 - setup Android SDK/NDK:
 ```
 mkdir android android-ndk
 wget https://dl.google.com/android/repository/tools_r25.2.3-linux.zip
 unzip tools_r*-linux.zip -d android/
 android update sdk --no-ui
-android update sdk --no-ui --filter build-tools-30.0.0-preview,build-tools-29.0.3,android-29,build-tools-28.0.3,android-28 --all
+android update sdk --no-ui --filter build-tools-30.0.2,android-30,build-tools-30.0.0-preview,build-tools-29.0.3,android-29,build-tools-28.0.3,android-28 --all
 wget https://dl.google.com/android/repository/android-ndk-r21e-linux-x86_64.zip
 unzip android-ndk-r21e-linux-x86_64.zip -d android-ndk/
 wget https://dl.google.com/android/repository/android-ndk-r20b-linux-x86_64.zip
@@ -63,6 +66,11 @@ export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 export PATH=$PATH:~/fdroidserver
 ```
 - `source .bashrc`
+- Fedora:
+```
+sudo ln -sf /usr/lib/jvm/java-11-openjdk /usr/lib/jvm/java-11-openjdk-amd64
+sudo ln -sf /usr/lib/jvm/java-8-openjdk /usr/lib/jvm/java-8-openjdk-amd64
+```
 
 Licenses
 --------
