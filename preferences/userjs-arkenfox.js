@@ -1405,7 +1405,7 @@ pref("network.manage-offline-status", false); // see bugzilla 620472 //BRACE-UNC
    Documentation denoted as [-]. Items deprecated in FF78 or earlier have been archived at [1]
    [1] https://github.com/arkenfox/user.js/issues/123
 ***/
-pref("_user.js.parrot", "9999 syntax error: the parrot's deprecated!");
+   // pref("_user.js.parrot", "9999 syntax error: the parrot's deprecated!");
 // ESR78.x still uses all the following prefs
 // [NOTE] replace the * with a slash in the line above to re-enable them
 // FF79
@@ -1415,27 +1415,27 @@ pref("_user.js.parrot", "9999 syntax error: the parrot's deprecated!");
    // [TEST] https://hsivonen.com/test/moz/check-charset.htm
    // [1] https://gitlab.torproject.org/tpo/applications/tor-browser/-/issues/20025
    // [-] https://bugzilla.mozilla.org/1603712
-pref("intl.charset.fallback.override", "windows-1252");
+   // pref("intl.charset.fallback.override", "windows-1252");
 // FF82
 // 0206: disable geographically specific results/search engines e.g. "browser.search.*.US"
    // i.e. ignore all of Mozilla's various search engines in multiple locales
    // [-] https://bugzilla.mozilla.org/1619926
-pref("browser.search.geoSpecificDefaults", false);
-pref("browser.search.geoSpecificDefaults.url", "");
+   // pref("browser.search.geoSpecificDefaults", false);
+   // pref("browser.search.geoSpecificDefaults.url", "");
 // FF86
 // 1205: disable SSL Error Reporting
    // [1] https://firefox-source-docs.mozilla.org/main/65.0/browser/base/sslerrorreport/preferences.html
    // [-] https://bugzilla.mozilla.org/1681839
-pref("security.ssl.errorReporting.automatic", false);
-pref("security.ssl.errorReporting.enabled", false);
-pref("security.ssl.errorReporting.url", "");
+   // pref("security.ssl.errorReporting.automatic", false);
+   // pref("security.ssl.errorReporting.enabled", false);
+   // pref("security.ssl.errorReporting.url", "");
 // 2653: disable hiding mime types (Options>General>Applications) not associated with a plugin
    // [-] https://bugzilla.mozilla.org/1581678
-pref("browser.download.hide_plugins_without_extensions", false);
+   // pref("browser.download.hide_plugins_without_extensions", false);
 // FF87
 // 0105d: disable Activity Stream recent Highlights in the Library [FF57+]
    // [-] https://bugzilla.mozilla.org/1689405
-pref("browser.library.activity-stream.enabled", false); //BRACE-UNCOMMENTED: unwanted
+   // pref("browser.library.activity-stream.enabled", false); //BRACE-UNCOMMENTED: unwanted
 // 8002: disable PointerEvents
    // [1] https://developer.mozilla.org/docs/Web/API/PointerEvent
    // [-] https://bugzilla.mozilla.org/1688105
@@ -1443,27 +1443,27 @@ pref("browser.library.activity-stream.enabled", false); //BRACE-UNCOMMENTED: unw
 // FF89
 // 0309: disable sending Flash crash reports
    // [-] https://bugzilla.mozilla.org/1682030 [underlying NPAPI code removed]
-pref("dom.ipc.plugins.flash.subprocess.crashreporter.enabled", false);
+   // pref("dom.ipc.plugins.flash.subprocess.crashreporter.enabled", false);
 // 0310: disable sending the URL of the website where a plugin crashed
    // [-] https://bugzilla.mozilla.org/1682030 [underlying NPAPI code removed]
-pref("dom.ipc.plugins.reportCrashURL", false);
+   // pref("dom.ipc.plugins.reportCrashURL", false);
 // 1243: block unencrypted requests from Flash on encrypted pages to mitigate MitM attacks [FF59+]
    // [1] https://bugzilla.mozilla.org/1190623
    // [-] https://bugzilla.mozilla.org/1682030 [underlying NPAPI code removed]
-pref("security.mixed_content.block_object_subrequest", true);
+   // pref("security.mixed_content.block_object_subrequest", true);
 // 1803: disable Flash plugin
    // 0=deactivated, 1=ask, 2=enabled
    // ESR52.x is the last branch to fully support NPAPI, FF52+ stable only supports Flash
    // [NOTE] You can still override individual sites via site permissions
    // [-] https://bugzilla.mozilla.org/1682030 [underlying NPAPI code removed]
-pref("plugin.state.flash", 0); // [DEFAULT: 1]
+   // pref("plugin.state.flash", 0); // [DEFAULT: 1]
 // FF90
 // 0708: disable FTP [FF60+]
    // [-] https://bugzilla.mozilla.org/1574475
    // pref("network.ftp.enabled", false); // [DEFAULT: false FF88+]
 // 7001: enforce no offline cache storage (appCache) [FF71+]
    // [-] https://bugzilla.mozilla.org/1694662
-pref("browser.cache.offline.storage.enable", false); // [DEFAULT: false FF84+]
+   // pref("browser.cache.offline.storage.enable", false); // [DEFAULT: false FF84+]
 // ***/
 
 /* END: internal custom pref to test for syntax errors ***/
