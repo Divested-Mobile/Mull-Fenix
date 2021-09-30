@@ -45,6 +45,10 @@ Here are some steps to get you in the right direction.
 ```
 wget https://gitlab.com/fdroid/fdroidserver/-/raw/master/gradlew-fdroid -O gradle
 ```
+- Disable the Gradle daemon to prevent OOM:
+```
+mkdir -p ~/.gradle && echo "org.gradle.daemon=false" >> ~/.gradle/gradle.properties
+```
 - setup Android SDK/NDK:
 ```
 mkdir android android-ndk

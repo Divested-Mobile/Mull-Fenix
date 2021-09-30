@@ -1,4 +1,5 @@
 #!/bin/bash
+#License: AGPL-3.0
 
 drawable="./fenix-overlay/res/drawable";
 font="Fira-Sans-Bold";
