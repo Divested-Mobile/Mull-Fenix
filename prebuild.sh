@@ -164,7 +164,9 @@ echo "rust.targets=$rusttarget" >> local.properties
 localize_maven
 popd
 pushd "$glean"
-echo "rust.targets=$rusttarget" >> local.properties
+echo "rust.targets=linux-x86-64,$rusttarget" >> local.properties
+sed -i -e '/ndkVersion:/a\        ndkPath: System.getenv("ANDROID_NDK"),' \
+    build.gradle
 localize_maven
 popd
 
@@ -191,6 +193,7 @@ gvver=$(echo "$1" | cut -d. -f1)
 sed -i \
     -e "s/version = \"$gvver\.[0-9.]*\"/version = \"$gvver.+\"/" \
     buildSrc/src/main/java/Gecko.kt
+sed -i -e 's/-omni//' buildSrc/src/main/java/Gecko.kt
 localize_maven
 popd
 
@@ -208,6 +211,8 @@ sed -i -e '/content {/,/}/d' build.gradle
 sed -i -e '/ndkVersion/a\    ndkPath rootProject.ext.build.ndkPath' \
     build-scripts/component-common.gradle \
     megazords/full/android/build.gradle
+sed -i -e 's|/cmdline-tools/latest/bin/sdkmanager|/tools/bin/sdkmanager|' \
+    libs/verify-android-ci-environment.sh
 localize_maven
 popd
 
