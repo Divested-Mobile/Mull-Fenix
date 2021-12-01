@@ -249,6 +249,7 @@ ac_add_options --disable-profiling
 ac_add_options --disable-rust-debug
 ac_add_options --disable-tests
 ac_add_options --disable-updater
+ac_add_options --without-wasm-sandboxed-libraries
 ac_add_options --enable-application=mobile/android
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
