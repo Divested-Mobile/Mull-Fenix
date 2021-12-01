@@ -288,6 +288,9 @@ pref("media.gmp-gmpopenh264.enabled", false);
 
 // Disable casting (Roku, Chromecast)
 pref("browser.casting.enabled", false);
+
+// Disable WebAuthn, since it is a stub
+pref("security.webauth.webauthn", false);
 EOF
 
 cat "$patches/preferences/userjs-arkenfox.js" >> mobile/android/app/mobile.js
