@@ -37,7 +37,7 @@ Setting up the VM
 Getting a working fdroidserver is a bit tricky.
 Here are some steps to get you in the right direction.
 - Setup a VM, you'll want at least 16GB RAM and 64GB of storage
-- Fedora 33 and Debian 10 have been tested to work
+- Fedora 34 and Debian 10 have been tested to work
 - `git clone https://gitlab.com/fdroid/fdroidserver.git`
 - `git clone https://gitlab.com/fdroid/fdroiddata.git`
 - Install JDK 8 and 11, set 8 as default
