@@ -263,6 +263,7 @@ ac_add_options --target=$target
 ac_add_options --with-android-min-sdk=$minsdk
 ac_add_options --with-android-ndk="$ndk"
 ac_add_options --with-android-sdk="$ANDROID_SDK"
+ac_add_options --with-java-bin-path="$JAVA_HOME/bin"
 ac_add_options --with-gradle=$(command -v gradle)
 ac_add_options --with-wasi-sysroot="$wasi/build/install/wasi/share/wasi-sysroot"
 ac_add_options CC="$ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/$triplet-clang"

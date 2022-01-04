@@ -34,7 +34,7 @@ source "$(dirname "$0")/paths.sh"
 "$rustup"/rustup-init.sh -y
 # shellcheck disable=SC1091
 source "$HOME/.cargo/env"
-rustup default 1.56.1
+rustup default 1.57.0
 rustup target add thumbv7neon-linux-androideabi
 rustup target add armv7-linux-androideabi
 rustup target add aarch64-linux-android
@@ -45,8 +45,8 @@ PYENV_ROOT=$(realpath "$pyenv")
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PYENV_ROOT
 eval "$(pyenv init --path)"
-pyenv install 3.9.9
-pyenv global 3.9.9
+pyenv install 3.10.1
+pyenv global 3.10.1
 
 # Build WASI SDK
 pushd "$wasi"
@@ -71,7 +71,7 @@ JAVA_HOME="$java11" gradle publishToMavenLocal
 popd
 
 pushd "$android_components_as"
-gradle publishToMavenLocal
+JAVA_HOME="$java11" gradle publishToMavenLocal
 popd
 
 pushd "$application_services"
