@@ -432,8 +432,9 @@ Builds:
     timeout: 14400
     sudo:
       - apt-get update || apt-get update
-      - apt-get install -y openjdk-11-jdk g++ python-setuptools tcl gyp ninja-build
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
         libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
     output: app/build/outputs/apk/release/app-*-release-unsigned.apk
     srclibs:
       - MozAndroidComponents@v96.0.11
@@ -456,8 +457,9 @@ Builds:
     timeout: 14400
     sudo:
       - apt-get update || apt-get update
-      - apt-get install -y openjdk-11-jdk g++ python-setuptools tcl gyp ninja-build
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
         libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
     output: app/build/outputs/apk/release/app-*-release-unsigned.apk
     srclibs:
       - MozAndroidComponents@v96.0.11
