@@ -632,7 +632,7 @@ pref("_user.js.parrot", "2000 syntax error: the parrot's snuffed it!");
  * [TEST] https://browserleaks.com/webrtc
  * [1] https://groups.google.com/g/discuss-webrtc/c/6stQXi72BEU/m/2FwZd24UAQAJ
  * [2] https://datatracker.ietf.org/doc/html/draft-ietf-mmusic-mdns-ice-candidates#section-3.1.1 ***/
-   // pref("media.peerconnection.enabled", false);
+pref("media.peerconnection.enabled", false); //MULL-UNCOMMENTED: Fenix doesn't protect local IP addreses like desktop does
 /* 2002: force WebRTC inside the proxy [FF70+] ***/
 pref("media.peerconnection.ice.proxy_only_if_behind_proxy", true);
 /* 2003: force a single network interface for ICE candidates generation [FF42+]
