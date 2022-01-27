@@ -476,9 +476,9 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r21d
 
-  - versionName: 96.2.0
-    versionCode: 2962000
-    commit: v96.2.0
+  - versionName: 96.3.0
+    versionCode: 2963000
+    commit: v96.3.0
     timeout: 14400
     sudo:
       - apt-get update || apt-get update
@@ -487,11 +487,11 @@ Builds:
       - update-alternatives --auto java
     output: app/build/outputs/apk/release/app-*-release-unsigned.apk
     srclibs:
-      - MozAndroidComponents@v96.0.13
+      - MozAndroidComponents@v96.0.15
       - MozAndroidComponentsAS@v94.0.0
       - MozAppServices@v86.2.2
-      - MullBuild@v96.2.0
-      - MozFennec@FIREFOX_96_0_1_RELEASE
+      - MullBuild@v96.3.0
+      - MozFennec@FIREFOX_96_0_3_BUILD1
       - MozGlean@v42.1.0
       - MozGleanAS@v41.1.1
       - pyenv@v2.2.3
@@ -501,9 +501,9 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r21d
 
-  - versionName: 96.2.0
-    versionCode: 2962020
-    commit: v96.2.0
+  - versionName: 96.3.0
+    versionCode: 2963020
+    commit: v96.3.0
     timeout: 14400
     sudo:
       - apt-get update || apt-get update
@@ -512,11 +512,11 @@ Builds:
       - update-alternatives --auto java
     output: app/build/outputs/apk/release/app-*-release-unsigned.apk
     srclibs:
-      - MozAndroidComponents@v96.0.13
+      - MozAndroidComponents@v96.0.15
       - MozAndroidComponentsAS@v94.0.0
       - MozAppServices@v86.2.2
-      - MullBuild@v96.2.0
-      - MozFennec@FIREFOX_96_0_1_RELEASE
+      - MullBuild@v96.3.0
+      - MozFennec@FIREFOX_96_0_3_BUILD1
       - MozGlean@v42.1.0
       - MozGleanAS@v41.1.1
       - pyenv@v2.2.3
@@ -548,5 +548,5 @@ MaintainerNotes: |4-
 ArchivePolicy: 4 versions
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 96.2.0
-CurrentVersionCode: 2962020
+CurrentVersion: 96.3.0
+CurrentVersionCode: 2963020
