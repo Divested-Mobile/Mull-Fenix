@@ -1,8 +1,8 @@
 /******
-* name: arkenfox user.js
-* date: 9 December 2021
-* version 96-alpha
-* url: https://github.com/arkenfox/user.js
+*    name: arkenfox user.js
+*    date: 12 February 2022
+* version: 97
+*     url: https://github.com/arkenfox/user.js
 * license: MIT: https://github.com/arkenfox/user.js/blob/master/LICENSE.txt
 
 * README:
@@ -12,17 +12,16 @@
        * sed -i 's/pref(/pref(/' userjs-arkenfox.js
   1. Consider using Tor Browser if it meets your needs or fits your threat model
        * https://2019.www.torproject.org/about/torusers.html
-  2. Required reading: Overview, Backing Up, Implementing, and Maintenance entries
+  2. Read the entire wiki
        * https://github.com/arkenfox/user.js/wiki
   3. If you skipped step 2, return to step 2
-  4. Make changes
+  4. Make changes in a user-overrides.js
        * There are often trade-offs and conflicts between security vs privacy vs anti-tracking
          and these need to be balanced against functionality & convenience & breakage
        * Some site breakage and unintended consequences will happen. Everyone's experience will differ
          e.g. some user data is erased on exit (section 2800), change this to suit your needs
        * While not 100% definitive, search for "[SETUP" tags
          e.g. third party images/videos not loading on some sites? check 1601
-       * Take the wiki link in step 2 and read the Troubleshooting entry
   5. Some tag info
        [SETUP-SECURITY] it's one item, read it
             [SETUP-WEB] can cause some websites to break
@@ -142,15 +141,6 @@ pref("javascript.use_us_english_locale", true); // [HIDDEN PREF]
 
 /*** [SECTION 0300]: QUIETER FOX ***/
 pref("_user.js.parrot", "0300 syntax error: the parrot's not pinin' for the fjords!");
-/** UPDATES ***/
-/* 0302: disable auto-INSTALLING Firefox updates via a background service [FF90+] [WINDOWS]
- * [SETTING] General>Firefox Updates>Automatically install updates>When Firefox is not running
- * [1] https://support.mozilla.org/kb/enable-background-updates-firefox-windows ***/
-pref("app.update.background.scheduling.enabled", false);
-/* 0306: disable search engine updates (e.g. OpenSearch)
- * [NOTE] This does not affect Mozilla's built-in or Web Extension search engines ***/
-pref("browser.search.update", false);
-
 /** RECOMMENDATIONS ***/
 /* 0320: disable recommendation pane in about:addons (uses Google Analytics) ***/
 pref("extensions.getAddons.showPane", false); // [HIDDEN PREF]
@@ -171,7 +161,7 @@ pref("datareporting.policy.dataSubmissionEnabled", false);
  * [SETTING] Privacy & Security>Firefox Data Collection & Use>Allow Firefox to send technical... data ***/
 pref("datareporting.healthreport.uploadEnabled", false);
 /* 0332: disable telemetry
- * The "unified" pref affects the behaviour of the "enabled" pref
+ * The "unified" pref affects the behavior of the "enabled" pref
  * - If "unified" is false then "enabled" controls the telemetry module
  * - If "unified" is true then "enabled" only controls whether to record extended data
  * [NOTE] "toolkit.telemetry.enabled" is now LOCKED to reflect prerelease (true) or release builds (false) [2]
@@ -222,9 +212,6 @@ pref("network.captive-portal-service.enabled", false); // [FF52+]
 /* 0361: disable Network Connectivity checks [FF65+]
  * [1] https://bugzilla.mozilla.org/1460537 ***/
 pref("network.connectivity-service.enabled", false);
-/* 0362: enforce disabling of Web Compatibility Reporter [FF56+]
- * Web Compatibility Reporter adds a "Report Site Issue" button to send data to Mozilla ***/
-pref("extensions.webcompat-reporter.enabled", false); // [DEFAULT: false]
 
 /*** [SECTION 0400]: SAFE BROWSING (SB)
    SB has taken many steps to preserve privacy. If required, a full url is never sent
@@ -250,16 +237,16 @@ pref("_user.js.parrot", "0400 syntax error: the parrot's passed on!");
  * To verify the safety of certain executable files, Firefox may submit some information about the
  * file, including the name, origin, size and a cryptographic hash of the contents, to the Google
  * Safe Browsing service which helps Firefox determine whether or not the file should be blocked
- * [SETUP-SECURITY] If you do not understand this, or you want this protection, then override it ***/
+ * [SETUP-SECURITY] If you do not understand this, or you want this protection, then override this ***/
 pref("browser.safebrowsing.downloads.remote.enabled", false);
-pref("browser.safebrowsing.downloads.remote.url", "");
+   // pref("browser.safebrowsing.downloads.remote.url", ""); // Defense-in-depth
 /* 0404: disable SB checks for unwanted software
  * [SETTING] Privacy & Security>Security>... "Warn you about unwanted and uncommon software" ***/
    // pref("browser.safebrowsing.downloads.remote.block_potentially_unwanted", false);
    // pref("browser.safebrowsing.downloads.remote.block_uncommon", false);
 /* 0405: disable "ignore this warning" on SB warnings [FF45+]
  * If clicked, it bypasses the block for that session. This is a means for admins to enforce SB
- * [TEST] see github wiki APPENDIX A: Test Sites: Section 5
+ * [TEST] see https://github.com/arkenfox/user.js/wiki/Appendix-A-Test-Sites#-mozilla
  * [1] https://bugzilla.mozilla.org/1226490 ***/
    // pref("browser.safebrowsing.allowOverride", false);
 
@@ -278,7 +265,9 @@ pref("network.predictor.enable-prefetch", false); // [FF48+] [DEFAULT: false]
 /* 0604: disable link-mouseover opening connection to linked server
  * [1] https://news.slashdot.org/story/15/08/14/2321202/how-to-quash-firefoxs-silent-requests ***/
 pref("network.http.speculative-parallel-limit", 0);
-/* 0605: enforce no "Hyperlink Auditing" (click tracking)
+/* 0605: disable mousedown speculative connections on bookmarks and history [FF98+] ***/
+pref("browser.places.speculativeConnect.enabled", false);
+/* 0610: enforce no "Hyperlink Auditing" (click tracking)
  * [1] https://www.bleepingcomputer.com/news/software/major-browsers-to-prevent-disabling-of-click-tracking-privacy-risk/ ***/
    // pref("browser.send_pings", false); // [DEFAULT: false]
 
@@ -321,7 +310,7 @@ pref("network.gio.supported-protocols", ""); // [HIDDEN PREF]
  * [WARNING] If false, this will break the fallback for some security features
  * [SETUP-CHROME] If you use a proxy and you understand the security impact
  * [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1732792,1733994,1733481 ***/
-   // pref("network.proxy.allow_bypass", false); // [HIDDEN PREF]
+   // pref("network.proxy.allow_bypass", false); // [HIDDEN PREF FF95-96]
 /* 0710: disable DNS-over-HTTPS (DoH) rollout [FF60+]
  * 0=off by default, 2=TRR (Trusted Recursive Resolver) first, 3=TRR only, 5=explicitly off
  * see "doh-rollout.home-region": USA Feb 2020, Canada July 2021 [3]
@@ -338,8 +327,7 @@ pref("_user.js.parrot", "0800 syntax error: the parrot's ceased to be!");
  * Examples: "secretplace,com", "secretplace/com", "secretplace com", "secret place.com"
  * [NOTE] This does not affect explicit user action such as using search buttons in the
  * dropdown, or using keyword search shortcuts you configure in options (e.g. "d" for DuckDuckGo)
- * [SETUP-CHROME] If you don't, or rarely, type URLs, or you use a default search
- * engine that respects privacy, then you probably don't need this ***/
+ * [SETUP-CHROME] Override this if you trust and use a privacy respecting search engine ***/
    // pref("keyword.enabled", false); //BRACE-COMMENTED: usability, second dedicated keyword search bar isn't enabled by default
 /* 0802: disable location bar domain guessing
  * domain guessing intercepts DNS "hostname not found errors" and resends a
@@ -353,7 +341,7 @@ pref("browser.fixup.alternate.enabled", false);
 pref("browser.urlbar.trimURLs", false);
 /* 0804: disable live search suggestions
  * [NOTE] Both must be true for the location bar to work
- * [SETUP-CHROME] Change these if you trust and use a privacy respecting search engine
+ * [SETUP-CHROME] Override these if you trust and use a privacy respecting search engine
  * [SETTING] Search>Provide search suggestions | Show search suggestions in address bar results ***/
 pref("browser.search.suggest.enabled", false);
 pref("browser.urlbar.suggest.searches", false);
@@ -467,19 +455,17 @@ pref("browser.shell.shortcutFavicons", false);
 pref("_user.js.parrot", "1200 syntax error: the parrot's a stiff!");
 /** SSL (Secure Sockets Layer) / TLS (Transport Layer Security) ***/
 /* 1201: require safe negotiation
- * Blocks connections (SSL_ERROR_UNSAFE_NEGOTIATION) to servers that don't support RFC 5746 [2]
- * as they're potentially vulnerable to a MiTM attack [3]. A server without RFC 5746 can be
- * safe from the attack if it disables renegotiations but the problem is that the browser can't
- * know that. Setting this pref to true is the only way for the browser to ensure there will be
- * no unsafe renegotiations on the channel between the browser and the server.
+ * Blocks connections to servers that don't support RFC 5746 [2] as they're potentially vulnerable to a
+ * MiTM attack [3]. A server without RFC 5746 can be safe from the attack if it disables renegotiations
+ * but the problem is that the browser can't know that. Setting this pref to true is the only way for the
+ * browser to ensure there will be no unsafe renegotiations on the channel between the browser and the server
+ * [SETUP-WEB] SSL_ERROR_UNSAFE_NEGOTIATION: is it worth overriding this for that one site?
  * [STATS] SSL Labs (July 2021) reports over 99% of top sites have secure renegotiation [4]
  * [1] https://wiki.mozilla.org/Security:Renegotiation
  * [2] https://datatracker.ietf.org/doc/html/rfc5746
  * [3] https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3555
  * [4] https://www.ssllabs.com/ssl-pulse/ ***/
 pref("security.ssl.require_safe_negotiation", true);
-/* 1203: reset TLS 1.0 and 1.1 downgrades i.e. session only ***/
-pref("security.tls.version.enable-deprecated", false); // [DEFAULT: false]
 /* 1206: disable TLS1.3 0-RTT (round-trip time) [FF51+]
  * This data is not forward secret, as it is encrypted solely under keys derived using
  * the offered PSK. There are no guarantees of non-replay between connections
@@ -551,8 +537,8 @@ pref("security.mixed_content.block_display_content", true);
 /* 1245: enable HTTPS-Only mode for local resources [FF77+] ***/
    // pref("dom.security.https_only_mode.upgrade_local", true);
 /* 1246: disable HTTP background requests [FF82+]
- * When attempting to upgrade, if the server doesn't respond within 3 seconds,
- * Firefox sends HTTP requests in order to check if the server supports HTTPS or not
+ * When attempting to upgrade, if the server doesn't respond within 3 seconds, Firefox sends
+ * a top-level HTTP request without path in order to check if the server supports HTTPS or not
  * This is done to avoid waiting for a timeout which takes 90 seconds
  * [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1642387,1660945 ***/
    // pref("dom.security.https_only_mode_send_http_background_request", false); //BRACE-COMMENTED: usability, not all sites have HTTPS
@@ -572,8 +558,6 @@ pref("browser.ssl_override_behavior", 1);
  * i.e. it doesn't work for HSTS discrepancies (https://subdomain.preloaded-hsts.badssl.com/)
  * [TEST] https://expired.badssl.com/ ***/
 pref("browser.xul.error_pages.expert_bad_cert", true);
-/* 1273: display "Not Secure" text on HTTP sites ***/
-pref("security.insecure_connection_text.enabled", true); // [FF60+]
 
 /*** [SECTION 1400]: FONTS ***/
 pref("_user.js.parrot", "1400 syntax error: the parrot's bereft of life!");
@@ -590,7 +574,6 @@ pref("gfx.font_rendering.opentype_svg.enabled", false);
    // pref("layout.css.font-visibility.trackingprotection", 1);
 
 /*** [SECTION 1600]: HEADERS / REFERERS
-   Expect some breakage e.g. banks: use an extension if you need precise control
                   full URI: https://example.com:8888/foo/bar.html?id=1234
      scheme+host+port+path: https://example.com:8888/foo/bar.html
           scheme+host+port: https://example.com:8888
@@ -599,7 +582,8 @@ pref("gfx.font_rendering.opentype_svg.enabled", false);
 pref("_user.js.parrot", "1600 syntax error: the parrot rests in peace!");
 /* 1601: control when to send a cross-origin referer
  * 0=always (default), 1=only if base domains match, 2=only if hosts match
- * [SETUP-WEB] Known to cause issues with older modems/routers and some sites e.g vimeo, icloud, instagram ***/
+ * [SETUP-WEB] Breakage: older modems/routers and some sites e.g banks, vimeo, icloud, instagram
+ * If "2" is too strict, then override to "0" and use Smart Referer extension (Strict mode + add exceptions) ***/
 pref("network.http.referer.XOriginPolicy", 2);
 /* 1602: control the amount of cross-origin information to send [FF52+]
  * 0=send full URI (default), 1=scheme+host+port+path, 2=scheme+host+port ***/
@@ -617,7 +601,7 @@ pref("_user.js.parrot", "1700 syntax error: the parrot's bit the dust!");
  * [SETTING] General>Tabs>Enable Container Tabs ***/
 pref("privacy.userContext.enabled", true);
 pref("privacy.userContext.ui.enabled", true);
-/* 1702: set behaviour on "+ Tab" button to display container menu on left click [FF74+]
+/* 1702: set behavior on "+ Tab" button to display container menu on left click [FF74+]
  * [NOTE] The menu is always shown on long press and right click
  * [SETTING] General>Tabs>Enable Container Tabs>Settings>Select a container for each new tab ***/
    // pref("privacy.userContext.newTabContainerOnLeftClick.enabled", true);
@@ -688,7 +672,7 @@ pref("dom.popup_allowed_events", "click dblclick mousedown pointerdown");
 pref("_user.js.parrot", "2600 syntax error: the parrot's run down the curtain!");
 /* 2601: prevent accessibility services from accessing your browser [RESTART]
  * [1] https://support.mozilla.org/kb/accessibility-services ***/
-pref("accessibility.force_disabled", 1); //BRACE-SHOULD_COMMENT
+   // pref("accessibility.force_disabled", 1); //MULL-COMMENTED
 /* 2602: disable sending additional analytics to web servers
  * [1] https://developer.mozilla.org/docs/Web/API/Navigator/sendBeacon ***/
 pref("beacon.enabled", false);
@@ -776,11 +760,20 @@ pref("extensions.postDownloadThirdPartyPrompt", false);
 /*** [SECTION 2700]: ETP (ENHANCED TRACKING PROTECTION) ***/
 pref("_user.js.parrot", "2700 syntax error: the parrot's joined the bleedin' choir invisible!");
 /* 2701: enable ETP Strict Mode [FF86+]
- * [NOTE] ETP Strict Mode enables Total Cookie Protection (TCP)
+ * ETP Strict Mode enables Total Cookie Protection (TCP)
+ * [NOTE] Adding site exceptions disables all ETP protections for that site and increases the risk of
+ * cross-site state tracking e.g. exceptions for SiteA and SiteB means PartyC on both sites is shared
  * [1] https://blog.mozilla.org/security/2021/02/23/total-cookie-protection/
  * [SETTING] to add site exceptions: Urlbar>ETP Shield
  * [SETTING] to manage site exceptions: Options>Privacy & Security>Enhanced Tracking Protection>Manage Exceptions ***/
 pref("browser.contentblocking.category", "strict");
+/* 2702: disable ETP web compat features [FF93+]
+ * [SETUP-HARDEN] Includes skip lists, heuristics (SmartBlock) and automatic grants
+ * Opener Heuristics are granted for 30 days and Redirect Heuristics for 15 minutes, see [3]
+ * [1] https://blog.mozilla.org/security/2021/07/13/smartblock-v2/
+ * [2] https://hg.mozilla.org/mozilla-central/rev/e5483fd469ab#l4.12
+ * [3] https://developer.mozilla.org/en-US/docs/Web/Privacy/State_Partitioning#storage_access_heuristics ***/
+   // pref("privacy.antitracking.enableWebcompat", false);
 /* 2710: enable state partitioning of service workers [FF96+] ***/
 pref("privacy.partition.serviceWorkers", true);
 
@@ -793,7 +786,6 @@ pref("_user.js.parrot", "2800 syntax error: the parrot's bleedin' demised!");
  * sharedWorkers and serviceWorkers. serviceWorkers require an "Allow" permission
  * [SETTING] Privacy & Security>Cookies and Site Data>Delete cookies and site data when Firefox is closed
  * [SETTING] to add site exceptions: Ctrl+I>Permissions>Cookies>Allow
- *   If using FPI the syntax must be https://example.com/^firstPartyDomain=example.com
  * [SETTING] to manage site exceptions: Options>Privacy & Security>Permissions>Settings ***/
    // pref("network.cookie.lifetimePolicy", 2); //BRACE-COMMENTED: usability, no thanks
 /* 2802: delete cache on exit [FF96+]
@@ -964,7 +956,7 @@ pref("browser.link.open_newwindow", 3); // [DEFAULT: 3]
  * [1] https://searchfox.org/mozilla-central/source/dom/tests/browser/browser_test_new_window_from_content.js ***/
 pref("browser.link.open_newwindow.restriction", 0);
 /* 4520: disable WebGL (Web Graphics Library)
- * [SETUP-WEB] If you need it then enable it. RFP still randomizes canvas for naive scripts ***/
+ * [SETUP-WEB] If you need it then override it. RFP still randomizes canvas for naive scripts ***/
 pref("webgl.disabled", true);
 
 /*** [SECTION 5000]: OPTIONAL OPSEC
@@ -1041,8 +1033,8 @@ pref("browser.download.forbid_open_with", true); //BRACE-UNCOMMENTED: brace-inst
    // pref("browser.download.folderList", 2);
 
 /*** [SECTION 5500]: OPTIONAL HARDENING
-   Not recommended. Keep in mind that these can cause breakage and performance
-   issues, are mostly fingerpintable, and the threat model is practically zero
+   Not recommended. Overriding these can cause breakage and performance issues,
+   they are mostly fingerprintable, and the threat model is practically nonexistent
 ***/
 pref("_user.js.parrot", "5500 syntax error: this is an ex-parrot!");
 /* 5501: disable MathML (Mathematical Markup Language) [FF51+]
@@ -1101,16 +1093,24 @@ pref("dom.targetBlankNoOpener.enabled", true); // [DEFAULT: true]
  * string is restored if the tab reverts back to the original page. This change prevents some cross-site attacks
  * [TEST] https://arkenfox.github.io/TZP/tests/windownamea.html ***/
 pref("privacy.window.name.update.enabled", true); // [DEFAULT: true]
-/* 0607: enforce Local Storage Next Generation (LSNG) [FF65+] ***/
+/* 6007: enforce Local Storage Next Generation (LSNG) [FF65+] ***/
 pref("dom.storage.next_gen", true); // [DEFAULT: true FF92+]
 /* 6008: enforce no First Party Isolation [FF51+]
  * [WARNING] Replaced with network partitioning (FF85+) and TCP (2701),
  * and enabling FPI disables those. FPI is no longer maintained ***/
-pref("privacy.firstparty.isolate", true); // [DEFAULT: false] //MULL-ENABLED: dFPI doesn't seem to be implemented the same in Fenix?
+pref("privacy.firstparty.isolate", true); // [DEFAULT: false] //MULL-ENABLEED: dFPI doesn't seem to be implemented the same in Fenix?
 /* 6009: enforce SmartBlock shims [FF81+]
  * In FF96+ these are listed in about:compat
  * [1] https://blog.mozilla.org/security/2021/03/23/introducing-smartblock/ ***/
 pref("extensions.webcompat.enable_shims", true); // [DEFAULT: true]
+/* 6010: enforce/reset TLS 1.0/1.1 downgrades to session only
+ * [NOTE] In FF97+ the TLS 1.0/1.1 downgrade UX was removed
+ * [TEST] https://tls-v1-1.badssl.com:1010/ ***/
+pref("security.tls.version.enable-deprecated", false); // [DEFAULT: false]
+/* 6011: enforce disabling of Web Compatibility Reporter [FF56+]
+ * Web Compatibility Reporter adds a "Report Site Issue" button to send data to Mozilla
+ * [WHY] To prevent wasting Mozilla's time with a custom setup ***/
+pref("extensions.webcompat-reporter.enabled", false); // [DEFAULT: false]
 /* 6050: prefsCleaner: reset items removed from arkenfox FF92+ ***/
    // pref("dom.caches.enabled", "");
    // pref("dom.storageManager.enabled", "");
@@ -1118,6 +1118,7 @@ pref("extensions.webcompat.enable_shims", true); // [DEFAULT: true]
    // pref("privacy.firstparty.isolate.block_post_message", "");
    // pref("privacy.firstparty.isolate.restrict_opener_access", "");
    // pref("privacy.firstparty.isolate.use_site", "");
+   // pref("security.insecure_connection_text.enabled", "");
 
 /*** [SECTION 7000]: DON'T BOTHER ***/
 pref("_user.js.parrot", "7000 syntax error: the parrot's pushing up daisies!");
@@ -1128,7 +1129,7 @@ pref("_user.js.parrot", "7000 syntax error: the parrot's pushing up daisies!");
    // pref("geo.enabled", false);
    // pref("full-screen-api.enabled", false);
    // pref("browser.cache.offline.enable", false);
-   // pref("dom.vr.enabled", false);
+   // pref("dom.vr.enabled", false); // [DEFAULT: false FF97+]
 /* 7002: set default permissions
  * Location, Camera, Microphone, Notifications [FF58+] Virtual Reality [FF73+]
  * 0=always ask (default), 1=allow, 2=block
@@ -1153,7 +1154,7 @@ pref("_user.js.parrot", "7000 syntax error: the parrot's pushing up daisies!");
    // pref("security.ssl3.rsa_aes_128_sha", false); // no PFS
    // pref("security.ssl3.rsa_aes_256_sha", false); // no PFS
 /* 7004: control TLS versions
- * [WHY] Passive fingerprinting. Downgrades are still possible: behind user interaction ***/
+ * [WHY] Passive fingerprinting and security ***/
    // pref("security.tls.version.min", 3); // [DEFAULT: 3]
    // pref("security.tls.version.max", 4);
 /* 7005: disable SSL session IDs [FF36+]
@@ -1162,7 +1163,6 @@ pref("_user.js.parrot", "7000 syntax error: the parrot's pushing up daisies!");
    // pref("security.ssl.disable_session_identifiers", true); // [HIDDEN PREF]
 /* 7006: onions
  * [WHY] Firefox doesn't support hidden services. Use Tor Browser ***/
-   // pref("dom.securecontext.whitelist_onions", true); // 1382359
    // pref("dom.securecontext.allowlist_onions", true); // [FF97+] 1382359/1744006
    // pref("network.http.referer.hideOnionSource", true); // 1305144
 /* 7007: referers
@@ -1197,8 +1197,7 @@ pref("_user.js.parrot", "7000 syntax error: the parrot's pushing up daisies!");
 /* 7013: disable Clipboard API
  * [WHY] Fingerprintable. Breakage. Cut/copy/paste require user
  * interaction, and paste is limited to focused editable fields ***/
-pref("dom.event.clipboardevents.enabled", false); //BRACE-UNCOMMENTED: privacy/security, websites shouldn't be able to muck with clipboard
-pref("dom.allow_cut_copy", false); //BRACE-KEEP_FOR_NOW
+   // pref("dom.event.clipboardevents.enabled", false);
 /* 7014: disable System Add-on updates
  * [WHY] It can compromise security. System addons ship with prefs, use those ***/
    // pref("extensions.systemAddon.update.enabled", false); // [FF62+]
@@ -1280,8 +1279,10 @@ pref("browser.startup.homepage_override.mstone", "ignore"); // master switch
    // pref("full-screen-api.warning.timeout", 0);
 /* UPDATES ***/
    // pref("app.update.auto", false); // [NON-WINDOWS] disable auto app updates
-     // [NOTE] You will still get prompts to update, and should do so in a timely manner
-     // [SETTING] General>Firefox Updates>Check for updates but let you choose to install them
+      // [NOTE] You will still get prompts to update, and should do so in a timely manner
+      // [SETTING] General>Firefox Updates>Check for updates but let you choose to install them
+   // pref("browser.search.update", false); // disable search engine updates (e.g. OpenSearch)
+      // [NOTE] This does not affect Mozilla's built-in or Web Extension search engines
    // pref("extensions.update.enabled", false); // disable extension and theme update checks
    // pref("extensions.update.autoUpdateDefault", false); // disable installing extension and theme updates
       // [SETTING] about:addons>Extensions>[cog-wheel-icon]>Update Add-ons Automatically (toggle)
@@ -1295,7 +1296,7 @@ pref("browser.startup.homepage_override.mstone", "ignore"); // master switch
       // 0=light, 1=dark: with RFP this only affects chrome
 /* CONTENT BEHAVIOR ***/
    // pref("accessibility.typeaheadfind", true); // enable "Find As You Type"
-pref("clipboard.autocopy", false); // disable autocopy default [LINUX] //BRACE-UNCOMMENTED: unwanted
+   // pref("clipboard.autocopy", false); // disable autocopy default [LINUX]
    // pref("layout.spellcheckDefault", 2); // 0=none, 1-multi-line, 2=multi-line & single-line
 /* UX BEHAVIOR ***/
    // pref("browser.backspace_action", 2); // 0=previous page, 1=scroll up, 2=do nothing
@@ -1340,6 +1341,16 @@ pref("_user.js.parrot", "9999 syntax error: the parrot's shuffled off 'is mortal
 // 0807: disable location bar contextual suggestions [FF92+] - replaced by new 0807
    // [-] https://bugzilla.mozilla.org/1735976
 pref("browser.urlbar.suggest.quicksuggest", false);
+// FF96
+// 0302: disable auto-INSTALLING Firefox updates via a background service + hide the setting [FF90+] [WINDOWS]
+   // [SETTING] General>Firefox Updates>Automatically install updates>When Firefox is not running
+   // [1] https://support.mozilla.org/kb/enable-background-updates-firefox-windows
+   // [-] https://bugzilla.mozilla.org/1738983
+pref("app.update.background.scheduling.enabled", false);
+// FF97
+// 7006: onions - replaced by new 7006 "allowlist"
+   // [-] https://bugzilla.mozilla.org/1744006
+   // pref("dom.securecontext.whitelist_onions", true); // 1382359
 // ***/
 
 /* END: internal custom pref to test for syntax errors ***/
