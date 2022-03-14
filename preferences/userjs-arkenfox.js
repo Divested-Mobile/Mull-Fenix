@@ -8,8 +8,8 @@
 * README:
 
   0. Changes made for Brace and Mull are noted with //BRACE and //MULL respectively
-       * sed -i 's/pref(/pref(/' userjs-arkenfox.js
-       * sed -i 's/pref(/pref(/' userjs-arkenfox.js
+       * sed -i 's/pref(/user_pref(/' userjs-arkenfox.js
+       * sed -i 's/user_pref(/pref(/' userjs-arkenfox.js
   1. Consider using Tor Browser if it meets your needs or fits your threat model
        * https://2019.www.torproject.org/about/torusers.html
   2. Read the entire wiki
