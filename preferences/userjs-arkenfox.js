@@ -1,7 +1,7 @@
 /******
 *    name: arkenfox user.js
-*    date: 12 February 2022
-* version: 97
+*    date: 10 March 2022
+* version: 98
 *     url: https://github.com/arkenfox/user.js
 * license: MIT: https://github.com/arkenfox/user.js/blob/master/LICENSE.txt
 
@@ -517,8 +517,11 @@ pref("security.family_safety.mode", 0);
  * [1] https://gitlab.torproject.org/tpo/applications/tor-browser/-/issues/16206 ***/
 pref("security.cert_pinning.enforcement_level", 2);
 /* 1224: enable CRLite [FF73+]
- * In FF84+ it covers valid certs and in mode 2 doesn't fall back to OCSP
- * [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1429800,1670985
+ * 0 = disabled
+ * 1 = consult CRLite but only collect telemetry (default)
+ * 2 = consult CRLite and enforce both "Revoked" and "Not Revoked" results
+ * 3 = consult CRLite and enforce "Not Revoked" results, but defer to OCSP for "Revoked" (FF99+)
+ * [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1429800,1670985,1753071
  * [2] https://blog.mozilla.org/security/tag/crlite/ ***/
 pref("security.remote_settings.crlite_filters.enabled", true);
 pref("security.pki.crlite_mode", 2);
@@ -649,7 +652,7 @@ pref("browser.eme.ui.enabled", false); //BRACE-UNCOMMENTED: proprietary
    // pref("media.autoplay.default", 5);
 /* 2031: disable autoplay of HTML5 media if you interacted with the site [FF78+]
  * 0=sticky (default), 1=transient, 2=user
- * Firefox's Autoplay Policy Documentation [PDF] is linked below via SUMO
+ * Firefox's Autoplay Policy Documentation (PDF) is linked below via SUMO
  * [NOTE] If you have trouble with some video sites, then add an exception (2030)
  * [1] https://support.mozilla.org/questions/1293231 ***/
 pref("media.autoplay.blocking_policy", 2);
@@ -854,6 +857,8 @@ pref("privacy.sanitize.timeSpan", 0);
     418986 - limit window.screen & CSS media queries (FF41)
       [TEST] https://arkenfox.github.io/TZP/tzp.html#screen
    1281949 - spoof screen orientation (FF50)
+   1281963 - hide the contents of navigator.plugins and navigator.mimeTypes (FF50)
+      FF53: fixes GetSupportedNames in nsMimeTypeArray and nsPluginArray (1324044)
    1330890 - spoof timezone as UTC0 (FF55)
    1360039 - spoof navigator.hardwareConcurrency as 2 (FF55)
    1217238 - reduce precision of time exposed by javascript (FF55)
@@ -1098,7 +1103,7 @@ pref("dom.storage.next_gen", true); // [DEFAULT: true FF92+]
 /* 6008: enforce no First Party Isolation [FF51+]
  * [WARNING] Replaced with network partitioning (FF85+) and TCP (2701),
  * and enabling FPI disables those. FPI is no longer maintained ***/
-pref("privacy.firstparty.isolate", true); // [DEFAULT: false] //MULL-ENABLEED: dFPI doesn't seem to be implemented the same in Fenix?
+pref("privacy.firstparty.isolate", true); // [DEFAULT: false] //MULL-ENABLED: dFPI doesn't seem to be implemented the same in Fenix?
 /* 6009: enforce SmartBlock shims [FF81+]
  * In FF96+ these are listed in about:compat
  * [1] https://blog.mozilla.org/security/2021/03/23/introducing-smartblock/ ***/
@@ -1214,7 +1219,7 @@ pref("privacy.trackingprotection.enabled", true);
 pref("privacy.trackingprotection.socialtracking.enabled", true);
 pref("privacy.trackingprotection.cryptomining.enabled", true); // [DEFAULT: true]
 pref("privacy.trackingprotection.fingerprinting.enabled", true); // [DEFAULT: true]
-/* 7017: disable service workers [FF32, FF44-compat]
+/* 7017: disable service workers
  * [WHY] Already isolated (FF96+) with TCP (2701) behind a pref (2710)
  * or blocked with TCP in 3rd parties (FF95 or lower) ***/
 pref("dom.serviceWorkers.enabled", false); //MULL-UNCOMMENTED: disable for FPI
@@ -1239,7 +1244,7 @@ pref("_user.js.parrot", "8000 syntax error: the parrot's crossed the Jordan");
    // pref("dom.enable_performance", false);
    // pref("dom.enable_resource_timing", false);
    // pref("dom.gamepad.enabled", false);
-   // pref("dom.netinfo.enabled", false);
+   // pref("dom.netinfo.enabled", false); // [DEFAULT: false NON-ANDROID: false ANDROID FF99+]
    // pref("dom.webaudio.enabled", false);
 /* 8002: disable other ***/
    // pref("browser.display.use_document_fonts", 0);
@@ -1306,7 +1311,7 @@ pref("browser.startup.homepage_override.mstone", "ignore"); // master switch
    // pref("browser.urlbar.decodeURLsOnCopy", true); // see bugzilla 1320061 [FF53+]
    // pref("general.autoScroll", false); // middle-click enabling auto-scrolling [DEFAULT: false on Linux]
    // pref("ui.key.menuAccessKey", 0); // disable alt key toggling the menu bar [RESTART]
-   // pref("view_source.tab", false); // view "page/selection source" in a new window [FF68+, FF59 and under]
+   // pref("view_source.tab", false); // view "page/selection source" in a new window [FF68+]
 /* UX FEATURES ***/
 pref("browser.messaging-system.whatsNewPanel.enabled", false); // What's New toolbar icon [FF69+]
 pref("extensions.pocket.enabled", false); // Pocket Account [FF46+] //BRACE-UNCOMMENTED: unwanted
