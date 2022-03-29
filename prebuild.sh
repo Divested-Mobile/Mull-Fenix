@@ -257,6 +257,7 @@ ac_add_options --enable-application=mobile/android
 ac_add_options --enable-hardening
 ac_add_options --enable-optimize
 ac_add_options --enable-release
+ac_add_options --enable-minify=properties # JS minification breaks addons
 ac_add_options --enable-update-channel=release
 ac_add_options --enable-rust-simd
 ac_add_options --enable-strip
