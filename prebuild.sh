@@ -86,6 +86,9 @@ patch -p1 --no-backup-if-mismatch --quiet < "$patches/fenix-liberate.patch"
 # Set strict ETP by default
 patch -p1 --no-backup-if-mismatch --quiet < "$patches/strict_etp.patch"
 
+# Enable HTTPS only mode by default
+patch -p1 --no-backup-if-mismatch --quiet < "$patches/https_only.patch"
+
 # Let it be Mull
 sed -i \
     -e 's/Firefox Daylight/Mull/; s/Firefox/Mull/g' \

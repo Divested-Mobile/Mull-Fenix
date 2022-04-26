@@ -535,7 +535,7 @@ pref("security.mixed_content.block_display_content", true);
  * [SETTING] Privacy & Security>HTTPS-Only Mode (and manage exceptions)
  * [TEST] http://example.com [upgrade]
  * [TEST] http://neverssl.com/ [no upgrade] ***/
-   // pref("dom.security.https_only_mode", true); // [FF76+] //MULL-COMMENTED: fenix does not expose the correct user interface yet
+pref("dom.security.https_only_mode", true); // [FF76+]
    // pref("dom.security.https_only_mode_pbm", true); // [FF80+]
 /* 1245: enable HTTPS-Only mode for local resources [FF77+] ***/
    // pref("dom.security.https_only_mode.upgrade_local", true);
