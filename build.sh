@@ -56,7 +56,7 @@ make PATH="$ANDROID_HOME/cmake/3.18.1/bin:$PATH" PREFIX=/wasi build -j"$(nproc)"
 popd
 
 pushd "$mozilla_release"
-export MACH_USE_SYSTEM_PYTHON=yes
+export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
 ./mach build
 gradle publishWithGeckoBinariesReleasePublicationToMavenLocal
 gradle exoplayer2:publishReleasePublicationToMavenLocal

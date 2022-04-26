@@ -129,7 +129,7 @@ sed -i \
     app/src/main/java/org/mozilla/fenix/home/HomeMenu.kt
 
 # Set up target parameters
-case $(echo "$2" | cut -c 6) in
+case $(echo "$2" | cut -c 7) in
     0)
         abi=armeabi-v7a
         target=arm-linux-androideabi
