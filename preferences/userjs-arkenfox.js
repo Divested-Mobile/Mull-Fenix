@@ -1,7 +1,7 @@
 /******
 *    name: arkenfox user.js
-*    date: 10 March 2022
-* version: 98
+*    date: 9 May 2022
+* version: 100
 *     url: https://github.com/arkenfox/user.js
 * license: MIT: https://github.com/arkenfox/user.js/blob/master/LICENSE.txt
 
@@ -744,6 +744,9 @@ pref("permissions.delegation.enabled", false);
 pref("browser.download.alwaysOpenPanel", false);
 /* 2653: disable adding downloads to the system's "recent documents" list ***/
 pref("browser.download.manager.addToRecentDocs", false);
+/* 2654: enable user interaction for security by always asking how to handle new mimetypes [FF101+]
+ * [SETTING] General>Files and Applications>What should Firefox do with other files ***/
+pref("browser.download.always_ask_before_handling_new_types", true);
 
 /** EXTENSIONS ***/
 /* 2660: lock down allowed extension directories
@@ -857,7 +860,7 @@ pref("privacy.sanitize.timeSpan", 0);
     418986 - limit window.screen & CSS media queries (FF41)
       [TEST] https://arkenfox.github.io/TZP/tzp.html#screen
    1281949 - spoof screen orientation (FF50)
-   1281963 - hide the contents of navigator.plugins and navigator.mimeTypes (FF50)
+   1281963 - hide the contents of navigator.plugins and navigator.mimeTypes (FF50-99)
       FF53: fixes GetSupportedNames in nsMimeTypeArray and nsPluginArray (1324044)
    1330890 - spoof timezone as UTC0 (FF55)
    1360039 - spoof navigator.hardwareConcurrency as 2 (FF55)
@@ -902,6 +905,7 @@ pref("privacy.sanitize.timeSpan", 0);
    1461454 - spoof smooth=true and powerEfficient=false for supported media in MediaCapabilities (FF82)
  FF91+
     531915 - use fdlibm's sin, cos and tan in jsmath (FF93, ESR91.1)
+   1756280 - enforce navigator.pdfViewerEnabled as true and plugins/mimeTypes as hard-coded values (FF100)
 ***/
 pref("_user.js.parrot", "4500 syntax error: the parrot's popped 'is clogs");
 /* 4501: enable privacy.resistFingerprinting [FF41+]
@@ -1084,9 +1088,6 @@ pref("extensions.blocklist.enabled", true); // [DEFAULT: true]
 /* 6002: enforce no referer spoofing
  * [WHY] Spoofing can affect CSRF (Cross-Site Request Forgery) protections ***/
 pref("network.http.referer.spoofSource", false); // [DEFAULT: false]
-/* 6003: enforce CSP (Content Security Policy)
- * [1] https://developer.mozilla.org/docs/Web/HTTP/CSP ***/
-pref("security.csp.enable", true); // [DEFAULT: true]
 /* 6004: enforce a security delay on some confirmation dialogs such as install, open/save
  * [1] https://www.squarefree.com/2004/07/01/race-conditions-in-security-dialogs/ ***/
 pref("security.dialog_enable_delay", 1000); // [DEFAULT: 1000]
@@ -1179,13 +1180,6 @@ pref("_user.js.parrot", "7000 syntax error: the parrot's pushing up daisies!");
  * [WHY] Defaults are fine. They can be overridden by a site-controlled Referrer Policy ***/
    // pref("network.http.referer.defaultPolicy", 2); // [DEFAULT: 2]
    // pref("network.http.referer.defaultPolicy.pbmode", 2); // [DEFAULT: 2]
-/* 7009: disable HTTP2
- * [WHY] Passive fingerprinting. ~50% of sites use HTTP2 [1]
- * [1] https://w3techs.com/technologies/details/ce-http2/all/all ***/
-   // pref("network.http.spdy.enabled", false);
-   // pref("network.http.spdy.enabled.deps", false);
-   // pref("network.http.spdy.enabled.http2", false);
-   // pref("network.http.spdy.websockets", false); // [FF65+]
 /* 7010: disable HTTP Alternative Services [FF37+]
  * [WHY] Already isolated with network partitioning (FF85+) ***/
    // pref("network.http.altsvc.enabled", false);
@@ -1214,6 +1208,7 @@ pref("_user.js.parrot", "7000 syntax error: the parrot's pushing up daisies!");
  * [WHY] Arkenfox only supports strict (2701) which sets these at runtime ***/
 pref("network.cookie.cookieBehavior", 1); //BRACE-UNCOMMENTED: strict cannot be set on first launch, use custom + enterprise policy instead //MULL-MODIFIED: set to 1 for FPI
 pref("network.http.referer.disallowCrossSiteRelaxingDefault", true);
+pref("network.http.referer.disallowCrossSiteRelaxingDefault.top_navigation", true); // [FF100+]
 pref("privacy.partition.network_state.ocsp_cache", true);
 pref("privacy.trackingprotection.enabled", true);
 pref("privacy.trackingprotection.socialtracking.enabled", true);
@@ -1356,6 +1351,20 @@ pref("app.update.background.scheduling.enabled", false);
 // 7006: onions - replaced by new 7006 "allowlist"
    // [-] https://bugzilla.mozilla.org/1744006
    // pref("dom.securecontext.whitelist_onions", true); // 1382359
+// FF99
+// 6003: enforce CSP (Content Security Policy)
+   // [1] https://developer.mozilla.org/docs/Web/HTTP/CSP
+   // [-] https://bugzilla.mozilla.org/1754301
+pref("security.csp.enable", true); // [DEFAULT: true]
+// FF100
+// 7009: disable HTTP2 - replaced by network.http.http2* prefs
+   // [WHY] Passive fingerprinting. ~50% of sites use HTTP2 [1]
+   // [1] https://w3techs.com/technologies/details/ce-http2/all/all
+   // [-] https://bugzilla.mozilla.org/1752621
+   // pref("network.http.spdy.enabled", false);
+   // pref("network.http.spdy.enabled.deps", false);
+   // pref("network.http.spdy.enabled.http2", false);
+   // pref("network.http.spdy.websockets", false); // [FF65+]
 // ***/
 
 /* END: internal custom pref to test for syntax errors ***/
