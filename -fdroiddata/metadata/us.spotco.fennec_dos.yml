@@ -826,6 +826,56 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r21d
 
+  - versionName: 100.3.0
+    versionCode: 21003000
+    commit: v100.3.0
+    timeout: 18000
+    sudo:
+      - apt-get update || apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v100.0.12
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.1.1
+      - MullBuild@v100.3.0
+      - MozFennec@FIREFOX_100_0_2_BUILD1
+      - MozGlean@v44.0.0
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.0
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 100.3.0
+    versionCode: 21003020
+    commit: v100.3.0
+    timeout: 18000
+    sudo:
+      - apt-get update || apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v100.0.12
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.1.1
+      - MullBuild@v100.3.0
+      - MozFennec@FIREFOX_100_0_2_BUILD1
+      - MozGlean@v44.0.0
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.0
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
 MaintainerNotes: |4-
 
     Version code scheme:
@@ -848,5 +898,5 @@ MaintainerNotes: |4-
 ArchivePolicy: 4 versions
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 100.1.3
-CurrentVersionCode: 21001320
+CurrentVersion: 100.3.0
+CurrentVersionCode: 21003020
