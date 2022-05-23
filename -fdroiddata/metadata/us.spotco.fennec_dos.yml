@@ -876,6 +876,56 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r21d
 
+  - versionName: 101.1.1
+    versionCode: 21011100
+    commit: v101.1.1
+    timeout: 18000
+    sudo:
+      - apt-get update || apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v101.0.10
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.1.2
+      - MullBuild@v101.1.1
+      - MozFennec@FIREFOX_101_0_BUILD2
+      - MozGlean@v44.1.1
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.0
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 101.1.1
+    versionCode: 21011120
+    commit: v101.1.1
+    timeout: 18000
+    sudo:
+      - apt-get update || apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v101.0.10
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.1.2
+      - MullBuild@v101.1.1
+      - MozFennec@FIREFOX_101_0_BUILD2
+      - MozGlean@v44.1.1
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.0
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
 MaintainerNotes: |4-
 
     Version code scheme:
@@ -898,5 +948,5 @@ MaintainerNotes: |4-
 ArchivePolicy: 4 versions
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 100.3.0
-CurrentVersionCode: 21003020
+CurrentVersion: 101.1.1
+CurrentVersionCode: 21011120
