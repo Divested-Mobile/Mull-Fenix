@@ -198,6 +198,10 @@ sed -i \
     -e "s/version = \"$gvver\.[0-9.]*\"/version = \"$gvver.+\"/" \
     buildSrc/src/main/java/Gecko.kt
 localize_maven
+# Temporary workaround for 102.1.0 wanting beta MozAC@102.0.10
+sed -i \
+    -e "s/channel = GeckoChannel.BETA/channel = GeckoChannel.RELEASE/" \
+    buildSrc/src/main/java/Gecko.kt
 popd
 
 #
