@@ -28,7 +28,19 @@ pref("media.gmp-widevinecdm.visible", false); //BRACE-KEEP_FOR_NOW: proprietary
 
 //Security
 pref("browser.gnome-search-provider.enabled", false);
-//pref("fission.autostart", true); //MULL-COMMENTED
+pref("fission.autostart", true);
 pref("security.webauth.u2f", true);
 pref("mail.phishing.detection.enabled", true);
 pref("mailnews.message_display.disable_remote_image", true);
+
+//Performance
+// Force enable some options
+// May cause crashes
+pref("browser.tabs.remote.autostart", true);
+pref("browser.tabs.remote.force-enabled", true);
+pref("extensions.webextensions.remote", true);
+pref("gfx.canvas.azure.accelerated", true);
+pref("gfx.webrender.all", true);
+pref("gfx.webrender.compositor", true);
+pref("gfx.webrender.enabled", true);
+pref("layers.acceleration.force-enabled", true);
