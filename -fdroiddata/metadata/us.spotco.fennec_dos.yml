@@ -927,7 +927,7 @@ Builds:
     ndk: r21d
 
   - versionName: 102.1.1
-    versionCode: 21021100
+    versionCode: 21021101
     commit: v102.1.1
     timeout: 18000
     sudo:
@@ -941,7 +941,7 @@ Builds:
       - MozAndroidComponentsAS@v94.0.0
       - MozAppServices@v93.1.0
       - MullBuild@v102.1.1
-      - MozFennec@FIREFOX_102_0_BUILD1
+      - MozFennec@FIREFOX_102_0_RELEASE
       - MozGlean@v44.1.1
       - MozGleanAS@v41.1.1
       - pyenv@v2.3.1
@@ -952,7 +952,7 @@ Builds:
     ndk: r21d
 
   - versionName: 102.1.1
-    versionCode: 21021120
+    versionCode: 21021121
     commit: v102.1.1
     timeout: 18000
     sudo:
@@ -965,8 +965,8 @@ Builds:
       - MozAndroidComponents@v102.0.12
       - MozAndroidComponentsAS@v94.0.0
       - MozAppServices@v93.1.0
-      - MullBuild@v102.1.1
-      - MozFennec@FIREFOX_102_0_BUILD1
+      - MullBuild@v102.1.1-2
+      - MozFennec@FIREFOX_102_0_RELEASE
       - MozGlean@v44.1.1
       - MozGleanAS@v41.1.1
       - pyenv@v2.3.1
@@ -999,4 +999,4 @@ ArchivePolicy: 4 versions
 AutoUpdateMode: None
 UpdateCheckMode: None
 CurrentVersion: 102.1.1
-CurrentVersionCode: 21021120
+CurrentVersionCode: 21021121
