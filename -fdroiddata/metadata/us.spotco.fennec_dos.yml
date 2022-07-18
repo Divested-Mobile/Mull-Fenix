@@ -976,9 +976,9 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r21d
 
-  - versionName: 102.2.0
-    versionCode: 21022000
-    commit: v102.2.0
+  - versionName: 103.1.0
+    versionCode: 21031000
+    commit: v103.1.0
     timeout: 18000
     sudo:
       - apt-get update || apt-get update
@@ -987,23 +987,23 @@ Builds:
       - update-alternatives --auto java
     output: app/build/outputs/apk/release/app-*-release-unsigned.apk
     srclibs:
-      - MozAndroidComponents@v102.0.14
+      - MozAndroidComponents@v103.0.9
       - MozAndroidComponentsAS@v94.0.0
-      - MozAppServices@v93.1.0
-      - MullBuild@v102.2.0
-      - MozFennec@FIREFOX_102_0_1_BUILD1
-      - MozGlean@v44.1.1
+      - MozAppServices@v93.5.0
+      - MullBuild@v103.1.0
+      - MozFennec@FIREFOX_103_0_BUILD1
+      - MozGlean@v50.1.0
       - MozGleanAS@v41.1.1
       - pyenv@v2.3.2
-      - rustup@1.24.3
+      - rustup@1.25.1
       - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
 
-  - versionName: 102.2.0
-    versionCode: 21022020
-    commit: v102.2.0
+  - versionName: 103.1.0
+    versionCode: 21031020
+    commit: v103.1.0
     timeout: 18000
     sudo:
       - apt-get update || apt-get update
@@ -1012,15 +1012,15 @@ Builds:
       - update-alternatives --auto java
     output: app/build/outputs/apk/release/app-*-release-unsigned.apk
     srclibs:
-      - MozAndroidComponents@v102.0.14
+      - MozAndroidComponents@v103.0.9
       - MozAndroidComponentsAS@v94.0.0
-      - MozAppServices@v93.1.0
-      - MullBuild@v102.2.0
-      - MozFennec@FIREFOX_102_0_1_BUILD1
-      - MozGlean@v44.1.1
+      - MozAppServices@v93.5.0
+      - MullBuild@v103.1.0
+      - MozFennec@FIREFOX_103_0_BUILD1
+      - MozGlean@v50.1.0
       - MozGleanAS@v41.1.1
       - pyenv@v2.3.2
-      - rustup@1.24.3
+      - rustup@1.25.1
       - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
@@ -1048,5 +1048,5 @@ MaintainerNotes: |4-
 ArchivePolicy: 4 versions
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 102.2.0
-CurrentVersionCode: 21022020
+CurrentVersion: 103.1.0
+CurrentVersionCode: 21031020
