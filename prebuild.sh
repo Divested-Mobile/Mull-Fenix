@@ -197,6 +197,9 @@ gvver=$(echo "$1" | cut -d. -f1)
 sed -i \
     -e "s/version = \"$gvver\.[0-9.]*\"/version = \"$gvver.+\"/" \
     buildSrc/src/main/java/Gecko.kt
+sed -i \
+    -e "s/50.1.1/50.1.0/" \
+    buildSrc/src/main/java/Dependencies.kt
 localize_maven
 popd
 
