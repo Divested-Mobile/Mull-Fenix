@@ -1091,7 +1091,7 @@ Builds:
       - MozAndroidComponentsAS@v104.0.2
       - MozAppServices@v94.1.0
       - MullBuild@v105.1.0
-      - MozFennec@FIREFOX_105_0_BUILD2
+      - MozFennec@FIREFOX_105_0_RELEASE
       - MozGlean@v51.1.0
       - MozGleanAS@v50.1.3
       - pyenv@v2.3.4
@@ -1116,12 +1116,62 @@ Builds:
       - MozAndroidComponentsAS@v104.0.2
       - MozAppServices@v94.1.0
       - MullBuild@v105.1.0
-      - MozFennec@FIREFOX_105_0_BUILD2
+      - MozFennec@FIREFOX_105_0_RELEASE
       - MozGlean@v51.1.0
       - MozGleanAS@v50.1.3
       - pyenv@v2.3.4
       - rustup@1.25.1
       - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 105.2.0
+    versionCode: 21052000
+    commit: v105.2.0
+    timeout: 18000
+    sudo:
+      - apt-get update || apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v105.0.8
+      - MozAndroidComponentsAS@v104.0.2
+      - MozAppServices@v94.1.0
+      - MullBuild@v105.2.0
+      - MozFennec@FIREFOX_105_0_2_RELEASE
+      - MozGlean@v51.1.0
+      - MozGleanAS@v50.1.3
+      - pyenv@v2.3.4
+      - rustup@1.25.1
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 105.2.0
+    versionCode: 21052020
+    commit: v105.2.0
+    timeout: 18000
+    sudo:
+      - apt-get update || apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v105.0.8
+      - MozAndroidComponentsAS@v104.0.2
+      - MozAppServices@v94.1.0
+      - MullBuild@v105.2.0
+      - MozFennec@FIREFOX_105_0_2_RELEASE
+      - MozGlean@v51.1.0
+      - MozGleanAS@v50.1.3
+      - pyenv@v2.3.4
+      - rustup@1.25.1
+      - wasi-sdk@wasi-sdk-16
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
@@ -1148,5 +1198,5 @@ MaintainerNotes: |4-
 ArchivePolicy: 4 versions
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 105.1.0
-CurrentVersionCode: 21051020
+CurrentVersion: 105.2.0
+CurrentVersionCode: 21052020
