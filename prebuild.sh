@@ -171,6 +171,9 @@ echo "rust.targets=linux-x86-64,$rusttarget" >> local.properties
 sed -i -e '/ndkVersion:/a\        ndkPath: System.getenv("ANDROID_NDK"),' \
     build.gradle
 localize_maven
+# Temporary workaround
+# https://github.com/mozilla/glean/commit/c69ed251ec4436eb72c147cd84b88eeb5a0f496a
+sed -i 's/25.0.8775105/21.3.6528147/' build.gradle
 popd
 
 #
