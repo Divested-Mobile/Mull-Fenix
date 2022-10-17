@@ -1174,6 +1174,54 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r21d
 
+  - versionName: 106.1.0
+    versionCode: 21061000
+    commit: v106.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils tcl gyp ninja-build bzip2 libz-dev libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v106.0.5
+      - MozAndroidComponentsAS@v104.0.2
+      - MozAppServices@v94.2.1
+      - MullBuild@v106.1.0
+      - MozFennec@FIREFOX_106_0_BUILD1
+      - MozGlean@v51.2.0
+      - MozGleanAS@v50.1.3
+      - pyenv@v2.3.5
+      - rustup@1.25.1
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 106.1.0
+    versionCode: 21061020
+    commit: v106.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils tcl gyp ninja-build bzip2 libz-dev libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v106.0.5
+      - MozAndroidComponentsAS@v104.0.2
+      - MozAppServices@v94.2.1
+      - MullBuild@v106.1.0
+      - MozFennec@FIREFOX_106_0_BUILD1
+      - MozGlean@v51.2.0
+      - MozGleanAS@v50.1.3
+      - pyenv@v2.3.5
+      - rustup@1.25.1
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
 MaintainerNotes: |4-
 
     Version code scheme:
@@ -1192,9 +1240,10 @@ MaintainerNotes: |4-
     * MozGleanAS: `mozilla_glean` in https://github.com/mozilla-mobile/android-components/blob/$MozAndroidComponentsAS/buildSrc/src/main/java/Dependencies.kt
     * pyenv: https://github.com/pyenv/pyenv/releases
     * rustup: https://github.com/rust-lang/rustup/tags
+    * wasi-sdk: https://github.com/WebAssembly/wasi-sdk/releases
 
 ArchivePolicy: 4 versions
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 105.2.0
-CurrentVersionCode: 21052020
+CurrentVersion: 106.1.0
+CurrentVersionCode: 21061020

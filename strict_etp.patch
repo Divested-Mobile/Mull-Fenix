@@ -11,26 +11,26 @@ Signed-off-by: Tad <tad@spotco.us>
  3 files changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/app/src/main/java/org/mozilla/fenix/utils/Settings.kt b/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
-index 34df18fa7..f406ebc62 100644
+index 61c2f221a..542d8a7da 100644
 --- a/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
 +++ b/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
-@@ -538,12 +538,12 @@ class Settings(private val appContext: Context) : PreferencesHolder {
+@@ -559,12 +559,12 @@ class Settings(private val appContext: Context) : PreferencesHolder {
  
      val useStandardTrackingProtection by booleanPreference(
          appContext.getPreferenceKey(R.string.pref_key_tracking_protection_standard_option),
--        true
-+        false
+-        true,
++        false,
      )
  
      val useStrictTrackingProtection by booleanPreference(
          appContext.getPreferenceKey(R.string.pref_key_tracking_protection_strict_default),
--        false
-+        true
+-        false,
++        true,
      )
  
      val useCustomTrackingProtection by booleanPreference(
 diff --git a/app/src/main/res/layout/onboarding_tracking_protection.xml b/app/src/main/res/layout/onboarding_tracking_protection.xml
-index be5a33bea..f8cb6d9f0 100644
+index 8428cf992..e89893f50 100644
 --- a/app/src/main/res/layout/onboarding_tracking_protection.xml
 +++ b/app/src/main/res/layout/onboarding_tracking_protection.xml
 @@ -46,7 +46,7 @@
@@ -52,7 +52,7 @@ index be5a33bea..f8cb6d9f0 100644
          android:gravity="top"
          android:paddingStart="8dp"
 diff --git a/app/src/main/res/xml/tracking_protection_preferences.xml b/app/src/main/res/xml/tracking_protection_preferences.xml
-index f53ca38e6..012d9afbb 100644
+index d6d936698..92e1cb212 100644
 --- a/app/src/main/res/xml/tracking_protection_preferences.xml
 +++ b/app/src/main/res/xml/tracking_protection_preferences.xml
 @@ -15,13 +15,13 @@
