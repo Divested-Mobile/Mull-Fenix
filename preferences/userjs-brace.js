@@ -24,6 +24,7 @@ pref("plugin.expose_full_path", false);
 pref("extensions.enigmail.autoWkdLookup", 0);
 pref("messenger.status.reportIdle", false);
 pref("media.gmp-widevinecdm.visible", false); //BRACE-KEEP_FOR_NOW: proprietary
+pref("network.manage-offline-status", false);
 
 //Security
 pref("browser.gnome-search-provider.enabled", false);
@@ -32,3 +33,11 @@ pref("fission.autostart.session", false);
 pref("security.webauth.u2f", true);
 pref("mail.phishing.detection.enabled", true);
 pref("mailnews.message_display.disable_remote_image", true);
+
+//Disable Pocket
+pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
+pref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
+pref("extensions.pocket.enabled", false);
+
+//Disable Sync
+pref("identity.fxaccounts.enabled", false);

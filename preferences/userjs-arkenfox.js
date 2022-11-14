@@ -1,7 +1,7 @@
 /******
 *    name: arkenfox user.js
-*    date: 11 September 2022
-* version: 104
+*    date: 6 November 2022
+* version: 106
 *     url: https://github.com/arkenfox/user.js
 * license: MIT: https://github.com/arkenfox/user.js/blob/master/LICENSE.txt
 
@@ -64,7 +64,7 @@
   6000: DON'T TOUCH
   7000: DON'T BOTHER
   8000: DON'T BOTHER: FINGERPRINTING
-  9000: PERSONAL
+  9000: NON-PROJECT RELATED
   9999: DEPRECATED / REMOVED / LEGACY / RENAMED
 
 ******/
@@ -81,34 +81,23 @@ pref("browser.aboutConfig.showWarning", false);
 
 /*** [SECTION 0100]: STARTUP ***/
 pref("_user.js.parrot", "0100 syntax error: the parrot's dead!");
-/* 0101: disable default browser check
- * [SETTING] General>Startup>Always check if Firefox is your default browser ***/
-pref("browser.shell.checkDefaultBrowser", false);
 /* 0102: set startup page [SETUP-CHROME]
  * 0=blank, 1=home, 2=last visited page, 3=resume previous session
  * [NOTE] Session Restore is cleared with history (2811), and not used in Private Browsing mode
  * [SETTING] General>Startup>Restore previous session ***/
 pref("browser.startup.page", 0);
 /* 0103: set HOME+NEWWINDOW page
- * about:home=Activity Stream (default, see 0105), custom URL, about:blank
+ * about:home=Firefox Home (default, see 0105), custom URL, about:blank
  * [SETTING] Home>New Windows and Tabs>Homepage and new windows ***/
 pref("browser.startup.homepage", "about:blank");
 /* 0104: set NEWTAB page
- * true=Activity Stream (default, see 0105), false=blank page
+ * true=Firefox Home (default, see 0105), false=blank page
  * [SETTING] Home>New Windows and Tabs>New tabs ***/
 pref("browser.newtabpage.enabled", false);
-pref("browser.newtab.preload", false);
-/* 0105: disable some Activity Stream items
- * Activity Stream is the default homepage/newtab based on metadata and browsing behavior
- * [SETTING] Home>Firefox Home Content>...  to show/hide what you want ***/
-pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
-pref("browser.newtabpage.activity-stream.telemetry", false);
-pref("browser.newtabpage.activity-stream.feeds.snippets", false); // [DEFAULT: false]
-pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
-pref("browser.newtabpage.activity-stream.section.highlights.includePocket", false);
-pref("browser.newtabpage.activity-stream.showSponsored", false);
-pref("browser.newtabpage.activity-stream.feeds.discoverystreamfeed", false); // [FF66+]
-pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false); // [FF83+]
+/* 0105: disable sponsored content on Firefox Home (Activity Stream)
+ * [SETTING] Home>Firefox Home Content ***/
+pref("browser.newtabpage.activity-stream.showSponsored", false); // [FF58+] Pocket > Sponsored Stories
+pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false); // [FF83+] Sponsored shortcuts
 /* 0106: clear default topsites
  * [NOTE] This does not block you from adding your own ***/
 pref("browser.newtabpage.activity-stream.default.sites", "");
@@ -186,6 +175,9 @@ pref("toolkit.coverage.endpoint.base", "");
 /* 0334: disable PingCentre telemetry (used in several System Add-ons) [FF57+]
  * Defense-in-depth: currently covered by 0331 ***/
 pref("browser.ping-centre.telemetry", false);
+/* 0335: disable Firefox Home (Activity Stream) telemetry ***/
+pref("browser.newtabpage.activity-stream.feeds.telemetry", false);
+pref("browser.newtabpage.activity-stream.telemetry", false);
 
 /** STUDIES ***/
 /* 0340: disable Studies
@@ -279,7 +271,7 @@ pref("_user.js.parrot", "0700 syntax error: the parrot's given up the ghost!");
 /* 0701: disable IPv6
  * IPv6 can be abused, especially with MAC addresses, and can leak with VPNs: assuming
  * your ISP and/or router and/or website is IPv6 capable. Most sites will fall back to IPv4
- * [STATS] Firefox telemetry (July 2021) shows ~10% of all connections are IPv6
+ * [STATS] Firefox telemetry (Sept 2022) shows ~8% of successful connections are IPv6
  * [NOTE] This is an application level fallback. Disabling IPv6 is best done at an
  * OS/network level, and/or configured properly in VPN setups. If you are not masking your IP,
  * then this won't make much difference. If you are masking your IP, then it can only help.
@@ -403,7 +395,7 @@ pref("network.auth.subresource-http-auth-allow", 1);
 /* 0906: enforce no automatic authentication on Microsoft sites [FF91+] [WINDOWS 10+]
  * [SETTING] Privacy & Security>Logins and Passwords>Allow Windows single sign-on for...
  * [1] https://support.mozilla.org/kb/windows-sso ***/
-pref("network.http.windows-sso.enabled", false); // [DEFAULT: false]
+   // pref("network.http.windows-sso.enabled", false); // [DEFAULT: false]
 
 /*** [SECTION 1000]: DISK AVOIDANCE ***/
 pref("_user.js.parrot", "1000 syntax error: the parrot's gone to meet 'is maker!");
@@ -419,10 +411,6 @@ pref("media.memory_cache_max_size", 65536);
  * define on which sites to save extra session data such as form content, cookies and POST data
  * 0=everywhere, 1=unencrypted sites, 2=nowhere ***/
 pref("browser.sessionstore.privacy_level", 2);
-/* 1004: set the minimum interval between session save operations
- * Increasing this can help on older machines and some websites, as well as reducing writes [1]
- * [1] https://bugzilla.mozilla.org/1304389 ***/
-pref("browser.sessionstore.interval", 30000); // [DEFAULT: 15000]
 /* 1005: disable automatic Firefox start and session restore after reboot [FF62+] [WINDOWS]
  * [1] https://bugzilla.mozilla.org/603903 ***/
 pref("toolkit.winRegisterApplicationRestart", false);
@@ -447,7 +435,7 @@ pref("_user.js.parrot", "1200 syntax error: the parrot's a stiff!");
  * but the problem is that the browser can't know that. Setting this pref to true is the only way for the
  * browser to ensure there will be no unsafe renegotiations on the channel between the browser and the server
  * [SETUP-WEB] SSL_ERROR_UNSAFE_NEGOTIATION: is it worth overriding this for that one site?
- * [STATS] SSL Labs (July 2021) reports over 99% of top sites have secure renegotiation [4]
+ * [STATS] SSL Labs (Sept 2022) reports over 99.3% of top sites have secure renegotiation [4]
  * [1] https://wiki.mozilla.org/Security:Renegotiation
  * [2] https://datatracker.ietf.org/doc/html/rfc5746
  * [3] https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3555
@@ -531,10 +519,6 @@ pref("dom.security.https_only_mode", true); // [FF76+]
  * [1] https://wiki.mozilla.org/Security:Renegotiation
  * [2] https://bugzilla.mozilla.org/1353705 ***/
 pref("security.ssl.treat_unsafe_negotiation_as_broken", true);
-/* 1271: control "Add Security Exception" dialog on SSL warnings
- * 0=do neither, 1=pre-populate url, 2=pre-populate url + pre-fetch cert (default)
- * [1] https://github.com/pyllyukko/user.js/issues/210 ***/
-pref("browser.ssl_override_behavior", 1);
 /* 1272: display advanced information on Insecure Connection warning pages
  * only works when it's possible to add an exception
  * i.e. it doesn't work for HSTS discrepancies (https://subdomain.preloaded-hsts.badssl.com/)
@@ -620,10 +604,6 @@ pref("browser.eme.ui.enabled", false); //BRACE-UNCOMMENTED: proprietary
 
 /*** [SECTION 2400]: DOM (DOCUMENT OBJECT MODEL) ***/
 pref("_user.js.parrot", "2400 syntax error: the parrot's kicked the bucket!");
-/* 2401: disable "Confirm you want to leave" dialog on page close
- * Does not prevent JS leaks of the page close event
- * [1] https://developer.mozilla.org/docs/Web/Events/beforeunload ***/
-pref("dom.disable_beforeunload", true);
 /* 2402: prevent scripts from moving and resizing open windows ***/
 pref("dom.disable_window_move_resize", true);
 /* 2403: block popup windows
@@ -648,10 +628,6 @@ pref("browser.pagethumbnails.capturing_disabled", true); // [HIDDEN PREF]
 /* 2606: disable UITour backend so there is no chance that a remote page can use it ***/
 pref("browser.uitour.enabled", false);
 pref("browser.uitour.url", "");
-/* 2607: disable various developer tools in browser context
- * [SETTING] Devtools>Advanced Settings>Enable browser chrome and add-on debugging toolboxes
- * [1] https://github.com/pyllyukko/user.js/issues/179#issuecomment-246468676 ***/
-pref("devtools.chrome.enabled", false);
 /* 2608: reset remote debugging to disabled
  * [1] https://gitlab.torproject.org/tpo/applications/tor-browser/-/issues/16222 ***/
 pref("devtools.debugger.remote-enabled", false); // [DEFAULT: false]
@@ -743,8 +719,9 @@ pref("browser.contentblocking.category", "strict");
    // pref("privacy.antitracking.enableWebcompat", false);
 /* 2710: enable state partitioning of service workers [FF96+] ***/
 pref("privacy.partition.serviceWorkers", true); // [DEFAULT: true FF105+]
-/* 2720: enable APS (Always Partitioning Storage) [FF104+] */
-pref("privacy.partition.always_partition_third_party_non_cookie_storage", true);
+/* 2720: enable APS (Always Partitioning Storage) ***/
+pref("privacy.partition.always_partition_third_party_non_cookie_storage", true); // [FF104+]
+pref("privacy.partition.always_partition_third_party_non_cookie_storage.exempt_sessionstorage", false); // [FF105+]
 
 /*** [SECTION 2800]: SHUTDOWN & SANITIZING ***/
 pref("_user.js.parrot", "2800 syntax error: the parrot's bleedin' demised!");
@@ -816,14 +793,12 @@ pref("privacy.sanitize.timeSpan", 0);
     418986 - limit window.screen & CSS media queries (FF41)
       [TEST] https://arkenfox.github.io/TZP/tzp.html#screen
    1281949 - spoof screen orientation (FF50)
-   1281963 - hide the contents of navigator.plugins and navigator.mimeTypes (FF50-99)
-      FF53: fixes GetSupportedNames in nsMimeTypeArray and nsPluginArray (1324044)
    1330890 - spoof timezone as UTC0 (FF55)
    1360039 - spoof navigator.hardwareConcurrency as 2 (FF55)
  FF56
    1369303 - spoof/disable performance API
    1333651 - spoof User Agent & Navigator API
-      version: spoofed as ESR (FF102+ this is limited to Android)
+      version: android version spoofed as ESR
       OS: JS spoofed as Windows 10, OS 10.15, Android 10, or Linux | HTTP Headers spoofed as Windows or Android
    1369319 - disable device sensor API
    1369357 - disable site specific zoom
@@ -836,7 +811,7 @@ pref("privacy.sanitize.timeSpan", 0);
    1217290 & 1409677 - enable some fingerprinting resistance for WebGL
    1382545 - reduce fingerprinting in Animation API
    1354633 - limit MediaError.message to a whitelist
- FF58-90
+ FF58+
     967895 - spoof canvas and enable site permission prompt (FF58)
    1372073 - spoof/block fingerprinting in MediaDevices API (FF59)
       Spoof: enumerate devices as one "Internal Camera" and one "Internal Microphone"
@@ -858,10 +833,9 @@ pref("privacy.sanitize.timeSpan", 0);
    1621433 - randomize canvas (previously FF58+ returned an all-white canvas) (FF78)
    1653987 - limit font visibility to bundled and "Base Fonts" (Windows, Mac, some Linux) (FF80)
    1461454 - spoof smooth=true and powerEfficient=false for supported media in MediaCapabilities (FF82)
- FF91+
     531915 - use fdlibm's sin, cos and tan in jsmath (FF93, ESR91.1)
    1756280 - enforce navigator.pdfViewerEnabled as true and plugins/mimeTypes as hard-coded values (FF100)
-   1692609 - reduce JS timing precision to 16.67ms (previously FF55+ was capped at 100ms) (FF102)
+   1692609 - reduce JS timing precision to 16.67ms (previously FF55+ was 100ms) (FF102)
 ***/
 pref("_user.js.parrot", "4500 syntax error: the parrot's popped 'is clogs");
 /* 4501: enable privacy.resistFingerprinting [FF41+]
@@ -1075,20 +1049,13 @@ pref("security.tls.version.enable-deprecated", false); // [DEFAULT: false]
  * Web Compatibility Reporter adds a "Report Site Issue" button to send data to Mozilla
  * [WHY] To prevent wasting Mozilla's time with a custom setup ***/
 pref("extensions.webcompat-reporter.enabled", false); // [DEFAULT: false]
-/* 6050: prefsCleaner: reset items removed from arkenfox FF92+ ***/
-   // pref("browser.urlbar.trimURLs", "");
-   // pref("dom.caches.enabled", "");
-   // pref("dom.storageManager.enabled", "");
-   // pref("dom.storage_access.enabled", "");
-   // pref("dom.targetBlankNoOpener.enabled", "");
-   // pref("network.cookie.thirdparty.sessionOnly", "");
-   // pref("network.cookie.thirdparty.nonsecureSessionOnly", "");
-   // pref("privacy.firstparty.isolate.block_post_message", "");
-   // pref("privacy.firstparty.isolate.restrict_opener_access", "");
-   // pref("privacy.firstparty.isolate.use_site", "");
-   // pref("privacy.window.name.update.enabled", "");
-   // pref("security.insecure_connection_text.enabled", "");
-/* 6051: prefsCleaner: reset items removed from arkenfox FF102+ ***/
+/* 6050: prefsCleaner: reset items removed from arkenfox FF102+ ***/
+   // pref("browser.newtab.preload", "");
+   // pref("browser.newtabpage.activity-stream.feeds.discoverystreamfeed", "");
+   // pref("browser.newtabpage.activity-stream.feeds.snippets", "");
+   // pref("browser.ssl_override_behavior", "");
+   // pref("devtools.chrome.enabled", "");
+   // pref("dom.disable_beforeunload", "");
    // pref("extensions.formautofill.available", "");
    // pref("extensions.formautofill.addresses.supported", "");
    // pref("extensions.formautofill.creditCards.available", "");
@@ -1097,13 +1064,12 @@ pref("extensions.webcompat-reporter.enabled", false); // [DEFAULT: false]
 /*** [SECTION 7000]: DON'T BOTHER ***/
 pref("_user.js.parrot", "7000 syntax error: the parrot's pushing up daisies!");
 /* 7001: disable APIs
- * Location-Aware Browsing, Full Screen, offline cache (appCache), Virtual Reality
- * [WHY] The API state is easily fingerprintable. Geo and VR are behind prompts (7002).
+ * Location-Aware Browsing, Full Screen, offline cache (appCache)
+ * [WHY] The API state is easily fingerprintable. Geo is behind a prompt (7002).
  * appCache storage capability was removed in FF90. Full screen requires user interaction ***/
    // pref("geo.enabled", false);
    // pref("full-screen-api.enabled", false);
    // pref("browser.cache.offline.enable", false);
-   // pref("dom.vr.enabled", false); // [DEFAULT: false FF97+]
 /* 7002: set default permissions
  * Location, Camera, Microphone, Notifications [FF58+] Virtual Reality [FF73+]
  * 0=always ask (default), 1=allow, 2=block
@@ -1151,7 +1117,6 @@ pref("_user.js.parrot", "7000 syntax error: the parrot's pushing up daisies!");
 /* 7010: disable HTTP Alternative Services [FF37+]
  * [WHY] Already isolated with network partitioning (FF85+) ***/
    // pref("network.http.altsvc.enabled", false);
-   // pref("network.http.altsvc.oe", false); // [DEFAULT: false FF94+]
 /* 7011: disable website control over browser right-click context menu
  * [WHY] Just use Shift-Right-Click ***/
    // pref("dom.event.contextmenu.enabled", false);
@@ -1203,158 +1168,45 @@ pref("dom.push.enabled", false); //BRACE-UNCOMMENTED: unwanted, also broken on M
    [WARNING] DO NOT USE with RFP. RFP already covers these and they can interfere
 ***/
 pref("_user.js.parrot", "8000 syntax error: the parrot's crossed the Jordan");
-/* 8001: disable APIs ***/
-   // pref("device.sensors.enabled", false);
-   // pref("dom.enable_performance", false);
-   // pref("dom.enable_resource_timing", false);
-   // pref("dom.gamepad.enabled", false);
-   // pref("dom.netinfo.enabled", false); // [DEFAULT: false NON-ANDROID: false ANDROID FF99+]
-   // pref("dom.webaudio.enabled", false);
-/* 8002: disable other ***/
-   // pref("browser.display.use_document_fonts", 0);
-   // pref("browser.zoom.siteSpecific", false);
-   // pref("dom.w3c_touch_events.enabled", 0);
-   // pref("media.navigator.enabled", false);
-   // pref("media.ondevicechange.enabled", false);
-   // pref("media.video_stats.enabled", false);
-   // pref("media.webspeech.synth.enabled", false);
-   // pref("webgl.enable-debug-renderer-info", false);
-/* 8003: spoof ***/
-   // pref("dom.maxHardwareConcurrency", 2);
-   // pref("font.system.whitelist", ""); // [HIDDEN PREF]
-   // pref("general.appname.override", ""); // [HIDDEN PREF]
-   // pref("general.appversion.override", ""); // [HIDDEN PREF]
-   // pref("general.buildID.override", ""); // [HIDDEN PREF]
-   // pref("general.oscpu.override", ""); // [HIDDEN PREF]
-   // pref("general.platform.override", ""); // [HIDDEN PREF]
-   // pref("general.useragent.override", ""); // [HIDDEN PREF]
-   // pref("ui.use_standins_for_native_colors", true);
+/* 8001: prefsCleaner: reset items useless for anti-fingerprinting ***/
+   // pref("browser.display.use_document_fonts", "");
+   // pref("browser.zoom.siteSpecific", "");
+   // pref("device.sensors.enabled", "");
+   // pref("dom.enable_performance", "");
+   // pref("dom.enable_resource_timing", "");
+   // pref("dom.gamepad.enabled", "");
+   // pref("dom.maxHardwareConcurrency", "");
+   // pref("dom.w3c_touch_events.enabled", "");
+   // pref("dom.webaudio.enabled", "");
+   // pref("font.system.whitelist", "");
+   // pref("general.appname.override", "");
+   // pref("general.appversion.override", "");
+   // pref("general.buildID.override", "");
+   // pref("general.oscpu.override", "");
+   // pref("general.platform.override", "");
+   // pref("general.useragent.override", "");
+   // pref("media.navigator.enabled", "");
+   // pref("media.ondevicechange.enabled", "");
+   // pref("media.video_stats.enabled", "");
+   // pref("media.webspeech.synth.enabled", "");
+   // pref("ui.use_standins_for_native_colors", "");
+   // pref("webgl.enable-debug-renderer-info", "");
 
-/*** [SECTION 9000]: PERSONAL
-   Non-project related but useful. If any interest you, add them to your overrides
-***/
+/*** [SECTION 9000]: NON-PROJECT RELATED ***/
 pref("_user.js.parrot", "9000 syntax error: the parrot's cashed in 'is chips!");
-/* WELCOME & WHAT'S NEW NOTICES ***/
-pref("browser.startup.homepage_override.mstone", "ignore"); // master switch
-   // pref("startup.homepage_welcome_url", "");
-   // pref("startup.homepage_welcome_url.additional", "");
-   // pref("startup.homepage_override_url", ""); // What's New page after updates
-/* WARNINGS ***/
-   // pref("browser.tabs.warnOnClose", false); // [DEFAULT: false FF94+]
-   // pref("browser.tabs.warnOnCloseOtherTabs", false);
-   // pref("browser.tabs.warnOnOpen", false);
-   // pref("browser.warnOnQuitShortcut", false); // [FF94+]
-   // pref("full-screen-api.warning.delay", 0);
-   // pref("full-screen-api.warning.timeout", 0);
-/* UPDATES ***/
-   // pref("app.update.auto", false); // [NON-WINDOWS] disable auto app updates
-      // [NOTE] You will still get prompts to update, and should do so in a timely manner
-      // [SETTING] General>Firefox Updates>Check for updates but let you choose to install them
-   // pref("browser.search.update", false); // disable search engine updates (e.g. OpenSearch)
-      // [NOTE] This does not affect Mozilla's built-in or Web Extension search engines
-   // pref("extensions.update.enabled", false); // disable extension and theme update checks
-   // pref("extensions.update.autoUpdateDefault", false); // disable installing extension and theme updates
-      // [SETTING] about:addons>Extensions>[cog-wheel-icon]>Update Add-ons Automatically (toggle)
-   // pref("extensions.getAddons.cache.enabled", false); // disable extension metadata (extension detail tab)
-/* APPEARANCE ***/
-   // pref("browser.download.autohideButton", false); // [FF57+]
-   // pref("toolkit.legacyUserProfileCustomizations.stylesheets", true); // [FF68+] allow userChrome/userContent
-   // pref("ui.prefersReducedMotion", 1); // disable chrome animations [FF77+] [RESTART] [HIDDEN PREF]
-      // 0=no-preference, 1=reduce: with RFP this only affects chrome
-   // pref("ui.systemUsesDarkTheme", 1); // [FF67+] [HIDDEN PREF]
-      // 0=light, 1=dark: with RFP this only affects chrome
-/* CONTENT BEHAVIOR ***/
-   // pref("accessibility.typeaheadfind", true); // enable "Find As You Type"
-   // pref("clipboard.autocopy", false); // disable autocopy default [LINUX]
-   // pref("layout.spellcheckDefault", 2); // 0=none, 1-multi-line, 2=multi-line & single-line
-/* HTML5 MEDIA AUTOPLAY ***/
-   // [NOTE] You can set exceptions under site permissions
-   // pref("media.autoplay.default", 5); // [FF63+]
-      // 0=Allow all, 1=Block non-muted media (default), 5=Block all
-      // [SETTING] Privacy & Security>Permissions>Autoplay>Settings>Default for all websites
-   // pref("media.autoplay.blocking_policy", 2); // disable autoplay if you interacted with the site [FF78+]
-      // 0=sticky (default), 1=transient, 2=user
-      // [1] https://support.mozilla.org/questions/1293231 // links to Autoplay Policy Documentation (PDF)
-/* UX BEHAVIOR ***/
-   // pref("browser.backspace_action", 2); // 0=previous page, 1=scroll up, 2=do nothing
-   // pref("browser.quitShortcut.disabled", true); // disable Ctrl-Q quit shortcut [LINUX] [MAC] [FF87+]
-   // pref("browser.tabs.closeWindowWithLastTab", false);
-   // pref("browser.tabs.loadBookmarksInTabs", true); // open bookmarks in a new tab [FF57+]
-   // pref("browser.urlbar.decodeURLsOnCopy", true); // see bugzilla 1320061 [FF53+]
-   // pref("general.autoScroll", false); // middle-click enabling auto-scrolling [DEFAULT: false on Linux]
-   // pref("ui.key.menuAccessKey", 0); // disable alt key toggling the menu bar [RESTART]
-   // pref("view_source.tab", false); // view "page/selection source" in a new window [FF68+]
-/* UX FEATURES ***/
-pref("browser.messaging-system.whatsNewPanel.enabled", false); // What's New toolbar icon [FF69+]
-pref("extensions.pocket.enabled", false); // Pocket Account [FF46+] //BRACE-UNCOMMENTED: unwanted
-   // pref("extensions.screenshots.disabled", true); // [FF55+]
-pref("identity.fxaccounts.enabled", false); // Firefox Accounts & Sync [FF60+] [RESTART] //BRACE-UNCOMMENTED: unwanted
-   // pref("reader.parse-on-load.enabled", false); // Reader View
-/* OTHER ***/
-   // pref("browser.bookmarks.max_backups", 2);
-pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false); // disable CFR [FF67+]
-      // [SETTING] General>Browsing>Recommend extensions as you browse
-pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false); // disable CFR [FF67+]
-      // [SETTING] General>Browsing>Recommend features as you browse
-pref("network.manage-offline-status", false); // see bugzilla 620472 //BRACE-UNCOMMENTED: unnecessary
-   // pref("xpinstall.signatures.required", false); // enforced extension signing (Nightly/ESR)
+/* 9001: disable welcome notices ***/
+pref("browser.startup.homepage_override.mstone", "ignore");
+/* 9002: disable General>Browsing>Recommend extensions/features as you browse [FF67+] ***/
+pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
+pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false);
+/* 9003: disable What's New toolbar icon [FF69+] ***/
+pref("browser.messaging-system.whatsNewPanel.enabled", false);
 
 /*** [SECTION 9999]: DEPRECATED / REMOVED / LEGACY / RENAMED
    Documentation denoted as [-]. Items deprecated prior to FF91 have been archived at [1]
    [1] https://github.com/arkenfox/user.js/issues/123
 ***/
 pref("_user.js.parrot", "9999 syntax error: the parrot's shuffled off 'is mortal coil!");
-// ESR91.x still uses all the following prefs
-// [NOTE] replace the * with a slash in the line above to re-enable them
-// FF93
-// 7003: disable non-modern cipher suites
-   // [-] https://bugzilla.mozilla.org/1724072
-   // pref("security.ssl3.rsa_des_ede3_sha", false); // 3DES
-// FF94
-// 1402: limit font visibility (Windows, Mac, some Linux) [FF79+] - replaced by new 1402
-   // [-] https://bugzilla.mozilla.org/1715507
-   // pref("layout.css.font-visibility.level", 1);
-// FF95
-// 0807: disable location bar contextual suggestions [FF92+] - replaced by new 0807
-   // [-] https://bugzilla.mozilla.org/1735976
-pref("browser.urlbar.suggest.quicksuggest", false);
-// FF96
-// 0302: disable auto-INSTALLING Firefox updates via a background service + hide the setting [FF90+] [WINDOWS]
-   // [SETTING] General>Firefox Updates>Automatically install updates>When Firefox is not running
-   // [1] https://support.mozilla.org/kb/enable-background-updates-firefox-windows
-   // [-] https://bugzilla.mozilla.org/1738983
-pref("app.update.background.scheduling.enabled", false);
-// FF97
-// 7006: onions - replaced by new 7006 "allowlist"
-   // [-] https://bugzilla.mozilla.org/1744006
-   // pref("dom.securecontext.whitelist_onions", true); // 1382359
-// FF99
-// 6003: enforce CSP (Content Security Policy)
-   // [1] https://developer.mozilla.org/docs/Web/HTTP/CSP
-   // [-] https://bugzilla.mozilla.org/1754301
-pref("security.csp.enable", true); // [DEFAULT: true]
-// FF100
-// 7009: disable HTTP2 - replaced by network.http.http2* prefs
-   // [WHY] Passive fingerprinting. ~50% of sites use HTTP2 [1]
-   // [1] https://w3techs.com/technologies/details/ce-http2/all/all
-   // [-] https://bugzilla.mozilla.org/1752621
-   // pref("network.http.spdy.enabled", false);
-   // pref("network.http.spdy.enabled.deps", false);
-   // pref("network.http.spdy.enabled.http2", false);
-   // pref("network.http.spdy.websockets", false); // [FF65+]
-// FF102
-   // 0901: set when Firefox should prompt for the primary password
-   // 0=once per session (default), 1=every time it's needed, 2=after n minutes (0902)
-   // [-] https://bugzilla.mozilla.org/1767099
-pref("security.ask_for_password", 2);
-   // 0902: set how long in minutes Firefox should remember the primary password (0901)
-   // [-] https://bugzilla.mozilla.org/1767099
-pref("security.password_lifetime", 5); // [DEFAULT: 30]
-   // 6007: enforce Local Storage Next Generation (LSNG) [FF65+]
-   // [-] https://bugzilla.mozilla.org/1764696
-pref("dom.storage.next_gen", true); // [DEFAULT: true FF92+]
-// ***/
-
 /* ESR102.x still uses all the following prefs
 // [NOTE] replace the * with a slash in the line above to re-enable them
 // FF103
@@ -1365,7 +1217,7 @@ pref("dom.storage.next_gen", true); // [DEFAULT: true FF92+]
    // pref("network.cookie.lifetimePolicy", 2); //BRACE-COMMENTED: usability, no thanks
 // 6012: disable SHA-1 certificates
    // [-] https://bugzilla.mozilla.org/1766687
-pref("security.pki.sha1_enforcement_level", 1); // [DEFAULT: 1 FF102+]
+   // pref("security.pki.sha1_enforcement_level", 1); // [DEFAULT: 1]
 // ***/
 
 /* END: internal custom pref to test for syntax errors ***/
