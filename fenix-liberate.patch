@@ -523,9 +523,18 @@ index 000000000..b50a6f03a
 +    }
 +}
 diff --git a/app/src/main/java/org/mozilla/fenix/FeatureFlags.kt b/app/src/main/java/org/mozilla/fenix/FeatureFlags.kt
-index c17efab61..02e71ab6f 100644
+index c17efab61..d6d774777 100644
 --- a/app/src/main/java/org/mozilla/fenix/FeatureFlags.kt
 +++ b/app/src/main/java/org/mozilla/fenix/FeatureFlags.kt
+@@ -18,7 +18,7 @@ object FeatureFlags {
+      * This feature does not only depend on this flag. It requires the AMO collection override to
+      * be enabled which is behind the Secret Settings.
+      * */
+-    val customExtensionCollectionFeature = Config.channel.isNightlyOrDebug || Config.channel.isBeta
++    val customExtensionCollectionFeature = true
+ 
+     /**
+      * Pull-to-refresh allows you to pull the web content down far enough to have the page to
 @@ -77,7 +77,7 @@ object FeatureFlags {
      fun isPocketRecommendationsFeatureEnabled(context: Context): Boolean {
          val langTag = LocaleManager.getCurrentLocale(context)
