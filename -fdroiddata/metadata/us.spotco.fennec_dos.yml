@@ -1128,6 +1128,7 @@ Builds:
 
   - versionName: 106.1.0
     versionCode: 21061000
+    disable: build failed
     commit: v106.1.0
     timeout: 18000
     sudo:
@@ -1152,6 +1153,7 @@ Builds:
 
   - versionName: 106.1.0
     versionCode: 21061020
+    disable: build failed
     commit: v106.1.0
     timeout: 18000
     sudo:
@@ -1185,11 +1187,11 @@ Builds:
         libsqlite3-dev
     output: app/build/outputs/apk/release/app-*-release-unsigned.apk
     srclibs:
-      - MozAndroidComponents@v107.0.7
+      - FirefoxAndroid@v107.0.7
       - MozAndroidComponentsAS@v104.0.2
       - MozAppServices@v94.2.2
       - MullBuild@v107.1.0
-      - MozFennec@FIREFOX_107_0_BUILD2
+      - MozFennec@FIREFOX_107_0_RELEASE
       - MozGlean@v51.4.0
       - MozGleanAS@v51.2.0
       - rustup@1.25.1
@@ -1209,11 +1211,11 @@ Builds:
         libsqlite3-dev
     output: app/build/outputs/apk/release/app-*-release-unsigned.apk
     srclibs:
-      - MozAndroidComponents@v107.0.7
+      - FirefoxAndroid@v107.0.7
       - MozAndroidComponentsAS@v104.0.2
       - MozAppServices@v94.2.2
       - MullBuild@v107.1.0
-      - MozFennec@FIREFOX_107_0_BUILD2
+      - MozFennec@FIREFOX_107_0_RELEASE
       - MozGlean@v51.4.0
       - MozGleanAS@v51.2.0
       - rustup@1.25.1
