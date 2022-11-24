@@ -1,0 +1,4 @@
+RepoType: git
+Repo: https://github.com/mozilla-mobile/firefox-android.git
+Prepare: |
+  sed -i -e '/com.google.android.gms/d; /com.google.firebase/d' android-components/buildSrc/src/main/java/Dependencies.kt && rm -fR android-components/components/feature/p2p android-components/components/lib/{nearby,push-amazon,push-firebase}
