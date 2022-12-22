@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Tad <tad@spotco.us>
+Date: Thu, 5 May 2022 15:36:22 -0400
+Subject: [PATCH] Enable HTTPS only mode by default
+
+Signed-off-by: Tad <tad@spotco.us>
+---
+ app/src/main/java/org/mozilla/fenix/utils/Settings.kt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/src/main/java/org/mozilla/fenix/utils/Settings.kt b/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
+index 542d8a7da..b59dd982e 100644
+--- a/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
++++ b/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
+@@ -501,7 +501,7 @@ class Settings(private val appContext: Context) : PreferencesHolder {
+ 
+     var shouldUseHttpsOnly by booleanPreference(
+         appContext.getPreferenceKey(R.string.pref_key_https_only),
+-        default = false,
++        default = true,
+     )
+ 
+     var shouldUseHttpsOnlyInAllTabs by booleanPreference(
