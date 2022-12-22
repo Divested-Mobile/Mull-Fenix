@@ -1,0 +1,1296 @@
+AntiFeatures:
+  - UpstreamNonFree
+Categories:
+  - Internet
+License: MPL-2.0
+AuthorName: Divested Computing Group
+AuthorWebSite: https://divestos.org
+SourceCode: https://gitlab.com/divested-mobile/mull-fenix
+IssueTracker: https://gitlab.com/divested-mobile/mull-fenix/issues
+
+Name: Mull
+Description: This is a privacy oriented and deblobbed web browser based on Mozilla
+    technology. It enables many features upstreamed by the <a href="https://wiki.mozilla.org/Security/Tor_Uplift">Tor
+    Uplift project</a> using preferences from the <a href="https://github.com/arkenfox/user.js">arkenfox-user.js
+    project</a>. It is recommended to install 'uBlock Origin'.
+
+RepoType: git
+Repo: https://github.com/mozilla-mobile/fenix
+
+Builds:
+  - versionName: 89.1.1
+    versionCode: 2891100
+    commit: v89.1.1
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y g++ python-setuptools tcl gyp ninja-build libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v75.0.22
+      - MozAndroidComponentsAS@v71.0.0
+      - MozAppServices@v74.0.1
+      - MullBuild@v89.1.1
+      - MozFennec@FIREFOX_89_0_RELEASE
+      - MozGlean@v35.0.0
+      - MozGleanAS@v33.1.2
+      - pyenv@v2.0.0
+      - rustup@1.24.2
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 89.1.1
+    versionCode: 2891120
+    commit: v89.1.1
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y g++ python-setuptools tcl gyp ninja-build libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v75.0.22
+      - MozAndroidComponentsAS@v71.0.0
+      - MozAppServices@v74.0.1
+      - MullBuild@v89.1.1
+      - MozFennec@FIREFOX_89_0_RELEASE
+      - MozGlean@v35.0.0
+      - MozGleanAS@v33.1.2
+      - pyenv@v2.0.0
+      - rustup@1.24.2
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 90.1.1
+    versionCode: 2901100
+    commit: v90.1.1
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y g++ python-setuptools tcl gyp ninja-build libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v90.0.12
+      - MozAndroidComponentsAS@v75.0.0
+      - MozAppServices@v77.0.2
+      - MullBuild@v90.1.1
+      - MozFennec@FIREFOX_90_0_RELEASE
+      - MozGlean@v38.0.0
+      - MozGleanAS@v35.0.0
+      - pyenv@v2.0.3
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 90.1.1
+    versionCode: 2901120
+    commit: v90.1.1
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y g++ python-setuptools tcl gyp ninja-build libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v90.0.12
+      - MozAndroidComponentsAS@v75.0.0
+      - MozAppServices@v77.0.2
+      - MullBuild@v90.1.1
+      - MozFennec@FIREFOX_90_0_RELEASE
+      - MozGlean@v38.0.0
+      - MozGleanAS@v35.0.0
+      - pyenv@v2.0.3
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 91.1.0
+    versionCode: 2911000
+    commit: v91.1.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y g++ python-setuptools tcl gyp ninja-build libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v91.0.12
+      - MozAndroidComponentsAS@v75.0.0
+      - MozAppServices@v79.0.0
+      - MullBuild@v91.1.0
+      - MozFennec@FIREFOX_91_0_RELEASE
+      - MozGlean@v39.0.3
+      - MozGleanAS@v35.0.0
+      - pyenv@v2.0.4
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 91.1.0
+    versionCode: 2911020
+    commit: v91.1.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y g++ python-setuptools tcl gyp ninja-build libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v91.0.12
+      - MozAndroidComponentsAS@v75.0.0
+      - MozAppServices@v79.0.0
+      - MullBuild@v91.1.0
+      - MozFennec@FIREFOX_91_0_RELEASE
+      - MozGlean@v39.0.3
+      - MozGleanAS@v35.0.0
+      - pyenv@v2.0.4
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 91.2.0
+    versionCode: 2912000
+    commit: v91.2.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y g++ python-setuptools tcl gyp ninja-build libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v91.0.13
+      - MozAndroidComponentsAS@v75.0.0
+      - MozAppServices@v79.0.0
+      - MullBuild@v91.2.0
+      - MozFennec@FIREFOX_91_0_1_RELEASE
+      - MozGlean@v39.0.3
+      - MozGleanAS@v35.0.0
+      - pyenv@v2.0.4
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 91.2.0
+    versionCode: 2912020
+    commit: v91.2.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y g++ python-setuptools tcl gyp ninja-build libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v91.0.13
+      - MozAndroidComponentsAS@v75.0.0
+      - MozAppServices@v79.0.0
+      - MullBuild@v91.2.0
+      - MozFennec@FIREFOX_91_0_1_RELEASE
+      - MozGlean@v39.0.3
+      - MozGleanAS@v35.0.0
+      - pyenv@v2.0.4
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 92.1.1
+    versionCode: 2921100
+    commit: v92.1.1
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v92.0.15
+      - MozAndroidComponentsAS@v91.0.3
+      - MozAppServices@v82.1.0
+      - MullBuild@v92.1.1
+      - MozFennec@FIREFOX_92_0_RELEASE
+      - MozGlean@v39.0.3
+      - MozGleanAS@v35.0.0
+      - pyenv@v2.0.6
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 92.1.1
+    versionCode: 2921120
+    commit: v92.1.1
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v92.0.15
+      - MozAndroidComponentsAS@v91.0.3
+      - MozAppServices@v82.1.0
+      - MullBuild@v92.1.1
+      - MozFennec@FIREFOX_92_0_RELEASE
+      - MozGlean@v39.0.3
+      - MozGleanAS@v35.0.0
+      - pyenv@v2.0.6
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 93.1.0
+    versionCode: 2931000
+    commit: v93.1.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v93.0.11
+      - MozAndroidComponentsAS@v91.0.3
+      - MozAppServices@v82.1.0
+      - MullBuild@v93.1.0
+      - MozFennec@FIREFOX_93_0_RELEASE
+      - MozGlean@v39.0.3
+      - MozGleanAS@v35.0.0
+      - pyenv@v2.0.7
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 93.1.0
+    versionCode: 2931020
+    commit: v93.1.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v93.0.11
+      - MozAndroidComponentsAS@v91.0.3
+      - MozAppServices@v82.1.0
+      - MullBuild@v93.1.0
+      - MozFennec@FIREFOX_93_0_RELEASE
+      - MozGlean@v39.0.3
+      - MozGleanAS@v35.0.0
+      - pyenv@v2.0.7
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 94.1.1
+    versionCode: 2941100
+    commit: v94.1.1
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v94.0.12
+      - MozAndroidComponentsAS@v91.0.3
+      - MozAppServices@v85.4.0
+      - MullBuild@v94.1.1
+      - MozFennec@FIREFOX_94_0_RELEASE
+      - MozGlean@v42.0.1
+      - MozGleanAS@v39.0.3
+      - pyenv@v2.1.0
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 94.1.1
+    versionCode: 2941120
+    commit: v94.1.1
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v94.0.12
+      - MozAndroidComponentsAS@v91.0.3
+      - MozAppServices@v85.4.0
+      - MullBuild@v94.1.1
+      - MozFennec@FIREFOX_94_0_RELEASE
+      - MozGlean@v42.0.1
+      - MozGleanAS@v39.0.3
+      - pyenv@v2.1.0
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 95.1.0
+    versionCode: 2951000
+    commit: v95.1.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v95.0.13
+      - MozAndroidComponentsAS@v91.0.3
+      - MozAppServices@v86.0.1
+      - MullBuild@v95.1.0
+      - MozFennec@FIREFOX_95_0_BUILD1
+      - MozGlean@v42.0.1
+      - MozGleanAS@v39.0.3
+      - pyenv@v2.2.2
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 95.1.0
+    versionCode: 2951020
+    commit: v95.1.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v95.0.13
+      - MozAndroidComponentsAS@v91.0.3
+      - MozAppServices@v86.0.1
+      - MullBuild@v95.1.0
+      - MozFennec@FIREFOX_95_0_BUILD1
+      - MozGlean@v42.0.1
+      - MozGleanAS@v39.0.3
+      - pyenv@v2.2.2
+      - rustup@1.24.3
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 95.2.0
+    versionCode: 2952000
+    commit: v95.2.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v95.0.14
+      - MozAndroidComponentsAS@v91.0.3
+      - MozAppServices@v86.0.1
+      - MullBuild@v95.2.0-2
+      - MozFennec@FIREFOX_95_0_1_RELEASE
+      - MozGlean@v42.0.1
+      - MozGleanAS@v39.0.3
+      - pyenv@v2.2.2
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 95.2.0
+    versionCode: 2952020
+    commit: v95.2.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v95.0.14
+      - MozAndroidComponentsAS@v91.0.3
+      - MozAppServices@v86.0.1
+      - MullBuild@v95.2.0-2
+      - MozFennec@FIREFOX_95_0_1_RELEASE
+      - MozGlean@v42.0.1
+      - MozGleanAS@v39.0.3
+      - pyenv@v2.2.2
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21e
+
+  - versionName: 96.1.1
+    versionCode: 2961100
+    commit: v96.1.1
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v96.0.11
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v86.2.1
+      - MullBuild@v96.1.1
+      - MozFennec@FIREFOX_96_0_RELEASE
+      - MozGlean@v42.0.1
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.2.3
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 96.1.1
+    versionCode: 2961120
+    commit: v96.1.1
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v96.0.11
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v86.2.1
+      - MullBuild@v96.1.1
+      - MozFennec@FIREFOX_96_0_RELEASE
+      - MozGlean@v42.0.1
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.2.3
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 96.3.0
+    versionCode: 2963000
+    commit: v96.3.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v96.0.15
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v86.2.2
+      - MullBuild@v96.3.0
+      - MozFennec@FIREFOX_96_0_3_RELEASE
+      - MozGlean@v42.1.0
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.2.3
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 96.3.0
+    versionCode: 2963020
+    commit: v96.3.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v96.0.15
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v86.2.2
+      - MullBuild@v96.3.0
+      - MozFennec@FIREFOX_96_0_3_RELEASE
+      - MozGlean@v42.1.0
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.2.3
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 97.1.1
+    versionCode: 2971100
+    commit: v97.1.1
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v97.0.11
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v87.1.0
+      - MullBuild@v97.1.1
+      - MozFennec@FIREFOX_97_0_RELEASE
+      - MozGlean@v42.3.0
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.2.4
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 97.1.1
+    versionCode: 2971120
+    commit: v97.1.1
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v97.0.11
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v87.1.0
+      - MullBuild@v97.1.1
+      - MozFennec@FIREFOX_97_0_RELEASE
+      - MozGlean@v42.3.0
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.2.4
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 98.1.0
+    versionCode: 2981000
+    commit: v98.1.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v98.0.9
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.0.1
+      - MullBuild@v98.1.0
+      - MozFennec@FIREFOX_98_0_BUILD2
+      - MozGlean@v43.0.2
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.2.4
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 98.1.0
+    versionCode: 2981020
+    commit: v98.1.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v98.0.9
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.0.1
+      - MullBuild@v98.1.0
+      - MozFennec@FIREFOX_98_0_BUILD2
+      - MozGlean@v43.0.2
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.2.4
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 98.1.1
+    versionCode: 2981100
+    commit: v98.1.1
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v98.0.11
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.0.1
+      - MullBuild@v98.1.1
+      - MozFennec@FIREFOX_98_0_RELEASE
+      - MozGlean@v43.0.2
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.2.4
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 98.1.1
+    versionCode: 2981120
+    commit: v98.1.1
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v98.0.11
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.0.1
+      - MullBuild@v98.1.1
+      - MozFennec@FIREFOX_98_0_RELEASE
+      - MozGlean@v43.0.2
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.2.4
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 98.2.0
+    versionCode: 2982000
+    commit: v98.2.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v98.0.12
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.0.1
+      - MullBuild@v98.2.0
+      - MozFennec@FIREFOX_98_0_1_RELEASE
+      - MozGlean@v43.0.2
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.2.4
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 98.2.0
+    versionCode: 2982020
+    commit: v98.2.0
+    timeout: 14400
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v98.0.12
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.0.1
+      - MullBuild@v98.2.0
+      - MozFennec@FIREFOX_98_0_1_RELEASE
+      - MozGlean@v43.0.2
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.2.4
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 100.1.1
+    versionCode: 21001100
+    commit: v100.1.1
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v100.0.10
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.1.1
+      - MullBuild@v100.1.1
+      - MozFennec@FIREFOX_100_0_RELEASE
+      - MozGlean@v44.0.0
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.0
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 100.1.1
+    versionCode: 21001120
+    commit: v100.1.1
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v100.0.10
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.1.1
+      - MullBuild@v100.1.1
+      - MozFennec@FIREFOX_100_0_RELEASE
+      - MozGlean@v44.0.0
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.0
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 100.1.3
+    versionCode: 21001300
+    commit: v100.1.3
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v100.0.11
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.1.1
+      - MullBuild@v100.1.3
+      - MozFennec@FIREFOX_100_0_1_BUILD1
+      - MozGlean@v44.0.0
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.0
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 100.1.3
+    versionCode: 21001320
+    commit: v100.1.3
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v100.0.11
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.1.1
+      - MullBuild@v100.1.3
+      - MozFennec@FIREFOX_100_0_1_BUILD1
+      - MozGlean@v44.0.0
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.0
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 100.3.0
+    versionCode: 21003000
+    commit: v100.3.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v100.0.12
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.1.1
+      - MullBuild@v100.3.0
+      - MozFennec@FIREFOX_100_0_2_BUILD1
+      - MozGlean@v44.0.0
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.0
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 100.3.0
+    versionCode: 21003020
+    commit: v100.3.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v100.0.12
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.1.1
+      - MullBuild@v100.3.0
+      - MozFennec@FIREFOX_100_0_2_BUILD1
+      - MozGlean@v44.0.0
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.0
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 101.1.1
+    versionCode: 21011100
+    commit: v101.1.1
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v101.0.10
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.1.2
+      - MullBuild@v101.1.1
+      - MozFennec@FIREFOX_101_0_RELEASE
+      - MozGlean@v44.1.1
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.1
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 101.1.1
+    versionCode: 21011120
+    commit: v101.1.1
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v101.0.10
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v91.1.2
+      - MullBuild@v101.1.1
+      - MozFennec@FIREFOX_101_0_RELEASE
+      - MozGlean@v44.1.1
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.1
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 102.1.1
+    versionCode: 21021101
+    commit: v102.1.1
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v102.0.12
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v93.1.0
+      - MullBuild@v102.1.1-3
+      - MozFennec@FIREFOX_102_0_RELEASE
+      - MozGlean@v44.1.1
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.1
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 102.1.1
+    versionCode: 21021121
+    commit: v102.1.1
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v102.0.12
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v93.1.0
+      - MullBuild@v102.1.1-3
+      - MozFennec@FIREFOX_102_0_RELEASE
+      - MozGlean@v44.1.1
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.1
+      - rustup@1.24.3
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 103.1.0
+    versionCode: 21031000
+    commit: v103.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v103.0.9
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v93.5.0
+      - MullBuild@v103.1.0
+      - MozFennec@FIREFOX_103_0_RELEASE
+      - MozGlean@v50.1.0
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.2
+      - rustup@1.25.1
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 103.1.0
+    versionCode: 21031020
+    commit: v103.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v103.0.9
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v93.5.0
+      - MullBuild@v103.1.0
+      - MozFennec@FIREFOX_103_0_RELEASE
+      - MozGlean@v50.1.0
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.2
+      - rustup@1.25.1
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 104.1.0
+    versionCode: 21041000
+    commit: v104.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v104.0.8
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v93.7.2
+      - MullBuild@v104.1.0
+      - MozFennec@FIREFOX_104_0_RELEASE
+      - MozGlean@v50.1.4
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.3
+      - rustup@1.25.1
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 104.1.0
+    versionCode: 21041020
+    commit: v104.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v104.0.8
+      - MozAndroidComponentsAS@v94.0.0
+      - MozAppServices@v93.7.2
+      - MullBuild@v104.1.0
+      - MozFennec@FIREFOX_104_0_RELEASE
+      - MozGlean@v50.1.4
+      - MozGleanAS@v41.1.1
+      - pyenv@v2.3.3
+      - rustup@1.25.1
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 105.1.0
+    versionCode: 21051000
+    commit: v105.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v105.0.7
+      - MozAndroidComponentsAS@v104.0.2
+      - MozAppServices@v94.1.0
+      - MullBuild@v105.1.0
+      - MozFennec@FIREFOX_105_0_RELEASE
+      - MozGlean@v51.1.0
+      - MozGleanAS@v50.1.3
+      - pyenv@v2.3.4
+      - rustup@1.25.1
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 105.1.0
+    versionCode: 21051020
+    commit: v105.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y openjdk-11-jdk-headless g++ python-setuptools tcl gyp ninja-build
+        libffi-dev libsqlite3-dev
+      - update-alternatives --auto java
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozAndroidComponents@v105.0.7
+      - MozAndroidComponentsAS@v104.0.2
+      - MozAppServices@v94.1.0
+      - MullBuild@v105.1.0
+      - MozFennec@FIREFOX_105_0_RELEASE
+      - MozGlean@v51.1.0
+      - MozGleanAS@v50.1.3
+      - pyenv@v2.3.4
+      - rustup@1.25.1
+      - wasi-sdk@f0d40b6491efc1e2332f55eb22e6292abdce4335
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 107.1.0
+    versionCode: 21071000
+    commit: v107.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroid@v107.0.7
+      - MozAndroidComponentsAS@v104.0.2
+      - MozAppServices@v94.2.2
+      - MullBuild@v107.1.0-ff
+      - MozFennec@FIREFOX_107_0_RELEASE
+      - MozGlean@v51.4.0
+      - MozGleanAS@v51.2.0
+      - rustup@1.25.1
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 107.1.0
+    versionCode: 21071020
+    commit: v107.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroid@v107.0.7
+      - MozAndroidComponentsAS@v104.0.2
+      - MozAppServices@v94.2.2
+      - MullBuild@v107.1.0-ff
+      - MozFennec@FIREFOX_107_0_RELEASE
+      - MozGlean@v51.4.0
+      - MozGleanAS@v51.2.0
+      - rustup@1.25.1
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 107.2.0
+    versionCode: 21072000
+    commit: v107.2.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroid@v107.0.8
+      - MozAndroidComponentsAS@v104.0.2
+      - MozAppServices@v94.2.2
+      - MullBuild@v107.2.0
+      - MozFennec@FIREFOX_107_0_1_RELEASE
+      - MozGlean@v51.4.0
+      - MozGleanAS@v51.2.0
+      - rustup@1.25.1
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 107.2.0
+    versionCode: 21072020
+    commit: v107.2.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroid@v107.0.8
+      - MozAndroidComponentsAS@v104.0.2
+      - MozAppServices@v94.2.2
+      - MullBuild@v107.2.0
+      - MozFennec@FIREFOX_107_0_1_RELEASE
+      - MozGlean@v51.4.0
+      - MozGleanAS@v51.2.0
+      - rustup@1.25.1
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 108.1.0
+    versionCode: 21081000
+    commit: v108.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroid@v108.0.8
+      - MozAndroidComponentsAS@v107.0.2
+      - MozAppServices@v95.0.1
+      - MullBuild@v108.1.0
+      - MozFennec@FIREFOX_108_0_BUILD2
+      - MozGlean@v51.8.2
+      - MozGleanAS@v51.2.0
+      - rustup@1.25.1
+      - wasi-sdk@wasi-sdk-17
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 108.1.0
+    versionCode: 21081020
+    commit: v108.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroid@v108.0.8
+      - MozAndroidComponentsAS@v107.0.2
+      - MozAppServices@v95.0.1
+      - MullBuild@v108.1.0
+      - MozFennec@FIREFOX_108_0_BUILD2
+      - MozGlean@v51.8.2
+      - MozGleanAS@v51.2.0
+      - rustup@1.25.1
+      - wasi-sdk@wasi-sdk-17
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+MaintainerNotes: |4-
+
+    Version code scheme:
+    XYZAR, where X.Y.Z is upstream version, A is architecture (0 = ARMv7, 1 = x86, 2 = ARMv8), R is revision (if we need to re-release).
+    * Example: 530210 = Firefox 53.0.2 for x86, initial revision
+    * Example: 550021 = Firefox 55.0 for ARMv8, second revision
+
+    Determining versions:
+    * Fenix: https://github.com/mozilla-mobile/fenix/releases
+    * MozAndroidComponents: `VERSION` in https://github.com/mozilla-mobile/fenix/blob/$releaseTag/buildSrc/src/main/java/AndroidComponents.kt
+    * MozAppServices: `mozilla_appservices` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/buildSrc/src/main/java/Dependencies.kt
+    * MozGlean: `mozilla_glean` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/buildSrc/src/main/java/Dependencies.kt
+    * MozFennec: `version` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/buildSrc/src/main/java/Gecko.kt
+    * MozFennec: https://hg.mozilla.org/releases/mozilla-release/tags
+    * MozAndroidComponentsAS: `android_components_version` in https://github.com/mozilla/application-services/blob/$MozAppServices/build.gradle
+    * MozGleanAS: `mozilla_glean` in https://github.com/mozilla-mobile/android-components/blob/$MozAndroidComponentsAS/buildSrc/src/main/java/Dependencies.kt
+    * rustup: https://github.com/rust-lang/rustup/tags
+    * wasi-sdk: https://github.com/WebAssembly/wasi-sdk/releases
+
+ArchivePolicy: 4 versions
+AutoUpdateMode: None
+UpdateCheckMode: None
+CurrentVersion: 108.1.0
+CurrentVersionCode: 21081020
