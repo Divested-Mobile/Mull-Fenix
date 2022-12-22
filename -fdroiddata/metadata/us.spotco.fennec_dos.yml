@@ -1237,11 +1237,11 @@ Builds:
       - MozAndroidComponentsAS@v107.0.2
       - MozAppServices@v95.0.1
       - MullBuild@v108.1.0
-      - MozFennec@FIREFOX_108_0_BUILD2
+      - MozFennec@FIREFOX_108_0_RELEASE
       - MozGlean@v51.8.2
       - MozGleanAS@v51.2.0
       - rustup@1.25.1
-      - wasi-sdk@wasi-sdk-17
+      - wasi-sdk@wasi-sdk-16
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
@@ -1261,11 +1261,59 @@ Builds:
       - MozAndroidComponentsAS@v107.0.2
       - MozAppServices@v95.0.1
       - MullBuild@v108.1.0
-      - MozFennec@FIREFOX_108_0_BUILD2
+      - MozFennec@FIREFOX_108_0_RELEASE
       - MozGlean@v51.8.2
       - MozGleanAS@v51.2.0
       - rustup@1.25.1
-      - wasi-sdk@wasi-sdk-17
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 108.1.1
+    versionCode: 21081100
+    commit: v108.1.1
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroid@v108.1.1
+      - MozAndroidComponentsAS@v107.0.2
+      - MozAppServices@v95.0.1
+      - MullBuild@v108.1.1
+      - MozFennec@FIREFOX_108_0_1_RELEASE
+      - MozGlean@v51.8.2
+      - MozGleanAS@v51.2.0
+      - rustup@1.25.1
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 108.1.1
+    versionCode: 21081120
+    commit: v108.1.1
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: app/build/outputs/apk/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroid@v108.1.1
+      - MozAndroidComponentsAS@v107.0.2
+      - MozAppServices@v95.0.1
+      - MullBuild@v108.1.1
+      - MozFennec@FIREFOX_108_0_1_RELEASE
+      - MozGlean@v51.8.2
+      - MozGleanAS@v51.2.0
+      - rustup@1.25.1
+      - wasi-sdk@wasi-sdk-16
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
@@ -1280,9 +1328,9 @@ MaintainerNotes: |4-
     Determining versions:
     * Fenix: https://github.com/mozilla-mobile/fenix/releases
     * MozAndroidComponents: `VERSION` in https://github.com/mozilla-mobile/fenix/blob/$releaseTag/buildSrc/src/main/java/AndroidComponents.kt
-    * MozAppServices: `mozilla_appservices` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/buildSrc/src/main/java/Dependencies.kt
-    * MozGlean: `mozilla_glean` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/buildSrc/src/main/java/Dependencies.kt
-    * MozFennec: `version` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/buildSrc/src/main/java/Gecko.kt
+    * MozAppServices: `mozilla_appservices` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
+    * MozGlean: `mozilla_glean` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
+    * MozFennec: `version` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/Gecko.kt
     * MozFennec: https://hg.mozilla.org/releases/mozilla-release/tags
     * MozAndroidComponentsAS: `android_components_version` in https://github.com/mozilla/application-services/blob/$MozAppServices/build.gradle
     * MozGleanAS: `mozilla_glean` in https://github.com/mozilla-mobile/android-components/blob/$MozAndroidComponentsAS/buildSrc/src/main/java/Dependencies.kt
@@ -1292,5 +1340,5 @@ MaintainerNotes: |4-
 ArchivePolicy: 4 versions
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 108.1.0
-CurrentVersionCode: 21081020
+CurrentVersion: 108.1.1
+CurrentVersionCode: 21081120
