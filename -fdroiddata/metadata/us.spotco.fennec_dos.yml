@@ -1318,9 +1318,9 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r21d
 
-  - versionName: 108.2.0
-    versionCode: 21082000
-    commit: v108.2.0
+  - versionName: 109.1.1
+    versionCode: 21091100
+    commit: v109.1.1
     timeout: 18000
     sudo:
       - apt-get update
@@ -1329,11 +1329,11 @@ Builds:
         libsqlite3-dev
     output: app/build/outputs/apk/release/app-*-release-unsigned.apk
     srclibs:
-      - FirefoxAndroid@9174b4e74fe01759fdbe8d0a7958f61e8a15d7c8
+      - FirefoxAndroid@components-v109.1.1
       - MozAndroidComponentsAS@v107.0.2
-      - MozAppServices@v95.0.1
-      - MullBuild@v108.2.0
-      - MozFennec@FIREFOX_108_0_2_RELEASE
+      - MozAppServices@v96.1.3
+      - MullBuild@v109.1.1
+      - MozFennec@FIREFOX_109_0_RELEASE
       - MozGlean@v51.8.2
       - MozGleanAS@v51.2.0
       - rustup@1.25.1
@@ -1342,9 +1342,9 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r21d
 
-  - versionName: 108.2.0
-    versionCode: 21082020
-    commit: v108.2.0
+  - versionName: 109.1.1
+    versionCode: 21091120
+    commit: v109.1.1
     timeout: 18000
     sudo:
       - apt-get update
@@ -1353,11 +1353,11 @@ Builds:
         libsqlite3-dev
     output: app/build/outputs/apk/release/app-*-release-unsigned.apk
     srclibs:
-      - FirefoxAndroid@9174b4e74fe01759fdbe8d0a7958f61e8a15d7c8
+      - FirefoxAndroid@components-v109.1.1
       - MozAndroidComponentsAS@v107.0.2
-      - MozAppServices@v95.0.1
-      - MullBuild@v108.2.0
-      - MozFennec@FIREFOX_108_0_2_RELEASE
+      - MozAppServices@v96.1.3
+      - MullBuild@v109.1.1
+      - MozFennec@FIREFOX_109_0_RELEASE
       - MozGlean@v51.8.2
       - MozGleanAS@v51.2.0
       - rustup@1.25.1
@@ -1388,5 +1388,5 @@ MaintainerNotes: |4-
 ArchivePolicy: 4 versions
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 108.2.0
-CurrentVersionCode: 21082020
+CurrentVersion: 109.1.1
+CurrentVersionCode: 21091120
