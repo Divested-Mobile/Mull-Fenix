@@ -39,6 +39,14 @@ function localize_maven {
     done
 }
 
+# Remove unnecessary projects
+rm -fR focus-android
+
+# Hack to prevent too long string from breaking build
+sed -i '/val statusCmd/,+3d' fenix/buildSrc/src/main/java/Config.kt
+sed -i '/val revision = /a \        val statusSuffix = "+"' fenix/buildSrc/src/main/java/Config.kt
+
+pushd "$fenix"
 # Set up the app ID, version name and version code
 sed -i \
     -e 's|applicationId "org.mozilla"|applicationId "us.spotco"|' \
@@ -79,6 +87,7 @@ sed -i \
     -e '/Deps.mozilla_browser_engine_gecko_nightly/d' \
     -e '/Deps.mozilla_browser_engine_gecko_beta/d' \
     app/build.gradle
+popd
 
 # Patch the use of proprietary and tracking libraries
 patch -p1 --no-backup-if-mismatch --quiet < "$patches/fenix-liberate.patch"
@@ -89,6 +98,7 @@ patch -p1 --no-backup-if-mismatch --quiet < "$patches/strict_etp.patch"
 # Enable HTTPS only mode by default
 patch -p1 --no-backup-if-mismatch --quiet < "$patches/https_only.patch"
 
+pushd "$fenix"
 # Let it be Mull
 sed -i \
     -e 's/Firefox Daylight/Mull/; s/Firefox/Mull/g' \
@@ -167,6 +177,7 @@ case $(echo "$2" | cut -c 7) in
     ;;
 esac
 sed -i -e "s/include \".*\"/include \"$abi\"/" app/build.gradle
+popd
 
 #
 # Glean

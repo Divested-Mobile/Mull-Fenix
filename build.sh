@@ -97,4 +97,6 @@ pushd "$android_components"
 gradle publishToMavenLocal
 popd
 
+pushd "$fenix"
 gradle assembleRelease
+popd
