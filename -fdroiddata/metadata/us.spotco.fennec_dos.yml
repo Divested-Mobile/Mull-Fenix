@@ -15,7 +15,7 @@ Description: This is a privacy oriented and deblobbed web browser based on Mozil
     project</a>. It is recommended to install 'uBlock Origin'.
 
 RepoType: git
-Repo: https://github.com/mozilla-mobile/fenix
+Repo: https://github.com/mozilla-mobile/firefox-android
 
 Builds:
   - versionName: 89.1.1
@@ -1429,7 +1429,7 @@ Builds:
       - FirefoxAndroidAS@v108.0.8
       - MozAppServices@v96.2.1
       - MullBuild@v110.0.1
-      - MozFennec@FIREFOX_110_0_BUILD3
+      - MozFennec@FIREFOX_110_0_RELEASE
       - MozGlean@v51.8.2
       - MozGleanAS@v51.8.2
       - rustup@1.25.2
@@ -1453,7 +1453,7 @@ Builds:
       - FirefoxAndroidAS@v108.0.8
       - MozAppServices@v96.2.1
       - MullBuild@v110.0.1
-      - MozFennec@FIREFOX_110_0_BUILD3
+      - MozFennec@FIREFOX_110_0_RELEASE
       - MozGlean@v51.8.2
       - MozGleanAS@v51.8.2
       - rustup@1.25.2
@@ -1461,6 +1461,56 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+
+  - versionName: 110.1.0
+    versionCode: 21101000
+    commit: fenix-v110.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@v108.0.8
+      - MozAppServices@v96.2.1
+      - MullBuild@v110.1.0
+      - MozFennec@FIREFOX_110_0_1_RELEASE
+      - MozGlean@v51.8.2
+      - MozGleanAS@v51.8.2
+      - rustup@1.25.2
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+
+  - versionName: 110.1.0
+    versionCode: 21101020
+    commit: fenix-v110.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@v108.0.8
+      - MozAppServices@v96.2.1
+      - MullBuild@v110.1.0
+      - MozFennec@FIREFOX_110_0_1_RELEASE
+      - MozGlean@v51.8.2
+      - MozGleanAS@v51.8.2
+      - rustup@1.25.2
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
 
 MaintainerNotes: |4-
 
@@ -1470,8 +1520,8 @@ MaintainerNotes: |4-
     * Example: 550021 = Firefox 55.0 for ARMv8, second revision
 
     Determining versions:
-    * Fenix: https://github.com/mozilla-mobile/fenix/releases
-    * MozAndroidComponents: `VERSION` in https://github.com/mozilla-mobile/fenix/blob/$releaseTag/buildSrc/src/main/java/AndroidComponents.kt
+    * Fenix: https://github.com/mozilla-mobile/firefox-android/releases
+    * MozAndroidComponents: `VERSION` in https://github.com/mozilla-mobile/firefox-android/blob/$releaseTag/fenix/buildSrc/src/main/java/AndroidComponents.kt
     * MozAppServices: `mozilla_appservices` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
     * MozGlean: `mozilla_glean` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
     * MozFennec: `version` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/Gecko.kt
@@ -1484,5 +1534,5 @@ MaintainerNotes: |4-
 ArchivePolicy: 4 versions
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 110.0.1
-CurrentVersionCode: 21100120
+CurrentVersion: 110.1.0
+CurrentVersionCode: 21101020

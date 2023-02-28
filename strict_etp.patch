@@ -5,16 +5,16 @@ Subject: [PATCH] Set strict ETP by default
 
 Signed-off-by: Tad <tad@spotco.us>
 ---
- app/src/main/java/org/mozilla/fenix/utils/Settings.kt      | 4 ++--
- app/src/main/res/layout/onboarding_tracking_protection.xml | 4 ++--
- app/src/main/res/xml/tracking_protection_preferences.xml   | 4 ++--
+ fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt   | 4 ++--
+ .../src/main/res/layout/onboarding_tracking_protection.xml    | 4 ++--
+ .../app/src/main/res/xml/tracking_protection_preferences.xml  | 4 ++--
  3 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/app/src/main/java/org/mozilla/fenix/utils/Settings.kt b/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
-index 61c2f221a..542d8a7da 100644
---- a/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
-+++ b/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
-@@ -559,12 +559,12 @@ class Settings(private val appContext: Context) : PreferencesHolder {
+diff --git a/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt b/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
+index 114532a653..476c7b2b89 100644
+--- a/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
++++ b/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
+@@ -658,12 +658,12 @@ class Settings(private val appContext: Context) : PreferencesHolder {
  
      val useStandardTrackingProtection by booleanPreference(
          appContext.getPreferenceKey(R.string.pref_key_tracking_protection_standard_option),
@@ -29,10 +29,10 @@ index 61c2f221a..542d8a7da 100644
      )
  
      val useCustomTrackingProtection by booleanPreference(
-diff --git a/app/src/main/res/layout/onboarding_tracking_protection.xml b/app/src/main/res/layout/onboarding_tracking_protection.xml
-index 8428cf992..e89893f50 100644
---- a/app/src/main/res/layout/onboarding_tracking_protection.xml
-+++ b/app/src/main/res/layout/onboarding_tracking_protection.xml
+diff --git a/fenix/app/src/main/res/layout/onboarding_tracking_protection.xml b/fenix/app/src/main/res/layout/onboarding_tracking_protection.xml
+index 8428cf9929..e89893f503 100644
+--- a/fenix/app/src/main/res/layout/onboarding_tracking_protection.xml
++++ b/fenix/app/src/main/res/layout/onboarding_tracking_protection.xml
 @@ -46,7 +46,7 @@
          android:layout_marginTop="16dp"
          android:layout_marginBottom="16dp"
@@ -51,10 +51,10 @@ index 8428cf992..e89893f50 100644
          android:foreground="@drawable/rounded_ripple"
          android:gravity="top"
          android:paddingStart="8dp"
-diff --git a/app/src/main/res/xml/tracking_protection_preferences.xml b/app/src/main/res/xml/tracking_protection_preferences.xml
-index d6d936698..92e1cb212 100644
---- a/app/src/main/res/xml/tracking_protection_preferences.xml
-+++ b/app/src/main/res/xml/tracking_protection_preferences.xml
+diff --git a/fenix/app/src/main/res/xml/tracking_protection_preferences.xml b/fenix/app/src/main/res/xml/tracking_protection_preferences.xml
+index d6d9366985..92e1cb2129 100644
+--- a/fenix/app/src/main/res/xml/tracking_protection_preferences.xml
++++ b/fenix/app/src/main/res/xml/tracking_protection_preferences.xml
 @@ -15,13 +15,13 @@
          android:key="@string/pref_key_tracking_protection"
          android:title="@string/preference_enhanced_tracking_protection" />
