@@ -1512,6 +1512,56 @@ Builds:
     scanignore:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
 
+  - versionName: 111.0.0
+    versionCode: 21110000
+    commit: fenix-v111.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@v108.0.8
+      - MozAppServices@v96.4.0
+      - MullBuild@v111.0.0
+      - MozFennec@FIREFOX_111_0_RELEASE
+      - MozGlean@v52.2.0
+      - MozGleanAS@v52.0.0
+      - rustup@1.25.2
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+
+  - versionName: 111.0.0
+    versionCode: 21110020
+    commit: fenix-v111.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@v108.0.8
+      - MozAppServices@v96.4.0
+      - MullBuild@v111.0.0
+      - MozFennec@FIREFOX_111_0_RELEASE
+      - MozGlean@v52.2.0
+      - MozGleanAS@v52.0.0
+      - rustup@1.25.2
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+
 MaintainerNotes: |4-
 
     Version code scheme:

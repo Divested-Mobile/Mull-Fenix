@@ -28,8 +28,9 @@ pref("network.manage-offline-status", false);
 
 //Security
 pref("browser.gnome-search-provider.enabled", false);
-pref("fission.autostart", false);
+pref("fission.autostart", false); //MULL-DISABLED
 pref("fission.autostart.session", false);
+//pref("security.webauth.u2f", true); //MULL-COMMENTED
 pref("mail.phishing.detection.enabled", true);
 pref("mailnews.message_display.disable_remote_image", true);
 
