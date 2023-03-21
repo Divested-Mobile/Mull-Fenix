@@ -1482,10 +1482,10 @@ Builds:
       - rustup@1.25.2
       - wasi-sdk@wasi-sdk-16
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
-    build: $$MullBuild$$/build.sh
-    ndk: r21d
     scanignore:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
 
   - versionName: 110.1.0
     versionCode: 21101020
@@ -1507,10 +1507,10 @@ Builds:
       - rustup@1.25.2
       - wasi-sdk@wasi-sdk-16
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
-    build: $$MullBuild$$/build.sh
-    ndk: r21d
     scanignore:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
 
   - versionName: 111.0.0
     versionCode: 21110000
@@ -1532,10 +1532,10 @@ Builds:
       - rustup@1.25.2
       - wasi-sdk@wasi-sdk-16
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
-    build: $$MullBuild$$/build.sh
-    ndk: r21d
     scanignore:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
 
   - versionName: 111.0.0
     versionCode: 21110020
@@ -1557,10 +1557,60 @@ Builds:
       - rustup@1.25.2
       - wasi-sdk@wasi-sdk-16
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
-    build: $$MullBuild$$/build.sh
-    ndk: r21d
     scanignore:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 111.1.0
+    versionCode: 21111000
+    commit: fenix-v111.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@v108.0.8
+      - MozAppServices@v96.4.0
+      - MullBuild@v111.1.0
+      - MozFennec@FIREFOX_111_0_1_RELEASE
+      - MozGlean@v52.2.0
+      - MozGleanAS@v52.0.0
+      - rustup@1.25.2
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 111.1.0
+    versionCode: 21111020
+    commit: fenix-v111.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@v108.0.8
+      - MozAppServices@v96.4.0
+      - MullBuild@v111.1.0
+      - MozFennec@FIREFOX_111_0_1_RELEASE
+      - MozGlean@v52.2.0
+      - MozGleanAS@v52.0.0
+      - rustup@1.25.2
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
 
 MaintainerNotes: |4-
 
@@ -1571,7 +1621,6 @@ MaintainerNotes: |4-
 
     Determining versions:
     * Fenix: https://github.com/mozilla-mobile/firefox-android/releases
-    * MozAndroidComponents: `VERSION` in https://github.com/mozilla-mobile/firefox-android/blob/$releaseTag/fenix/buildSrc/src/main/java/AndroidComponents.kt
     * MozAppServices: `mozilla_appservices` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
     * MozGlean: `mozilla_glean` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
     * MozFennec: `version` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/Gecko.kt
@@ -1584,5 +1633,5 @@ MaintainerNotes: |4-
 ArchivePolicy: 4 versions
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 110.1.0
-CurrentVersionCode: 21101020
+CurrentVersion: 111.1.0
+CurrentVersionCode: 21111020
