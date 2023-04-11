@@ -209,8 +209,15 @@ acver=${acver#v}
 sed -e "s/VERSION/$acver/" "$patches/a-c-buildconfig.yml" > .buildconfig.yml
 # We don't need Gecko while building A-C for A-S
 rm -fR components/browser/engine-gecko*
+# Remove unnecessary projects
+rm -fR ../focus-android
 localize_maven
-sed -i -e 's/51.8.2/52.0.0/' buildSrc/src/main/java/Dependencies.kt
+#keep in sync with AS glean to prevent compiling glean three times
+sed -i -e 's/51.8.2/52.2.0/' plugins/dependencies/src/main/java/DependenciesPlugin.kt
+#workaround build failure like in f6fd8d9069e839cdf16ccf661ecf84b8ec854991
+sed -i -e '/EventExtraKey/d' components/service/glean/src/main/java/mozilla/components/service/glean/private/MetricAliases.kt
+sed -i -e '/NoExtraKeys/d' components/service/glean/src/main/java/mozilla/components/service/glean/private/MetricAliases.kt
+sed -i -e 's/, E//g' components/service/glean/src/main/java/mozilla/components/service/glean/private/MetricAliases.kt
 popd
 
 pushd "$android_components"
@@ -241,6 +248,8 @@ sed -i -e '/ndkVersion/a\    ndkPath rootProject.ext.build.ndkPath' \
     megazords/full/android/build.gradle
 sed -i -e '/NDK ez-install/,/^$/d' libs/verify-android-ci-environment.sh
 localize_maven
+#fix stray
+sed -i -e '/^    mavenLocal/{n;d}' tools/nimbus-gradle-plugin/build.gradle
 popd
 
 #
