@@ -65,6 +65,7 @@ make \
 popd
 
 pushd "$mozilla_release"
+export MOZ_CHROME_MULTILOCALE="$(cat $patches/locales)"
 ./mach --verbose build
 gradle publishWithGeckoBinariesReleasePublicationToMavenLocal
 gradle exoplayer2:publishReleasePublicationToMavenLocal
