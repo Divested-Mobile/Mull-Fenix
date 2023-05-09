@@ -1726,7 +1726,7 @@ Builds:
       - FirefoxAndroidAS@components-v110.0.1
       - MozAppServices@v97.2.0
       - MullBuild@v112.2.0
-      - MozFennec@FIREFOX_112_0_2_BUILD1
+      - MozFennec@FIREFOX_112_0_2_RELEASE
       - MozGlean@v52.3.0
       - MozGleanAS@v52.2.0
       - rustup@1.25.2
@@ -1751,10 +1751,60 @@ Builds:
       - FirefoxAndroidAS@components-v110.0.1
       - MozAppServices@v97.2.0
       - MullBuild@v112.2.0
-      - MozFennec@FIREFOX_112_0_2_BUILD1
+      - MozFennec@FIREFOX_112_0_2_RELEASE
       - MozGlean@v52.3.0
       - MozGleanAS@v52.2.0
       - rustup@1.25.2
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 113.0.0
+    versionCode: 21130000
+    commit: fenix-v113.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@components-v111.1.1
+      - MozAppServices@v97.4.1
+      - MullBuild@v113.0.0
+      - MozFennec@FIREFOX_113_0_RELEASE
+      - MozGlean@v52.4.2
+      - MozGleanAS@v52.2.0
+      - rustup@1.26.0
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 113.0.0
+    versionCode: 21130020
+    commit: fenix-v113.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@components-v111.1.1
+      - MozAppServices@v97.4.1
+      - MullBuild@v113.0.0
+      - MozFennec@FIREFOX_113_0_RELEASE
+      - MozGlean@v52.4.2
+      - MozGleanAS@v52.2.0
+      - rustup@1.26.0
       - wasi-sdk@wasi-sdk-16
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     scanignore:
@@ -1783,5 +1833,5 @@ MaintainerNotes: |4-
 ArchivePolicy: 4 versions
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 112.2.0
-CurrentVersionCode: 21122020
+CurrentVersion: 113.0.0
+CurrentVersionCode: 21130020
