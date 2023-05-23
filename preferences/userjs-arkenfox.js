@@ -1,7 +1,7 @@
 /******
 *    name: arkenfox user.js
-*    date: 30 March 2023
-* version: 111
+*    date: 4 May 2023
+* version: 112
 *     url: https://github.com/arkenfox/user.js
 * license: MIT: https://github.com/arkenfox/user.js/blob/master/LICENSE.txt
 
@@ -494,7 +494,7 @@ pref("security.pki.crlite_mode", 2);
  * [SETTING] to add site exceptions: Padlock>HTTPS-Only mode>On (after "Continue to HTTP Site")
  * [SETTING] Privacy & Security>HTTPS-Only Mode (and manage exceptions)
  * [TEST] http://example.com [upgrade]
- * [TEST] http://httpforever.com/ [no upgrade] ***/
+ * [TEST] http://httpforever.com/ | http://http.rip [no upgrade] ***/
 pref("dom.security.https_only_mode", true); // [FF76+]
    // pref("dom.security.https_only_mode_pbm", true); // [FF80+]
 /* 1245: enable HTTPS-Only mode for local resources [FF77+] ***/
@@ -1010,9 +1010,9 @@ pref("network.http.referer.spoofSource", false); // [DEFAULT: false]
  * [1] https://www.squarefree.com/2004/07/01/race-conditions-in-security-dialogs/ ***/
 pref("security.dialog_enable_delay", 1000); // [DEFAULT: 1000]
 /* 6008: enforce no First Party Isolation [FF51+]
- * [WARNING] Replaced with network partitioning (FF85+) and TCP (2701),
- * and enabling FPI disables those. FPI is no longer maintained ***/
-pref("privacy.firstparty.isolate", true); // [DEFAULT: false] //MULL-ENABLED: dFPI is here, but we haven't switched to it yet due to user concerns
+ * [WARNING] Replaced with network partitioning (FF85+) and TCP (2701), and enabling FPI
+ * disables those. FPI is no longer maintained except at Tor Project for Tor Browser's config ***/
+pref("privacy.firstparty.isolate", true); // [DEFAULT: false] //MULL-ENABLED: dFPI needs to be tested
 /* 6009: enforce SmartBlock shims [FF81+]
  * In FF96+ these are listed in about:compat
  * [1] https://blog.mozilla.org/security/2021/03/23/introducing-smartblock/ ***/
@@ -1130,7 +1130,7 @@ pref("privacy.trackingprotection.cryptomining.enabled", true); // [DEFAULT: true
 pref("privacy.trackingprotection.fingerprinting.enabled", true); // [DEFAULT: true]
 /* 7017: disable service workers
  * [WHY] Already isolated with TCP (2701) behind a pref (2710) ***/
-pref("dom.serviceWorkers.enabled", false); //MULL-UNCOMMENTED: disable for FPI
+   // pref("dom.serviceWorkers.enabled", false);
 /* 7018: disable Web Notifications
  * [WHY] Web Notifications are behind a prompt (7002)
  * [1] https://blog.mozilla.org/en/products/firefox/block-notification-requests/ ***/

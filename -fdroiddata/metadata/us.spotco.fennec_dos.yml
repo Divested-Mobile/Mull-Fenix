@@ -1812,9 +1812,9 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r21d
 
-  - versionName: 113.1.0
-    versionCode: 21131000
-    commit: fenix-v113.1.0
+  - versionName: 113.2.0
+    versionCode: 21132000
+    commit: fenix-v113.2.0
     timeout: 18000
     sudo:
       - apt-get update
@@ -1825,8 +1825,8 @@ Builds:
     srclibs:
       - FirefoxAndroidAS@components-v111.1.1
       - MozAppServices@v97.4.1
-      - MullBuild@v113.1.0
-      - MozFennec@FIREFOX_113_0_1_RELEASE
+      - MullBuild@v113.2.0
+      - MozFennec@FIREFOX_113_0_2_RELEASE
       - MozGlean@v52.4.2
       - MozGleanAS@v52.2.0
       - rustup@1.26.0
@@ -1837,9 +1837,9 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r21d
 
-  - versionName: 113.1.0
-    versionCode: 21131020
-    commit: fenix-v113.1.0
+  - versionName: 113.2.0
+    versionCode: 21132020
+    commit: fenix-v113.2.0
     timeout: 18000
     sudo:
       - apt-get update
@@ -1850,8 +1850,8 @@ Builds:
     srclibs:
       - FirefoxAndroidAS@components-v111.1.1
       - MozAppServices@v97.4.1
-      - MullBuild@v113.1.0
-      - MozFennec@FIREFOX_113_0_1_RELEASE
+      - MullBuild@v113.2.0
+      - MozFennec@FIREFOX_113_0_2_RELEASE
       - MozGlean@v52.4.2
       - MozGleanAS@v52.2.0
       - rustup@1.26.0
@@ -1883,5 +1883,5 @@ MaintainerNotes: |4-
 ArchivePolicy: 4 versions
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 113.1.0
-CurrentVersionCode: 21131020
+CurrentVersion: 113.2.0
+CurrentVersionCode: 21132020
