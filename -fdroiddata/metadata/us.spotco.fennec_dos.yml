@@ -2012,6 +2012,56 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r21d
 
+  - versionName: 115.0.0
+    versionCode: 21150000
+    commit: fenix-v115.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@components-v112.2.0
+      - MozAppServices@v115.0
+      - MullBuild@v115.0.0
+      - MozFennec@FIREFOX_115_0_RELEASE
+      - MozGlean@v52.7.0
+      - MozGleanAS@v52.6.0
+      - rustup@1.26.0
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 115.0.0
+    versionCode: 21150020
+    commit: fenix-v115.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@components-v112.2.0
+      - MozAppServices@v115.0
+      - MullBuild@v115.0.0
+      - MozFennec@FIREFOX_115_0_RELEASE
+      - MozGlean@v52.7.0
+      - MozGleanAS@v52.6.0
+      - rustup@1.26.0
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
 MaintainerNotes: |4-
 
     Version code scheme:
@@ -2033,5 +2083,5 @@ MaintainerNotes: |4-
 ArchivePolicy: 4
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 114.2.0
-CurrentVersionCode: 21142020
+CurrentVersion: 115.0.0
+CurrentVersionCode: 21150020
