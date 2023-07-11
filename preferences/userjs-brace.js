@@ -1,6 +1,7 @@
 //Look
 pref("browser.ctrlTab.recentlyUsedOrder", false);
 pref("browser.privatebrowsing.vpnpromourl", "");
+pref("browser.vpn_promo.enabled", false);
 pref("browser.tabs.drawInTitlebar", true);
 pref("devtools.netmonitor.persistlog", true);
 pref("devtools.webconsole.persistlog", true);
@@ -25,6 +26,9 @@ pref("extensions.enigmail.autoWkdLookup", 0);
 pref("messenger.status.reportIdle", false);
 pref("media.gmp-widevinecdm.visible", false); //BRACE-KEEP_FOR_NOW: proprietary
 pref("network.manage-offline-status", false);
+pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false);
+pref("browser.urlbar.suggest.quicksuggest.sponsored", false);
+pref("browser.urlbar.quicksuggest.dataCollection.enabled", false);
 
 //Security
 pref("browser.gnome-search-provider.enabled", false);
