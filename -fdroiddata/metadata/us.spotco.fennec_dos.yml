@@ -2121,6 +2121,8 @@ Builds:
       - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
         python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
         libsqlite3-dev
+      - apt-get install -y openjdk-17-jdk-headless
+      - update-java-alternatives -a
     output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
     srclibs:
       - FirefoxAndroidAS@components-v114.1.1
@@ -2146,6 +2148,8 @@ Builds:
       - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
         python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
         libsqlite3-dev
+      - apt-get install -y openjdk-17-jdk-headless
+      - update-java-alternatives -a
     output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
     srclibs:
       - FirefoxAndroidAS@components-v114.1.1

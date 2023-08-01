@@ -47,7 +47,7 @@ Here are some steps to get you in the right direction.
 - Fedora 34 and Debian 10 have been tested to work
 - `git clone https://gitlab.com/fdroid/fdroidserver.git`
 - `git clone https://gitlab.com/fdroid/fdroiddata.git`
-- Install JDK 8 and 11, set 11 as default
+- Install JDK 8 and 17, set 17 as default
 - Put this in your path as your gradle, make sure the folder above it is writable for its cache:
 ```
 wget https://gitlab.com/fdroid/fdroidserver/-/raw/master/gradlew-fdroid -O gradle
@@ -77,7 +77,7 @@ export PATH=$PATH:~/fdroidserver
 - `source .bashrc`
 - Fedora:
 ```
-sudo ln -sf /usr/lib/jvm/java-11-openjdk /usr/lib/jvm/java-11-openjdk-amd64
+sudo ln -sf /usr/lib/jvm/java-17-openjdk /usr/lib/jvm/java-17-openjdk-amd64
 sudo ln -sf /usr/lib/jvm/java-1.8.0-openjdk /usr/lib/jvm/java-8-openjdk-amd64
 ```
 
