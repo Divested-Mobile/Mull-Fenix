@@ -80,6 +80,11 @@ sed -i \
     -e '/Deps.google_play_store/d' \
     app/build.gradle
 
+# Compile nimbus-fml instead of using prebuilt
+sed -i \
+    -e '/experimenter.yaml/a \ \ \ \ applicationServicesDir = "../../srclib/MozAppServices/"' \
+    app/build.gradle;
+
 # Disable crash reporting
 sed -i -e '/CRASH_REPORTING/s/true/false/' app/build.gradle
 
@@ -228,7 +233,11 @@ sed -i \
     -e "s/version = \"$gvver\.[0-9.]*\"/version = \"$gvver.+\"/" \
     plugins/dependencies/src/main/java/Gecko.kt
 localize_maven
-
+# Compile nimbus-fml instead of using prebuilt
+sed -i \
+    -e '/ : null/a \ \ \ \ applicationServicesDir = "../../srclib/MozAppServices/"' \
+    components/service/nimbus/build.gradle \
+    components/browser/engine-gecko/build.gradle;
 # Add the added search engines as `general` engines
 sed -i \
     -e '41i \ \ \ \ "brave",\n\ \ \ \ "ddghtml",\n\ \ \ \ "ddglite",\n\ \ \ \ "metager",\n\ \ \ \ "mojeek",\n\ \ \ \ "qwantlite",\n\ \ \ \ "startpage",' \
@@ -246,6 +255,8 @@ sed -i -e '/NDK ez-install/,/^$/d' libs/verify-android-ci-environment.sh
 localize_maven
 # Fix stray
 sed -i -e '/^    mavenLocal/{n;d}' tools/nimbus-gradle-plugin/build.gradle
+# Fail on use of prebuilt binary
+sed -i 's|https://|hxxps://|' tools/nimbus-gradle-plugin/src/main/groovy/org/mozilla/appservices/tooling/nimbus/NimbusGradlePlugin.groovy
 popd
 
 #
