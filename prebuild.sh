@@ -120,6 +120,7 @@ rm app/src/release/res/mipmap-*/ic_launcher.png
 rm app/src/release/res/values/colors.xml
 rm app/src/main/res/values-v24/styles.xml
 sed -i -e '/android:roundIcon/d' app/src/main/AndroidManifest.xml
+sed -i -e '/SplashScreen/,+5d' app/src/main/res/values-v27/styles.xml
 find "$patches/fenix-overlay" -type f | while read -r src; do
     dst=app/src/release/${src#"$patches/fenix-overlay/"}
     mkdir -p "$(dirname "$dst")"
