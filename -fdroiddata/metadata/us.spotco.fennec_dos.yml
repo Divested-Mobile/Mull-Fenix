@@ -10,9 +10,9 @@ IssueTracker: https://gitlab.com/divested-mobile/mull-fenix/issues
 
 Name: Mull
 Description: This is a privacy oriented and deblobbed web browser based on Mozilla
-    technology. It enables many features upstreamed by the <a href="https://wiki.mozilla.org/Security/Tor_Uplift">Tor
-    Uplift project</a> using preferences from the <a href="https://github.com/arkenfox/user.js">arkenfox-user.js
-    project</a>. It is recommended to install 'uBlock Origin'.
+  technology. It enables many features upstreamed by the <a href="https://wiki.mozilla.org/Security/Tor_Uplift">Tor
+  Uplift project</a> using preferences from the <a href="https://github.com/arkenfox/user.js">arkenfox-user.js
+  project</a>. It is recommended to install 'uBlock Origin'.
 
 RepoType: git
 Repo: https://github.com/mozilla-mobile/firefox-android
@@ -2382,26 +2382,79 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r21d
 
-MaintainerNotes: |4-
+  - versionName: 117.1.0
+    versionCode: 21171000
+    commit: fenix-v117.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+      - apt-get install -y openjdk-17-jdk-headless
+      - update-java-alternatives -a
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@components-v115.0.1
+      - MozAppServices@v117.0
+      - MullBuild@v117.0.0
+      - MozFennec@FIREFOX_117_0_1_RELEASE
+      - MozGlean@v53.1.0
+      - MozGleanAS@v52.7.0
+      - rustup@1.26.0
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
 
-    Version code scheme:
-    XYZAR, where X.Y.Z is upstream version, A is architecture (0 = ARMv7, 1 = x86, 2 = ARMv8), R is revision (if we need to re-release).
-    * Example: 530210 = Firefox 53.0.2 for x86, initial revision
-    * Example: 550021 = Firefox 55.0 for ARMv8, second revision
+  - versionName: 117.1.0
+    versionCode: 21171020
+    commit: fenix-v117.1.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+      - apt-get install -y openjdk-17-jdk-headless
+      - update-java-alternatives -a
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@components-v115.0.1
+      - MozAppServices@v117.0
+      - MullBuild@v117.0.0
+      - MozFennec@FIREFOX_117_0_1_RELEASE
+      - MozGlean@v53.1.0
+      - MozGleanAS@v52.7.0
+      - rustup@1.26.0
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
 
-    Determining versions:
-    * Fenix: https://github.com/mozilla-mobile/firefox-android/releases
-    * MozAppServices: `mozilla_appservices` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
-    * MozGlean: `mozilla_glean` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
-    * MozFennec: `version` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/Gecko.kt
-    * MozFennec: https://hg.mozilla.org/releases/mozilla-release/tags
-    * FirefoxAndroidAS: `android_components_version` in https://github.com/mozilla/application-services/blob/$MozAppServices/build.gradle
-    * MozGleanAS: `mozilla_glean` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponentsAS/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
-    * rustup: https://github.com/rust-lang/rustup/tags
-    * wasi-sdk: https://github.com/WebAssembly/wasi-sdk/releases
+MaintainerNotes: |-
+  Version code scheme:
+  XYZAR, where X.Y.Z is upstream version, A is architecture (0 = ARMv7, 1 = x86, 2 = ARMv8), R is revision (if we need to re-release).
+  * Example: 530210 = Firefox 53.0.2 for x86, initial revision
+  * Example: 550021 = Firefox 55.0 for ARMv8, second revision
+
+  Determining versions:
+  * Fenix: https://github.com/mozilla-mobile/firefox-android/releases
+  * MozAppServices: `mozilla_appservices` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
+  * MozGlean: `mozilla_glean` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
+  * MozFennec: `version` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/Gecko.kt
+  * MozFennec: https://hg.mozilla.org/releases/mozilla-release/tags
+  * FirefoxAndroidAS: `android_components_version` in https://github.com/mozilla/application-services/blob/$MozAppServices/build.gradle
+  * MozGleanAS: `mozilla_glean` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponentsAS/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
+  * rustup: https://github.com/rust-lang/rustup/tags
+  * wasi-sdk: https://github.com/WebAssembly/wasi-sdk/releases
 
 ArchivePolicy: 4
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 117.0.1
-CurrentVersionCode: 21170120
+CurrentVersion: 117.1.0
+CurrentVersionCode: 21171020
