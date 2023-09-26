@@ -2436,6 +2436,60 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r21d
 
+  - versionName: 118.0.0
+    versionCode: 21180000
+    commit: fenix-v118.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+      - apt-get install -y openjdk-17-jdk-headless
+      - update-java-alternatives -a
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@components-v115.0.1
+      - MozAppServices@v118.0
+      - MullBuild@v118.0.0
+      - MozFennec@FIREFOX_118_0_RELEASE
+      - MozGlean@v53.2.0
+      - MozGleanAS@v52.7.0
+      - rustup@1.26.0
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
+  - versionName: 118.0.0
+    versionCode: 21180020
+    commit: fenix-v118.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+      - apt-get install -y openjdk-17-jdk-headless
+      - update-java-alternatives -a
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@components-v115.0.1
+      - MozAppServices@v118.0
+      - MullBuild@v118.0.0
+      - MozFennec@FIREFOX_118_0_RELEASE
+      - MozGlean@v53.2.0
+      - MozGleanAS@v52.7.0
+      - rustup@1.26.0
+      - wasi-sdk@wasi-sdk-16
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r21d
+
 MaintainerNotes: |-
   Version code scheme:
   XYZAR, where X.Y.Z is upstream version, A is architecture (0 = ARMv7, 1 = x86, 2 = ARMv8), R is revision (if we need to re-release).
@@ -2456,5 +2510,5 @@ MaintainerNotes: |-
 ArchivePolicy: 4
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 117.1.0
-CurrentVersionCode: 21171020
+CurrentVersion: 118.0.0
+CurrentVersionCode: 21180020
