@@ -15,7 +15,7 @@ Description: This is a privacy oriented and deblobbed web browser based on Mozil
   project</a>. It is recommended to install 'uBlock Origin'.
 
 RepoType: git
-Repo: https://github.com/mozilla-mobile/firefox-android
+Repo: https://github.com/mozilla-mobile/firefox-android.git
 
 Builds:
   - versionName: 89.1.1
@@ -39,6 +39,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 89.1.1
     versionCode: 2891120
@@ -61,6 +64,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 90.1.1
     versionCode: 2901100
@@ -83,6 +89,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 90.1.1
     versionCode: 2901120
@@ -105,6 +114,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 91.1.0
     versionCode: 2911000
@@ -127,6 +139,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 91.1.0
     versionCode: 2911020
@@ -149,6 +164,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 91.2.0
     versionCode: 2912000
@@ -171,6 +189,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 91.2.0
     versionCode: 2912020
@@ -193,6 +214,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 92.1.1
     versionCode: 2921100
@@ -216,6 +240,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 92.1.1
     versionCode: 2921120
@@ -239,6 +266,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 93.1.0
     versionCode: 2931000
@@ -262,6 +292,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 93.1.0
     versionCode: 2931020
@@ -285,6 +318,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 94.1.1
     versionCode: 2941100
@@ -308,6 +344,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 94.1.1
     versionCode: 2941120
@@ -331,6 +370,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 95.1.0
     versionCode: 2951000
@@ -354,6 +396,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 95.1.0
     versionCode: 2951020
@@ -377,6 +422,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 95.2.0
     versionCode: 2952000
@@ -401,6 +449,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 95.2.0
     versionCode: 2952020
@@ -425,6 +476,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21e
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 96.1.1
     versionCode: 2961100
@@ -450,6 +504,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 96.1.1
     versionCode: 2961120
@@ -475,6 +532,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 96.3.0
     versionCode: 2963000
@@ -500,6 +560,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 96.3.0
     versionCode: 2963020
@@ -525,6 +588,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 97.1.1
     versionCode: 2971100
@@ -550,6 +616,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 97.1.1
     versionCode: 2971120
@@ -575,6 +644,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 98.1.0
     versionCode: 2981000
@@ -600,6 +672,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 98.1.0
     versionCode: 2981020
@@ -625,6 +700,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 98.1.1
     versionCode: 2981100
@@ -650,6 +728,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 98.1.1
     versionCode: 2981120
@@ -675,6 +756,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 98.2.0
     versionCode: 2982000
@@ -700,6 +784,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 98.2.0
     versionCode: 2982020
@@ -725,6 +812,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 100.1.1
     versionCode: 21001100
@@ -750,6 +840,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 100.1.1
     versionCode: 21001120
@@ -775,6 +868,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 100.1.3
     versionCode: 21001300
@@ -800,6 +896,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 100.1.3
     versionCode: 21001320
@@ -825,6 +924,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 100.3.0
     versionCode: 21003000
@@ -850,6 +952,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 100.3.0
     versionCode: 21003020
@@ -875,6 +980,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 101.1.1
     versionCode: 21011100
@@ -900,6 +1008,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 101.1.1
     versionCode: 21011120
@@ -925,6 +1036,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 102.1.1
     versionCode: 21021101
@@ -950,6 +1064,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 102.1.1
     versionCode: 21021121
@@ -975,6 +1092,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 103.1.0
     versionCode: 21031000
@@ -1000,6 +1120,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 103.1.0
     versionCode: 21031020
@@ -1025,6 +1148,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 104.1.0
     versionCode: 21041000
@@ -1050,6 +1176,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 104.1.0
     versionCode: 21041020
@@ -1075,6 +1204,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 105.1.0
     versionCode: 21051000
@@ -1100,6 +1232,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 105.1.0
     versionCode: 21051020
@@ -1125,6 +1260,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 107.1.0
     versionCode: 21071000
@@ -1149,6 +1287,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 107.1.0
     versionCode: 21071020
@@ -1173,6 +1314,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 107.2.0
     versionCode: 21072000
@@ -1197,6 +1341,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 107.2.0
     versionCode: 21072020
@@ -1221,6 +1368,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 108.1.0
     versionCode: 21081000
@@ -1245,6 +1395,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 108.1.0
     versionCode: 21081020
@@ -1269,6 +1422,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 108.1.1
     versionCode: 21081100
@@ -1293,6 +1449,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 108.1.1
     versionCode: 21081120
@@ -1317,6 +1476,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 109.1.1
     versionCode: 21091100
@@ -1341,6 +1503,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 109.1.1
     versionCode: 21091120
@@ -1365,6 +1530,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 109.2.0
     versionCode: 21092000
@@ -1389,6 +1557,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 109.2.0
     versionCode: 21092020
@@ -1413,6 +1584,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 110.0.1
     versionCode: 21100100
@@ -1437,6 +1611,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 110.0.1
     versionCode: 21100120
@@ -1461,6 +1638,9 @@ Builds:
     prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 110.1.0
     versionCode: 21101000
@@ -1486,6 +1666,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 110.1.0
     versionCode: 21101020
@@ -1511,6 +1694,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 111.0.0
     versionCode: 21110000
@@ -1536,6 +1722,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 111.0.0
     versionCode: 21110020
@@ -1561,6 +1750,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 111.1.0
     versionCode: 21111000
@@ -1586,6 +1778,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 111.1.0
     versionCode: 21111020
@@ -1611,6 +1806,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 112.0.0
     versionCode: 21120000
@@ -1636,6 +1834,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 112.0.0
     versionCode: 21120020
@@ -1661,6 +1862,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 112.1.0
     versionCode: 21121000
@@ -1686,6 +1890,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 112.1.0
     versionCode: 21121020
@@ -1711,6 +1918,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 112.2.0
     versionCode: 21122000
@@ -1736,6 +1946,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 112.2.0
     versionCode: 21122020
@@ -1761,6 +1974,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 113.0.0
     versionCode: 21130000
@@ -1786,6 +2002,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 113.0.0
     versionCode: 21130020
@@ -1811,6 +2030,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 113.2.0
     versionCode: 21132000
@@ -1836,6 +2058,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 113.2.0
     versionCode: 21132020
@@ -1861,6 +2086,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 114.0.0
     versionCode: 21140000
@@ -1886,6 +2114,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 114.0.0
     versionCode: 21140020
@@ -1911,6 +2142,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 114.1.0
     versionCode: 21141000
@@ -1936,6 +2170,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 114.1.0
     versionCode: 21141020
@@ -1961,6 +2198,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 114.2.0
     versionCode: 21142000
@@ -1986,6 +2226,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 114.2.0
     versionCode: 21142020
@@ -2011,6 +2254,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 115.0.0
     versionCode: 21150000
@@ -2036,6 +2282,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 115.0.0
     versionCode: 21150020
@@ -2061,6 +2310,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 115.2.1
     versionCode: 21152100
@@ -2086,6 +2338,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 115.2.1
     versionCode: 21152120
@@ -2111,6 +2366,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 116.0.0
     versionCode: 21160000
@@ -2138,6 +2396,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 116.0.0
     versionCode: 21160020
@@ -2165,6 +2426,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 116.2.0
     versionCode: 21162000
@@ -2192,6 +2456,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 116.2.0
     versionCode: 21162020
@@ -2219,6 +2486,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 116.3.0
     versionCode: 21163000
@@ -2246,6 +2516,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 116.3.0
     versionCode: 21163020
@@ -2273,6 +2546,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 117.0.0
     versionCode: 21170000
@@ -2300,6 +2576,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 117.0.0
     versionCode: 21170020
@@ -2327,6 +2606,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 117.0.1
     versionCode: 21170100
@@ -2354,6 +2636,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 117.0.1
     versionCode: 21170120
@@ -2381,6 +2666,9 @@ Builds:
       - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
     build: $$MullBuild$$/build.sh
     ndk: r21d
+    antifeatures:
+      KnownVuln:
+        en-US: Vulnerability in showing WebP images (CVE-2023-4863)
 
   - versionName: 117.1.0
     versionCode: 21171000
@@ -2561,7 +2849,7 @@ MaintainerNotes: |-
   * rustup: https://github.com/rust-lang/rustup/tags
   * wasi-sdk: https://github.com/WebAssembly/wasi-sdk/releases
 
-ArchivePolicy: 4
+ArchivePolicy: 6
 AutoUpdateMode: None
 UpdateCheckMode: None
 CurrentVersion: 118.1.0
