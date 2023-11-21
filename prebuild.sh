@@ -67,7 +67,7 @@ sed -i \
     -e 's|applicationIdSuffix ".firefox"|applicationIdSuffix ".fennec_dos"|' \
     -e 's|"sharedUserId": "org.mozilla.firefox.sharedID"|"sharedUserId": "us.spotco.fennec_dos.sharedID"|' \
     -e "s/Config.releaseVersionName(project)/'$1'/" \
-    -e "s/Config.generateFennecVersionCode(arch)/$2/" \
+    -e "s/Config.generateFennecVersionCode(arch, aab)/$2/" \
     app/build.gradle
 sed -i \
     -e '/android:targetPackage/s/org.mozilla.firefox/us.spotco.fennec_dos/' \
@@ -82,7 +82,7 @@ sed -i \
 
 # Compile nimbus-fml instead of using prebuilt
 sed -i \
-    -e '/experimenter.yaml/a \ \ \ \ applicationServicesDir = "../../srclib/MozAppServices/"' \
+    -e '/ : null/a \ \ \ \ applicationServicesDir = "../../srclib/MozAppServices/"' \
     app/build.gradle;
 
 # Disable crash reporting
@@ -116,7 +116,7 @@ sed -i \
 
 # Replace proprietary artwork
 rm app/src/release/res/drawable/ic_launcher_foreground.xml
-rm app/src/release/res/mipmap-*/ic_launcher.png
+rm app/src/release/res/mipmap-*/ic_launcher.webp
 rm app/src/release/res/values/colors.xml
 rm app/src/main/res/values-v24/styles.xml
 sed -i -e '/android:roundIcon/d' app/src/main/AndroidManifest.xml
@@ -188,6 +188,15 @@ case $(echo "$2" | cut -c 7) in
     ;;
 esac
 sed -i -e "s/include \".*\"/include \"$abi\"/" app/build.gradle
+popd
+
+#
+# WASI SDK
+#
+
+pushd "$wasi"
+# Fixup https://github.com/llvm/llvm-project/commit/ff1681ddb303223973653f7f5f3f3435b48a1983
+sed -i '18i#include <cstdint>' src/llvm-project/llvm/include/llvm/Support/Signals.h
 popd
 
 #
@@ -264,6 +273,9 @@ pushd "$mozilla_release"
 # Revert https://bugzilla.mozilla.org/show_bug.cgi?id=1845651
 hg revert media/openmax_dl -r ebd43acaeeb3a5b82ab6a9027ab88fa2a72aea81
 
+# Revert https://bugzilla.mozilla.org/show_bug.cgi?id=1836826
+hg revert media/libvpx -r 699059262f56
+
 # Remove proprietary libraries
 sed -i \
     -e '/com.google.android.gms/d' \
@@ -339,8 +351,8 @@ mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj
 EOF
 
 # Disable Gecko Media Plugins and casting
-sed -i -e '/gmp-provider/d; /casting.enabled/d' mobile/android/app/mobile.js
-cat << EOF >> mobile/android/app/mobile.js
+sed -i -e '/gmp-provider/d; /casting.enabled/d' mobile/android/app/geckoview-prefs.js
+cat << EOF >> mobile/android/app/geckoview-prefs.js
 
 // Disable Encrypted Media Extensions
 pref("media.eme.enabled", false);
