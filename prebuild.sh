@@ -361,7 +361,7 @@ pref("browser.casting.enabled", false);
 pref("security.webauth.webauthn", false);
 EOF
 
-cat "$patches/preferences/userjs-arkenfox.js" >> mobile/android/app/mobile.js
-cat "$patches/preferences/userjs-brace.js" >> mobile/android/app/mobile.js
+cat "$patches/preferences/userjs-arkenfox.js" >> mobile/android/app/geckoview-prefs.js
+cat "$patches/preferences/userjs-brace.js" >> mobile/android/app/geckoview-prefs.js
 
 popd
