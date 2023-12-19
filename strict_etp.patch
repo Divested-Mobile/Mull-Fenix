@@ -1,0 +1,53 @@
+From cb435cb58661330eaa106d846a7f91958be5c66a Mon Sep 17 00:00:00 2001
+From: Tad <tad@spotco.us>
+Date: Sat, 11 Dec 2021 14:53:02 -0500
+Subject: [PATCH] Set strict ETP by default
+
+Signed-off-by: Tad <tad@spotco.us>
+---
+ fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt   | 4 ++--
+ .../app/src/main/res/xml/tracking_protection_preferences.xml  | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt b/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
+index c35ab607f7..9b60aea901 100644
+--- a/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
++++ b/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
+@@ -725,12 +725,12 @@ class Settings(private val appContext: Context) : PreferencesHolder {
+ 
+     val useStandardTrackingProtection by booleanPreference(
+         appContext.getPreferenceKey(R.string.pref_key_tracking_protection_standard_option),
+-        true,
++        false,
+     )
+ 
+     val useStrictTrackingProtection by booleanPreference(
+         appContext.getPreferenceKey(R.string.pref_key_tracking_protection_strict_default),
+-        false,
++        true,
+     )
+ 
+     val useCustomTrackingProtection by booleanPreference(
+diff --git a/fenix/app/src/main/res/xml/tracking_protection_preferences.xml b/fenix/app/src/main/res/xml/tracking_protection_preferences.xml
+index 186fc8893f..e95a718984 100644
+--- a/fenix/app/src/main/res/xml/tracking_protection_preferences.xml
++++ b/fenix/app/src/main/res/xml/tracking_protection_preferences.xml
+@@ -16,13 +16,13 @@
+         android:title="@string/preference_enhanced_tracking_protection"
+         app:iconSpaceReserved="false" />
+     <org.mozilla.fenix.settings.RadioButtonInfoPreference
+-        android:defaultValue="true"
++        android:defaultValue="false"
+         android:dependency="@string/pref_key_tracking_protection"
+         android:key="@string/pref_key_tracking_protection_standard_option"
+         android:summary="@string/preference_enhanced_tracking_protection_standard_description_5"
+         android:title="@string/preference_enhanced_tracking_protection_standard_default_1" />
+     <org.mozilla.fenix.settings.RadioButtonInfoPreference
+-        android:defaultValue="false"
++        android:defaultValue="true"
+         android:dependency="@string/pref_key_tracking_protection"
+         android:key="@string/pref_key_tracking_protection_strict_default"
+         android:summary="@string/preference_enhanced_tracking_protection_strict_description_4"
+-- 
+2.41.0
+
