@@ -27,12 +27,21 @@ source "$(dirname "$0")/paths.sh"
 # plugins (Glean).
 
 # Set up Android SDK
-sdkmanager 'build-tools;31.0.0'
-sdkmanager 'build-tools;33.0.0'
-sdkmanager 'build-tools;33.0.1'
-sdkmanager 'ndk;25.0.8775105' # for GleanAS
-sdkmanager 'ndk;25.1.8937393' # for Glean
-sdkmanager 'ndk;25.2.9519653'
+if grep -q "Fedora" /etc/os-release; then
+	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'build-tools;31.0.0'
+	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'build-tools;33.0.0'
+	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'build-tools;33.0.1'
+	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'ndk;25.0.8775105' # for GleanAS
+	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'ndk;25.1.8937393' # for Glean
+	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'ndk;25.2.9519653'
+else
+	sdkmanager 'build-tools;31.0.0'
+	sdkmanager 'build-tools;33.0.0'
+	sdkmanager 'build-tools;33.0.1'
+	sdkmanager 'ndk;25.0.8775105' # for GleanAS
+	sdkmanager 'ndk;25.1.8937393' # for Glean
+	sdkmanager 'ndk;25.2.9519653'
+fi;
 
 # Set up Rust
 "$rustup"/rustup-init.sh -y --no-update-default-toolchain
