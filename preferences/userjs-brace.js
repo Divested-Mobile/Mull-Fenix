@@ -18,6 +18,7 @@ pref("browser.snippets.syncPromo.enabled", false);
 pref("browser.snippets.updateUrl", "");
 pref("general.useragent.updates.enabled", false);
 pref("network.negotiate-auth.trusted-uris", "");
+pref("network.trr.uri", "https://dns.quad9.net/dns-query");
 pref("network.trr.custom_uri", "https://dns.quad9.net/dns-query");
 pref("plugin.expose_full_path", false);
 pref("extensions.enigmail.autoWkdLookup", 0);
@@ -27,12 +28,13 @@ pref("network.manage-offline-status", false);
 pref("browser.urlbar.suggest.quicksuggest.nonsponsored", false);
 pref("browser.urlbar.suggest.quicksuggest.sponsored", false);
 pref("browser.urlbar.quicksuggest.dataCollection.enabled", false);
+pref("mailnews.headers.sendUserAgent", false);
+pref("mail.sanitize_date_header", true);
 
 //Security
 pref("browser.gnome-search-provider.enabled", false);
 pref("fission.autostart", false);
 pref("fission.autostart.session", false);
-//pref("security.webauth.u2f", true); //MULL-COMMENTED
 pref("mail.phishing.detection.enabled", true);
 pref("mailnews.message_display.disable_remote_image", true);
 
