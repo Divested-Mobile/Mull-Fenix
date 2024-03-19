@@ -3438,6 +3438,62 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r25c
 
+  - versionName: 124.0.0
+    versionCode: 21240000
+    commit: fenix-v124.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+      - apt-get install -y openjdk-17-jdk-headless
+      - update-java-alternatives -a
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@components-v122.0
+      - MozAppServices@v124.0
+      - MullBuild@v124.0.0
+      - MozFennec@FIREFOX_124_0_RELEASE
+      - MozGlean@v57.0.0
+      - MozGleanAS@v56.0.0
+      - gmscore@v0.3.0.233515
+      - rustup@1.27.0
+      - wasi-sdk@wasi-sdk-20
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r25c
+
+  - versionName: 124.0.0
+    versionCode: 21240020
+    commit: fenix-v124.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+      - apt-get install -y openjdk-17-jdk-headless
+      - update-java-alternatives -a
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@components-v122.0
+      - MozAppServices@v124.0
+      - MullBuild@v124.0.0
+      - MozFennec@FIREFOX_124_0_RELEASE
+      - MozGlean@v57.0.0
+      - MozGleanAS@v56.0.0
+      - gmscore@v0.3.0.233515
+      - rustup@1.27.0
+      - wasi-sdk@wasi-sdk-20
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r25c
+
 MaintainerNotes: |-
   Version code scheme:
   XYZAR, where X.Y.Z is upstream version, A is architecture (0 = ARMv7, 1 = x86, 2 = ARMv8), R is revision (if we need to re-release).
@@ -3460,5 +3516,5 @@ MaintainerNotes: |-
 ArchivePolicy: 6
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 123.1.0
-CurrentVersionCode: 21231020
+CurrentVersion: 124.0.0
+CurrentVersionCode: 21240020
