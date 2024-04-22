@@ -35,6 +35,7 @@ if grep -q "Fedora" /etc/os-release; then
 	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'ndk;25.0.8775105' # for GleanAS
 	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'ndk;25.1.8937393' # for Glean
 	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'ndk;25.2.9519653'
+	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'ndk;26.2.11394342'
 else
 	sdkmanager 'build-tools;31.0.0'
 	sdkmanager 'build-tools;33.0.0'
@@ -43,13 +44,14 @@ else
 	sdkmanager 'ndk;25.0.8775105' # for GleanAS
 	sdkmanager 'ndk;25.1.8937393' # for Glean
 	sdkmanager 'ndk;25.2.9519653'
+	sdkmanager 'ndk;26.2.11394342'
 fi;
 
 # Set up Rust
 "$rustup"/rustup-init.sh -y --no-update-default-toolchain
 # shellcheck disable=SC1090,SC1091
 source "$HOME/.cargo/env"
-rustup default 1.73.0
+rustup default 1.76.0
 rustup target add thumbv7neon-linux-androideabi
 rustup target add armv7-linux-androideabi
 rustup target add aarch64-linux-android
@@ -80,8 +82,8 @@ pushd "$mozilla_release"
 MOZ_CHROME_MULTILOCALE=$(< "$patches/locales")
 export MOZ_CHROME_MULTILOCALE
 ./mach --verbose build
-gradle publishWithGeckoBinariesReleasePublicationToMavenLocal
-gradle exoplayer2:publishReleasePublicationToMavenLocal
+./mach gradle geckoview:publishWithGeckoBinariesReleasePublicationToMavenLocal
+./mach gradle exoplayer2:publishReleasePublicationToMavenLocal
 popd
 
 pushd "$glean_as"
