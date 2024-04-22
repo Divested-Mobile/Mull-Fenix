@@ -3598,6 +3598,58 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r25c
 
+  - versionName: 125.3.0
+    versionCode: 21253000
+    commit: fenix-v125.3.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@components-v123.0
+      - MozAppServices@v125.0.1
+      - MullBuild@v125.3.0
+      - MozFennec@FIREFOX_125_0_3_BUILD1
+      - MozGlean@v58.1.0
+      - MozGleanAS@v56.1.0
+      - gmscore@v0.3.0.233515
+      - rustup@1.27.0
+      - wasi-sdk@wasi-sdk-20
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r26c
+
+  - versionName: 125.3.0
+    versionCode: 21253020
+    commit: fenix-v125.3.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@components-v123.0
+      - MozAppServices@v125.0.1
+      - MullBuild@v125.3.0
+      - MozFennec@FIREFOX_125_0_3_BUILD1
+      - MozGlean@v58.1.0
+      - MozGleanAS@v56.1.0
+      - gmscore@v0.3.0.233515
+      - rustup@1.27.0
+      - wasi-sdk@wasi-sdk-20
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r26c
+
 MaintainerNotes: |-
   Version code scheme:
   XYZAR, where X.Y.Z is upstream version, A is architecture (0 = ARMv7, 1 = x86, 2 = ARMv8), R is revision (if we need to re-release).
@@ -3610,7 +3662,7 @@ MaintainerNotes: |-
   * MozGlean: `mozilla_glean` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
   * MozFennec: `version` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/Gecko.kt
   * MozFennec: https://hg.mozilla.org/releases/mozilla-release/tags
-  * FirefoxAndroidAS: `android_components_version` in https://github.com/mozilla/application-services/blob/$MozAppServices/build.gradle
+  * FirefoxAndroidAS: `android-components` in https://github.com/mozilla/application-services/blob/$MozAppServices/gradle/libs.versions.toml
   * MozGleanAS: `mozilla_glean` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponentsAS/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
   * rustup: https://github.com/rust-lang/rustup/tags
   * wasi-sdk: https://github.com/WebAssembly/wasi-sdk/releases
@@ -3620,5 +3672,5 @@ MaintainerNotes: |-
 ArchivePolicy: 6
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 124.2.0
-CurrentVersionCode: 21242020
+CurrentVersion: 125.3.0
+CurrentVersionCode: 21253020

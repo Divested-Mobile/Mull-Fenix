@@ -1,7 +1,7 @@
 /******
 *    name: arkenfox user.js
-*    date: 20 November 2023
-* version: 119
+*    date: 5 February 2024
+* version: 122
 *    urls: https://github.com/arkenfox/user.js [repo]
 *        : https://arkenfox.github.io/gui/ [interactive]
 * license: MIT: https://github.com/arkenfox/user.js/blob/master/LICENSE.txt
@@ -59,6 +59,7 @@
   2600: MISCELLANEOUS
   2700: ETP (ENHANCED TRACKING PROTECTION)
   2800: SHUTDOWN & SANITIZING
+  4000: FPP (fingerprintingProtection)
   4500: RFP (resistFingerprinting)
   5000: OPTIONAL OPSEC
   5500: OPTIONAL HARDENING
@@ -689,8 +690,32 @@ pref("privacy.cpd.cookies", false);
  * which will display a blank value, and are not guaranteed to work ***/
 pref("privacy.sanitize.timeSpan", 0);
 
+/*** [SECTION 4000]: FPP (fingerprintingProtection)
+   RFP (4501) overrides FPP
+
+   In FF118+ FPP is on by default in private windows (4001) and in FF119+ is controlled
+   by ETP (2701). FPP will also use Remote Services in future to relax FPP protections
+   on a per site basis for compatibility (pref coming).
+
+   1826408 - restrict fonts to system (kBaseFonts + kLangPackFonts) (Windows, Mac, some Linux)
+      https://searchfox.org/mozilla-central/search?path=StandardFonts*.inc
+   1858181 - subtly randomize canvas per eTLD+1, per session and per window-mode (FF120+)
+***/
+pref("_user.js.parrot", "1400 syntax error: the parrot's bereft of life!");
+/* 4001: enable FPP in PB mode [FF114+]
+ * [NOTE] In FF119+, FPP for all modes (7106) is enabled with ETP Strict (2701) ***/
+   // pref("privacy.fingerprintingProtection.pbmode", true); // [DEFAULT: true FF118+]
+/* 4002: set global FPP overrides [FF114+]
+ * Controls what protections FPP uses globally, including "RFPTargets" (despite the name these are
+ * not used by RFP) e.g. "+AllTargets,-CSSPrefersColorScheme" or "-AllTargets,+CanvasRandomization"
+ * [NOTE] Be aware that not all RFP protections are necessarily in RFPTargets
+ * [WARNING] Not recommended. Either use RFP or FPP at defaults
+ * [1] https://searchfox.org/mozilla-central/source/toolkit/components/resistfingerprinting/RFPTargets.inc ***/
+   // pref("privacy.fingerprintingProtection.overrides", "");
+
 /*** [SECTION 4500]: RFP (resistFingerprinting)
-   RFP covers a wide range of ongoing fingerprinting solutions.
+   RFP overrides FPP (4000)
+
    It is an all-or-nothing buy in: you cannot pick and choose what parts you want
    [TEST] https://arkenfox.github.io/TZP/tzp.html
 
@@ -744,8 +769,8 @@ pref("privacy.sanitize.timeSpan", 0);
 ***/
 pref("_user.js.parrot", "4500 syntax error: the parrot's popped 'is clogs");
 /* 4501: enable RFP
- * [SETUP-WEB] RFP can cause some website breakage: mainly canvas, use a canvas site exception via the urlbar
- * RFP also has a few side effects: mainly timezone is UTC0, and websites will prefer light theme
+ * [SETUP-WEB] RFP can cause some website breakage: mainly canvas, use a canvas site exception via the urlbar.
+ * RFP also has a few side effects: mainly timezone is UTC, and websites will prefer light theme
  * [NOTE] pbmode applies if true and the original pref is false
  * [1] https://bugzilla.mozilla.org/418986 ***/
 pref("privacy.resistFingerprinting", true); // [FF41+]
@@ -758,7 +783,7 @@ pref("privacy.window.maxInnerHeight", 900);
 /* 4503: disable mozAddonManager Web API [FF57+]
  * [NOTE] To allow extensions to work on AMO, you also need 2662
  * [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1384330,1406795,1415644,1453988 ***/
-pref("privacy.resistFingerprinting.block_mozAddonManager", false); //MULL-MODIFIED: fixup
+pref("privacy.resistFingerprinting.block_mozAddonManager", false); //MULL-MODIFIED: set to false to unbreak AMO
 /* 4504: enable RFP letterboxing [FF67+]
  * Dynamically resizes the inner window by applying margins in stepped ranges [2]
  * If you use the dimension pref, then it will only apply those resolutions.
@@ -1068,11 +1093,11 @@ pref("_user.js.parrot", "7000 syntax error: the parrot's pushing up daisies!");
 /* 7016: customize ETP settings
  * [NOTE] FPP (fingerprintingProtection) is ignored when RFP (4501) is enabled
  * [WHY] Arkenfox only supports strict (2701) which sets these at runtime ***/
-pref("network.cookie.cookieBehavior", 1); // [DEFAULT: 5] //BRACE-UNCOMMENTED: strict cannot be set on first launch, use custom + enterprise policy instead //MULL-MODIFiED: set to 1 for FPI
+pref("network.cookie.cookieBehavior", 1); // [DEFAULT: 5] //BRACE-UNCOMMENTED: strict cannot be set on first launch, use custom + enterprise policy instead //MULL-MODIFIED: set to 1 for FPI
 pref("privacy.fingerprintingProtection", true); // [FF114+] [ETP FF119+]
 pref("network.http.referer.disallowCrossSiteRelaxingDefault", true);
 pref("network.http.referer.disallowCrossSiteRelaxingDefault.top_navigation", true); // [FF100+]
-pref("privacy.partition.network_state.ocsp_cache", true);
+pref("privacy.partition.network_state.ocsp_cache", true); // [DEFAULT: true FF123+]
 pref("privacy.query_stripping.enabled", true); // [FF101+]
 pref("privacy.trackingprotection.enabled", true);
 pref("privacy.trackingprotection.socialtracking.enabled", true);

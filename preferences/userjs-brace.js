@@ -12,6 +12,7 @@ pref("browser.newtabpage.activity-stream.asrouter.providers.snippets", "{}"); //
 pref("browser.library.activity-stream.enabled", false); //BRACE-UNCOMMENTED
 
 //Privacy
+pref("privacy.globalprivacycontrol.enabled", true);
 pref("browser.snippets.enabled", false);
 pref("browser.snippets.firstrunHomepage.enabled", false);
 pref("browser.snippets.syncPromo.enabled", false);
@@ -33,8 +34,8 @@ pref("mail.sanitize_date_header", true);
 
 //Security
 pref("browser.gnome-search-provider.enabled", false);
-pref("fission.autostart", false);
-pref("fission.autostart.session", false);
+//pref("fission.autostart", true); //MULL-COMMENTED
+//pref("security.webauth.u2f", true); //MULL-COMMENTED
 pref("mail.phishing.detection.enabled", true);
 pref("mailnews.message_display.disable_remote_image", true);
 
