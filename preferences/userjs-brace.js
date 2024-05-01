@@ -36,6 +36,7 @@ pref("mail.sanitize_date_header", true);
 pref("browser.gnome-search-provider.enabled", false);
 //pref("fission.autostart", true); //MULL-COMMENTED
 //pref("security.webauth.u2f", true); //MULL-COMMENTED
+pref("security.tls.enable_kyber", true);
 pref("mail.phishing.detection.enabled", true);
 pref("mailnews.message_display.disable_remote_image", true);
 

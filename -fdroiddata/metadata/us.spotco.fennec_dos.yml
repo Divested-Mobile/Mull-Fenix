@@ -3612,7 +3612,7 @@ Builds:
       - FirefoxAndroidAS@components-v123.0
       - MozAppServices@v125.0.1
       - MullBuild@v125.3.0
-      - MozFennec@FIREFOX_125_0_3_BUILD1
+      - MozFennec@FIREFOX_125_0_3_RELEASE
       - MozGlean@v58.1.0
       - MozGleanAS@v56.1.0
       - gmscore@v0.3.0.233515
@@ -3638,7 +3638,59 @@ Builds:
       - FirefoxAndroidAS@components-v123.0
       - MozAppServices@v125.0.1
       - MullBuild@v125.3.0
-      - MozFennec@FIREFOX_125_0_3_BUILD1
+      - MozFennec@FIREFOX_125_0_3_RELEASE
+      - MozGlean@v58.1.0
+      - MozGleanAS@v56.1.0
+      - gmscore@v0.3.0.233515
+      - rustup@1.27.0
+      - wasi-sdk@wasi-sdk-20
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r26c
+
+  - versionName: 125.3.0
+    versionCode: 21253001
+    commit: fenix-v125.3.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@components-v123.0
+      - MozAppServices@v125.0.1
+      - MullBuild@v125.3.0-2
+      - MozFennec@FIREFOX_125_0_3_RELEASE
+      - MozGlean@v58.1.0
+      - MozGleanAS@v56.1.0
+      - gmscore@v0.3.0.233515
+      - rustup@1.27.0
+      - wasi-sdk@wasi-sdk-20
+    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
+    scanignore:
+      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
+    build: $$MullBuild$$/build.sh
+    ndk: r26c
+
+  - versionName: 125.3.0
+    versionCode: 21253021
+    commit: fenix-v125.3.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - FirefoxAndroidAS@components-v123.0
+      - MozAppServices@v125.0.1
+      - MullBuild@v125.3.0-2
+      - MozFennec@FIREFOX_125_0_3_RELEASE
       - MozGlean@v58.1.0
       - MozGleanAS@v56.1.0
       - gmscore@v0.3.0.233515
