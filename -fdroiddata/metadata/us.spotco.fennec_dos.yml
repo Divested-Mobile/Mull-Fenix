@@ -15,7 +15,7 @@ Description: This is a privacy oriented and deblobbed web browser based on Mozil
   project</a>. It is recommended to install 'uBlock Origin'.
 
 RepoType: git
-Repo: https://github.com/mozilla-mobile/firefox-android.git
+Repo: https://codeberg.org/divested-mobile/mull-fenix.git
 
 Builds:
   - versionName: 89.1.1
@@ -3650,56 +3650,50 @@ Builds:
     build: $$MullBuild$$/build.sh
     ndk: r26c
 
-  - versionName: 125.3.0
-    versionCode: 21253001
-    commit: fenix-v125.3.0
+  - versionName: 126.0.0
+    versionCode: 21260000
+    commit: v126.0.0
     timeout: 18000
     sudo:
       - apt-get update
       - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
         python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
         libsqlite3-dev
-    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    output: ../srclib/MozFennec/mobile/android/fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
     srclibs:
-      - FirefoxAndroidAS@components-v123.0
-      - MozAppServices@v125.0.1
-      - MullBuild@v125.3.0-2
-      - MozFennec@FIREFOX_125_0_3_RELEASE
-      - MozGlean@v58.1.0
-      - MozGleanAS@v56.1.0
+      - MozFennec@FIREFOX-ANDROID_126_0_RELEASE
+      - FirefoxAndroidAS@components-v124.1.0
+      - MozAppServices@v126.0
+      - MozGlean@v59.0.0
+      - MozGleanAS@v57.0.0
       - gmscore@v0.3.0.233515
       - rustup@1.27.0
       - wasi-sdk@wasi-sdk-20
-    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
-    scanignore:
-      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
-    build: $$MullBuild$$/build.sh
+    prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: ./build.sh
     ndk: r26c
 
-  - versionName: 125.3.0
-    versionCode: 21253021
-    commit: fenix-v125.3.0
+  - versionName: 126.0.0
+    versionCode: 21260020
+    commit: v126.0.0
     timeout: 18000
     sudo:
       - apt-get update
       - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
         python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
         libsqlite3-dev
-    output: fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    output: ../srclib/MozFennec/mobile/android/fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
     srclibs:
-      - FirefoxAndroidAS@components-v123.0
-      - MozAppServices@v125.0.1
-      - MullBuild@v125.3.0-2
-      - MozFennec@FIREFOX_125_0_3_RELEASE
-      - MozGlean@v58.1.0
-      - MozGleanAS@v56.1.0
+      - MozFennec@FIREFOX-ANDROID_126_0_RELEASE
+      - FirefoxAndroidAS@components-v124.1.0
+      - MozAppServices@v126.0
+      - MozGlean@v59.0.0
+      - MozGleanAS@v57.0.0
       - gmscore@v0.3.0.233515
       - rustup@1.27.0
       - wasi-sdk@wasi-sdk-20
-    prebuild: $$MullBuild$$/prebuild.sh $$VERSION$$ $$VERCODE$$
-    scanignore:
-      - android-components/components/lib/publicsuffixlist/src/main/assets/publicsuffixes
-    build: $$MullBuild$$/build.sh
+    prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: ./build.sh
     ndk: r26c
 
 MaintainerNotes: |-
@@ -3709,11 +3703,9 @@ MaintainerNotes: |-
   * Example: 550021 = Firefox 55.0 for ARMv8, second revision
 
   Determining versions:
-  * Fenix: https://github.com/mozilla-mobile/firefox-android/releases
-  * MozAppServices: `mozilla_appservices` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
-  * MozGlean: `mozilla_glean` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
-  * MozFennec: `version` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponents/android-components/plugins/dependencies/src/main/java/Gecko.kt
   * MozFennec: https://hg.mozilla.org/releases/mozilla-release/tags
+  * MozAppServices: `mozilla_appservices` in https://hg.mozilla.org/releases/mozilla-release/file/$tag/mobile/android/android-components/plugins/dependencies/src/main/java/ApplicationServices.kt
+  * MozGlean: `mozilla_glean` in https://hg.mozilla.org/releases/mozilla-release/file/$tag/mobile/android/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
   * FirefoxAndroidAS: `android-components` in https://github.com/mozilla/application-services/blob/$MozAppServices/gradle/libs.versions.toml
   * MozGleanAS: `mozilla_glean` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponentsAS/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
   * rustup: https://github.com/rust-lang/rustup/tags
