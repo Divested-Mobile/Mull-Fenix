@@ -1,19 +1,7 @@
-From cb435cb58661330eaa106d846a7f91958be5c66a Mon Sep 17 00:00:00 2001
-From: Tavi <tavi@divested.dev>
-Date: Sat, 11 Dec 2021 14:53:02 -0500
-Subject: [PATCH] Set strict ETP by default
-
-Signed-off-by: Tavi <tavi@divested.dev>
----
- fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt   | 4 ++--
- .../app/src/main/res/xml/tracking_protection_preferences.xml  | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt b/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
-index c35ab607f7..9b60aea901 100644
---- a/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
-+++ b/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
-@@ -725,12 +725,12 @@ class Settings(private val appContext: Context) : PreferencesHolder {
+diff -r 99b346d993c8 mobile/android/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
+--- a/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt	Wed May 15 08:29:32 2024 -0400
++++ b/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt	Wed May 15 08:30:20 2024 -0400
+@@ -739,12 +739,12 @@
  
      val useStandardTrackingProtection by booleanPreference(
          appContext.getPreferenceKey(R.string.pref_key_tracking_protection_standard_option),
@@ -28,10 +16,9 @@ index c35ab607f7..9b60aea901 100644
      )
  
      val useCustomTrackingProtection by booleanPreference(
-diff --git a/fenix/app/src/main/res/xml/tracking_protection_preferences.xml b/fenix/app/src/main/res/xml/tracking_protection_preferences.xml
-index 186fc8893f..e95a718984 100644
---- a/fenix/app/src/main/res/xml/tracking_protection_preferences.xml
-+++ b/fenix/app/src/main/res/xml/tracking_protection_preferences.xml
+diff -r 99b346d993c8 mobile/android/fenix/app/src/main/res/xml/tracking_protection_preferences.xml
+--- a/mobile/android/fenix/app/src/main/res/xml/tracking_protection_preferences.xml	Wed May 15 08:29:32 2024 -0400
++++ b/mobile/android/fenix/app/src/main/res/xml/tracking_protection_preferences.xml	Wed May 15 08:30:20 2024 -0400
 @@ -16,13 +16,13 @@
          android:title="@string/preference_enhanced_tracking_protection"
          app:iconSpaceReserved="false" />
@@ -48,6 +35,3 @@ index 186fc8893f..e95a718984 100644
          android:dependency="@string/pref_key_tracking_protection"
          android:key="@string/pref_key_tracking_protection_strict_default"
          android:summary="@string/preference_enhanced_tracking_protection_strict_description_4"
--- 
-2.41.0
-
