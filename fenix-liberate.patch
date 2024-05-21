@@ -955,7 +955,7 @@ diff -r 3db775a2083d mobile/android/fenix/plugins/fenixdependencies/src/main/jav
 -    // Required for in-app reviews
 -    const val google_play_review = "com.google.android.play:review:${FenixVersions.google_play_review_version}"
 -    const val google_play_review_ktx = "com.google.android.play:review-ktx:${FenixVersions.google_play_review_version}"
-+    const val google_ads_id = "org.microg.gms:play-services-ads-identifier:0.3.+"
++    const val google_ads_id = "org.microg.gms:play-services-ads-identifier:0.3.2.240913"
  
      const val junitApi = "org.junit.jupiter:junit-jupiter-api:${FenixVersions.junit}"
      const val junitParams = "org.junit.jupiter:junit-jupiter-params:${FenixVersions.junit}"
