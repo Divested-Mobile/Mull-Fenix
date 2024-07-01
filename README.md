@@ -22,8 +22,8 @@ The second to last number of the VERCODE corresponds to the architecture to comp
 0 = ARMv7, 1 = x86, 2 = AArch64
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-     alt="Get it on F-Droid"
-     height="80">](https://f-droid.org/packages/us.spotco.fennec_dos/)
+     alt="Get it from the official F-Droid Repository"
+     height="80">](https://divestos.org/apks/official/fdroid/repo/?fingerprint=E4BE8D6ABFA4D9D4FEEF03CDDA7FF62A73FD64B75566F6DD4E5E577550BE8467)
 
 Known Issues
 ------------
