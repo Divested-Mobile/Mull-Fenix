@@ -3652,7 +3652,7 @@ Builds:
 
   - versionName: 127.0.0
     versionCode: 21270000
-    commit: v127.0.0
+    commit: v127.0.0-2
     timeout: 18000
     sudo:
       - apt-get update
@@ -3675,7 +3675,7 @@ Builds:
 
   - versionName: 127.0.0
     versionCode: 21270020
-    commit: v127.0.0
+    commit: v127.0.0-2
     timeout: 18000
     sudo:
       - apt-get update
@@ -3742,6 +3742,52 @@ Builds:
     build: ./build.sh
     ndk: 26.2.11394342
 
+  - versionName: 128.0.0
+    versionCode: 21280000
+    commit: v128.0.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: ../srclib/MozFennec/mobile/android/fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozFennec@FIREFOX-ANDROID_128_0_RELEASE
+      - MozFennecAS@FIREFOX-ANDROID_126_0_1_RELEASE
+      - MozAppServices@v128.0.1
+      - MozGlean@v60.1.1
+      - MozGleanAS@v59.0.0
+      - gmscore@v0.3.2.240913
+      - rustup@1.27.1
+      - wasi-sdk@wasi-sdk-20
+    prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: ./build.sh
+    ndk: 26.2.11394342
+
+  - versionName: 128.0.0
+    versionCode: 21280020
+    commit: v128.0.0
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: ../srclib/MozFennec/mobile/android/fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozFennec@FIREFOX-ANDROID_128_0_RELEASE
+      - MozFennecAS@FIREFOX-ANDROID_126_0_1_RELEASE
+      - MozAppServices@v128.0.1
+      - MozGlean@v60.1.1
+      - MozGleanAS@v59.0.0
+      - gmscore@v0.3.2.240913
+      - rustup@1.27.1
+      - wasi-sdk@wasi-sdk-20
+    prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: ./build.sh
+    ndk: 26.2.11394342
+
 MaintainerNotes: |-
   Version code scheme:
   XYZAR, where X.Y.Z is upstream version, A is architecture (0 = ARMv7, 1 = x86, 2 = ARMv8), R is revision (if we need to re-release).
@@ -3750,10 +3796,10 @@ MaintainerNotes: |-
 
   Determining versions:
   * MozFennec: https://hg.mozilla.org/releases/mozilla-release/tags
-  * MozAppServices: `mozilla_appservices` in https://hg.mozilla.org/releases/mozilla-release/file/$tag/mobile/android/android-components/plugins/dependencies/src/main/java/ApplicationServices.kt
+  * MozAppServices: `VERSION` in https://hg.mozilla.org/releases/mozilla-release/file/$tag/mobile/android/android-components/plugins/dependencies/src/main/java/ApplicationServices.kt
   * MozGlean: `mozilla_glean` in https://hg.mozilla.org/releases/mozilla-release/file/$tag/mobile/android/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
-  * FirefoxAndroidAS: `android-components` in https://github.com/mozilla/application-services/blob/$MozAppServices/gradle/libs.versions.toml
-  * MozGleanAS: `mozilla_glean` in https://github.com/mozilla-mobile/firefox-android/blob/$MozAndroidComponentsAS/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
+  * MozFennecAS: `android-components` in https://github.com/mozilla/application-services/blob/$MozAppServices/gradle/libs.versions.toml
+  * MozGleanAS: `mozilla_glean` in https://hg.mozilla.org/releases/mozilla-release/file/$MozAndroidComponentsAS/mobile/android/android-components/plugins/dependencies/src/main/java/DependenciesPlugin.kt
   * rustup: https://github.com/rust-lang/rustup/tags
   * wasi-sdk: https://github.com/WebAssembly/wasi-sdk/releases
 
@@ -3762,5 +3808,5 @@ MaintainerNotes: |-
 ArchivePolicy: 6
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 127.0.2
-CurrentVersionCode: 21270220
+CurrentVersion: 128.0.0
+CurrentVersionCode: 21280020
