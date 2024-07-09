@@ -156,6 +156,10 @@ popd
 #
 # Android Components
 #
+pushd "$android_components_as_top"
+# Remove Mozilla repositories substitution and explicitly add the required ones
+patch -p1 --no-backup-if-mismatch --quiet < "$patches/gecko-localize_maven.patch"
+popd
 
 pushd "$android_components_as"
 acver=$(git name-rev --tags --name-only "$(git rev-parse HEAD)")
@@ -164,6 +168,8 @@ sed -e "s/VERSION/$acver/" "$patches/a-c-buildconfig.yml" > .buildconfig.yml
 # We don't need Gecko while building A-C for A-S
 rm -fR components/browser/engine-gecko*
 localize_maven
+sed -i -e '/firebase_messaging/d' plugins/dependencies/src/main/java/DependenciesPlugin.kt
+sed -i -e '/play_services_base/d' plugins/dependencies/src/main/java/DependenciesPlugin.kt
 popd
 
 pushd "$android_components"
@@ -185,6 +191,9 @@ sed -i \
 # Hack to prevent too long string from breaking build
 sed -i '/val statusCmd/,+3d' plugins/config/src/main/java/ConfigPlugin.kt
 sed -i '/\/\/ Append "+"/a \        val statusSuffix = "+"' plugins/config/src/main/java/ConfigPlugin.kt
+sed -i -e '/firebase_messaging/d' plugins/dependencies/src/main/java/DependenciesPlugin.kt
+sed -i -e '/play_services_base/d' plugins/dependencies/src/main/java/DependenciesPlugin.kt
+sed -i -e '/play_review/d' plugins/dependencies/src/main/java/DependenciesPlugin.kt
 popd
 
 #
@@ -192,7 +201,7 @@ popd
 #
 
 pushd "$application_services"
-sed -i -e 's/60.0.0/60.0.1/'  gradle/libs.versions.toml
+sed -i -e 's/60.1.0/60.1.1/'  gradle/libs.versions.toml
 echo "rust.targets=linux-x86-64,$rusttarget" >> local.properties
 sed -i -e '/content {/,/}/d' build.gradle
 sed -i -e '/NDK ez-install/,/^$/d' libs/verify-android-ci-environment.sh

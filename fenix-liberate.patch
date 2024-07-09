@@ -1,6 +1,6 @@
-diff -r cfd3e02d8411 mobile/android/fenix/app/build.gradle
---- a/mobile/android/fenix/app/build.gradle	Thu Jun 06 18:17:11 2024 +0000
-+++ b/mobile/android/fenix/app/build.gradle	Thu Jun 13 09:01:09 2024 +0300
+diff -r 14b32d530926 mobile/android/fenix/app/build.gradle
+--- a/mobile/android/fenix/app/build.gradle	Thu Jul 04 12:11:31 2024 +0000
++++ b/mobile/android/fenix/app/build.gradle	Tue Jul 09 12:12:48 2024 -0400
 @@ -643,7 +643,6 @@
  
      implementation project(':lib-crash')
@@ -9,7 +9,7 @@ diff -r cfd3e02d8411 mobile/android/fenix/app/build.gradle
      implementation project(':lib-state')
      implementation project(':lib-dataprotect')
      testImplementation project(':support-test-fakes')
-@@ -686,15 +685,8 @@
+@@ -687,15 +686,8 @@
      implementation FenixDependencies.protobuf_javalite
      implementation ComponentsDependencies.google_material
  
@@ -19,8 +19,8 @@ diff -r cfd3e02d8411 mobile/android/fenix/app/build.gradle
      implementation FenixDependencies.google_ads_id // Required for the Google Advertising ID
  
 -    // Required for in-app reviews
--    implementation FenixDependencies.google_play_review
--    implementation FenixDependencies.google_play_review_ktx
+-    implementation ComponentsDependencies.play_review
+-    implementation ComponentsDependencies.play_review_ktx
 -
      implementation FenixDependencies.androidx_profileinstaller
  
@@ -928,27 +928,25 @@ diff -r cfd3e02d8411 mobile/android/fenix/app/src/main/res/xml/site_permissions_
          app:allowDividerBelow="true"/>
  
      <androidx.preference.Preference
-diff -r cfd3e02d8411 mobile/android/fenix/plugins/fenixdependencies/src/main/java/FenixDependenciesPlugin.kt
---- a/mobile/android/fenix/plugins/fenixdependencies/src/main/java/FenixDependenciesPlugin.kt	Thu Jun 06 18:17:11 2024 +0000
-+++ b/mobile/android/fenix/plugins/fenixdependencies/src/main/java/FenixDependenciesPlugin.kt	Thu Jun 13 09:01:09 2024 +0300
-@@ -25,16 +25,9 @@
-     const val androidx_transition = "1.5.0"
+diff -r 14b32d530926 mobile/android/fenix/plugins/fenixdependencies/src/main/java/FenixDependenciesPlugin.kt
+--- a/mobile/android/fenix/plugins/fenixdependencies/src/main/java/FenixDependenciesPlugin.kt	Thu Jul 04 12:11:31 2024 +0000
++++ b/mobile/android/fenix/plugins/fenixdependencies/src/main/java/FenixDependenciesPlugin.kt	Tue Jul 09 12:12:48 2024 -0400
+@@ -26,14 +26,9 @@
+     const val androidx_viewpager2 = "1.1.0"
      const val google_accompanist = "0.32.0"
  
 -    const val adjust = "4.38.2"
 -    const val installreferrer = "2.2"
 -
      const val junit = "5.10.2"
-     const val mockk = "1.13.10"
+     const val mockk = "1.13.11"
  
 -    const val google_ads_id_version = "16.0.0"
--
--    const val google_play_review_version = "2.0.1"
 -
      // keep in sync with the versions used in AS.
      const val protobuf = "3.21.10"
      const val protobuf_plugin = "0.9.4"
-@@ -58,9 +51,6 @@
+@@ -58,9 +53,6 @@
      const val protobuf_javalite = "com.google.protobuf:protobuf-javalite:${FenixVersions.protobuf}"
      const val protobuf_compiler = "com.google.protobuf:protoc:${FenixVersions.protobuf}"
  
@@ -958,15 +956,11 @@ diff -r cfd3e02d8411 mobile/android/fenix/plugins/fenixdependencies/src/main/jav
      const val mockk = "io.mockk:mockk:${FenixVersions.mockk}"
      const val mockk_android = "io.mockk:mockk-android:${FenixVersions.mockk}"
      const val falcon = "com.jraska:falcon:${FenixVersions.falcon}"
-@@ -83,11 +73,7 @@
+@@ -83,7 +75,7 @@
      // Test services is unused
      // --- END AndroidX test dependencies --- //
  
 -    const val google_ads_id = "com.google.android.gms:play-services-ads-identifier:${FenixVersions.google_ads_id_version}"
--
--    // Required for in-app reviews
--    const val google_play_review = "com.google.android.play:review:${FenixVersions.google_play_review_version}"
--    const val google_play_review_ktx = "com.google.android.play:review-ktx:${FenixVersions.google_play_review_version}"
 +    const val google_ads_id = "org.microg.gms:play-services-ads-identifier:0.3.2.240913"
  
      const val junitApi = "org.junit.jupiter:junit-jupiter-api:${FenixVersions.junit}"
