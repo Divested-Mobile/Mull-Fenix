@@ -32,6 +32,10 @@ pref("browser.urlbar.suggest.quicksuggest.sponsored", false);
 pref("browser.urlbar.quicksuggest.dataCollection.enabled", false);
 pref("mailnews.headers.sendUserAgent", false);
 pref("mail.sanitize_date_header", true);
+pref("cookiebanners.bannerClicking.enabled", true);
+pref("cookiebanners.cookieInjector.enabled", true);
+pref("cookiebanners.service.mode", 1);
+pref("cookiebanners.service.mode.privatebrowsing", 1);
 
 //Security
 pref("browser.gnome-search-provider.enabled", false);
