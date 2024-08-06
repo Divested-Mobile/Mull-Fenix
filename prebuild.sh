@@ -155,10 +155,12 @@ popd
 #
 
 pushd "$glean_as"
+echo "typealias HistogramMetricBase = mozilla.telemetry.glean.private.HistogramBase" >> glean-core/android/src/main/java/mozilla/telemetry/glean/private/HistogramBase.kt
 echo "rust.targets=$rusttarget" >> local.properties
 localize_maven
 popd
 pushd "$glean"
+echo "typealias HistogramMetricBase = mozilla.telemetry.glean.private.HistogramBase" >> glean-core/android/src/main/java/mozilla/telemetry/glean/private/HistogramBase.kt
 echo "rust.targets=linux-x86-64,$rusttarget" >> local.properties
 localize_maven
 popd
@@ -178,6 +180,7 @@ sed -i \
 # Hack to prevent too long string from breaking build
 sed -i '/val statusCmd/,+3d' plugins/config/src/main/java/ConfigPlugin.kt
 sed -i '/\/\/ Append "+"/a \        val statusSuffix = "+"' plugins/config/src/main/java/ConfigPlugin.kt
+echo "typealias HistogramBase = mozilla.telemetry.glean.private.HistogramBase" >> components/service/glean/src/main/java/mozilla/components/service/glean/private/MetricAliases.kt
 popd
 
 #
