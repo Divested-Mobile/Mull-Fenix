@@ -9,10 +9,6 @@ SourceCode: https://gitlab.com/divested-mobile/mull-fenix
 IssueTracker: https://gitlab.com/divested-mobile/mull-fenix/issues
 
 Name: Mull
-Description: This is a privacy oriented and deblobbed web browser based on Mozilla
-  technology. It enables many features upstreamed by the <a href="https://wiki.mozilla.org/Security/Tor_Uplift">Tor
-  Uplift project</a> using preferences from the <a href="https://github.com/arkenfox/user.js">arkenfox-user.js
-  project</a>. It is recommended to install 'uBlock Origin'.
 
 RepoType: git
 Repo: https://codeberg.org/divested-mobile/mull-fenix.git
@@ -3888,7 +3884,6 @@ Builds:
       - MozFennec@FIREFOX-ANDROID_129_0_RELEASE
       - MozAppServices@v129.0
       - MozGlean@v60.3.0
-      - MozGleanAS@v60.3.0
       - gmscore@v0.3.2.240913
       - rustup@1.27.1
       - wasi-sdk@wasi-sdk-20
@@ -3910,7 +3905,48 @@ Builds:
       - MozFennec@FIREFOX-ANDROID_129_0_RELEASE
       - MozAppServices@v129.0
       - MozGlean@v60.3.0
-      - MozGleanAS@v60.3.0
+      - gmscore@v0.3.2.240913
+      - rustup@1.27.1
+      - wasi-sdk@wasi-sdk-20
+    prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: ./build.sh
+    ndk: 26.2.11394342
+
+  - versionName: 129.0.2
+    versionCode: 21290200
+    commit: v129.0.2
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: ../srclib/MozFennec/mobile/android/fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozFennec@FIREFOX-ANDROID_129_0_2_RELEASE
+      - MozAppServices@v129.0
+      - MozGlean@v60.3.0
+      - gmscore@v0.3.2.240913
+      - rustup@1.27.1
+      - wasi-sdk@wasi-sdk-20
+    prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: ./build.sh
+    ndk: 26.2.11394342
+
+  - versionName: 129.0.2
+    versionCode: 21290220
+    commit: v129.0.2
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: ../srclib/MozFennec/mobile/android/fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozFennec@FIREFOX-ANDROID_129_0_2_RELEASE
+      - MozAppServices@v129.0
+      - MozGlean@v60.3.0
       - gmscore@v0.3.2.240913
       - rustup@1.27.1
       - wasi-sdk@wasi-sdk-20
@@ -3937,5 +3973,5 @@ MaintainerNotes: |-
 ArchivePolicy: 6
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 129.0.0
-CurrentVersionCode: 21290020
+CurrentVersion: 129.0.2
+CurrentVersionCode: 21290220
