@@ -156,8 +156,6 @@ popd
 
 pushd "$glean"
 echo "rust.targets=linux-x86-64,$rusttarget" >> local.properties
-# Hack to fix `Unresolved reference: HistogramBase`
-echo "typealias HistogramMetricBase = mozilla.telemetry.glean.private.HistogramBase" >> glean-core/android/src/main/java/mozilla/telemetry/glean/private/HistogramBase.kt
 localize_maven
 popd
 
@@ -176,8 +174,6 @@ sed -i \
 # Hack to prevent too long string from breaking build
 sed -i '/val statusCmd/,+3d' plugins/config/src/main/java/ConfigPlugin.kt
 sed -i '/\/\/ Append "+"/a \        val statusSuffix = "+"' plugins/config/src/main/java/ConfigPlugin.kt
-# Hack to fix `Unresolved reference: HistogramBase`
-echo "typealias HistogramBase = mozilla.telemetry.glean.private.HistogramBase" >> components/service/glean/src/main/java/mozilla/components/service/glean/private/MetricAliases.kt
 popd
 
 #
@@ -211,9 +207,6 @@ popd
 #
 
 pushd "$mozilla_release"
-# Revert https://bugzilla.mozilla.org/show_bug.cgi?id=1892493
-hg revert build/unix/elfhack/relrhack.cpp -r 4033da509139
-
 # Remove Mozilla repositories substitution and explicitly add the required ones
 patch -p1 --no-backup-if-mismatch --quiet < "$patches/gecko-localize_maven.patch"
 
