@@ -106,17 +106,6 @@ sed -i \
 sed -i \
     -e '175s/channel: developer/channel: release/' app/nimbus.fml.yaml
 
-# Enable local translations
-sed -i \
-    -e '390s/default: false/default: true/' \
-    -e '395s/default: false/default: true/' \
-    -e '401s/default: false/default: true/' \
-    -e '407s/default: false/default: true/' \
-    -e '413s/default: false/default: true/' \
-    -e '419s/default: false/default: true/' \
-    -e '425s/default: false/default: true/' \
-    app/nimbus.fml.yaml
-
 # Set up target parameters
 case $(echo "$2" | cut -c 7) in
     0)
