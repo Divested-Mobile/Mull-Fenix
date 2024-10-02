@@ -29,16 +29,28 @@ source "$(dirname "$0")/paths.sh"
 # Set up Android SDK
 if grep -q "Fedora" /etc/os-release; then
 	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'build-tools;35.0.0' # for GeckoView
-	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'ndk;25.2.9519653' # for GleanAS
+	JAVA_HOME="/usr/lib/jvm/java-1.8.0-openjdk" "$ANDROID_HOME/tools/bin/sdkmanager" 'ndk;26.2.11394342' # for GleanAS
 else
 	sdkmanager 'build-tools;35.0.0' # for GeckoView
-	sdkmanager 'ndk;25.2.9519653' # for GleanAS
+	sdkmanager 'ndk;26.2.11394342' # for GleanAS
 fi;
 
 # Set up Rust
 # shellcheck disable=SC1090,SC1091
 source "$HOME/.cargo/env"
 cargo install --force --vers 0.26.0 cbindgen
+
+# Build LLVM
+pushd $llvm
+llvmtarget=$(cat "$llvm/targets_to_build")
+echo "building llvm for $llvmtarget"
+cmake -S llvm -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=out -DCMAKE_C_COMPILER=clang-18 \
+    -DCMAKE_CXX_COMPILER=clang++-18 -DLLVM_ENABLE_PROJECTS="clang" -DLLVM_TARGETS_TO_BUILD="$llvmtarget" \
+    -DLLVM_USE_LINKER=lld -DLLVM_BINUTILS_INCDIR=/usr/include -DLLVM_ENABLE_PLUGINS=FORCE_ON \
+    -DLLVM_DEFAULT_TARGET_TRIPLE="x86_64-unknown-linux-gnu"
+cmake --build build -j"$(nproc)"
+cmake --build build --target install -j"$(nproc)"
+popd
 
 # Build WASI SDK
 pushd "$wasi"
