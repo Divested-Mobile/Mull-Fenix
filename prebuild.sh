@@ -228,6 +228,14 @@ sed -i \
     -e 's/max_wait_seconds=600/max_wait_seconds=1800/' \
     mobile/android/gradle.py
 
+# to get following url: adjust python/mozbuild/mozbuild/artifact_cache.py
+# then: ./mach --no-interactive bootstrap --application-choice="GeckoView/Firefox for Android"
+# and: rm -rfv ~/.mozbuild
+rm -rf clang clang.tar.zst
+wget --continue "https://firefox-ci-tc.services.mozilla.com/api/queue/v1/task/EeNUActmRxmkbsgTIruqeQ/artifacts/public/build/clang.tar.zst"
+echo "b98c78745ff8124d76df43a3b569c3d6d87cbd76d11d0e823b2f58643f5fc35b  clang.tar.zst" | sha256sum -c
+tar -xvf clang.tar.zst
+
 # Configure
 sed -i -e '/check_android_tools("emulator"/d' build/moz.configure/android-sdk.configure
 cat << EOF > mozconfig
@@ -249,12 +257,13 @@ ac_add_options --enable-strip
 ac_add_options --target=$target
 ac_add_options --with-android-ndk="$ANDROID_NDK"
 ac_add_options --with-android-sdk="$ANDROID_SDK"
+ac_add_options --with-libclang-path="$mozilla_release/clang/lib"
 ac_add_options --with-java-bin-path="/usr/bin"
 ac_add_options --with-gradle=$(command -v gradle)
 ac_add_options --with-wasi-sysroot="$wasi/build/install/wasi/share/wasi-sysroot"
-ac_add_options CC="$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/clang"
-ac_add_options CXX="$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
-ac_add_options STRIP="$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip"
+ac_add_options CC="$mozilla_release/clang/bin/clang"
+ac_add_options CXX="$mozilla_release/clang/bin/clang++"
+ac_add_options STRIP="$mozilla_release/clang/bin/llvm-strip"
 ac_add_options WASM_CC="$wasi/build/install/wasi/bin/clang"
 ac_add_options WASM_CXX="$wasi/build/install/wasi/bin/clang++"
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj
