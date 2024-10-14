@@ -4038,6 +4038,48 @@ Builds:
     build: ./build.sh
     ndk: 27.0.12077973
 
+  - versionName: 131.0.3
+    versionCode: 21310300
+    commit: v131.0.3
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: ../srclib/MozFennec/mobile/android/fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozFennec@FIREFOX_131_0_3_RELEASE
+      - MozAppServices@v131.0
+      - MozGlean@v60.5.0
+      - gmscore@v0.3.2.240913
+      - rustup@1.27.1
+      - wasi-sdk@wasi-sdk-20
+    prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: ./build.sh
+    ndk: 27.0.12077973
+
+  - versionName: 131.0.3
+    versionCode: 21310320
+    commit: v131.0.3
+    timeout: 18000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 g++ pkg-config libssl-dev python-is-python3
+        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
+        libsqlite3-dev
+    output: ../srclib/MozFennec/mobile/android/fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozFennec@FIREFOX_131_0_3_RELEASE
+      - MozAppServices@v131.0
+      - MozGlean@v60.5.0
+      - gmscore@v0.3.2.240913
+      - rustup@1.27.1
+      - wasi-sdk@wasi-sdk-20
+    prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: ./build.sh
+    ndk: 27.0.12077973
+
 MaintainerNotes: |-
   Version code scheme:
   XYZAR, where X.Y.Z is upstream version, A is architecture (0 = ARMv7, 1 = x86, 2 = ARMv8), R is revision (if we need to re-release).
@@ -4056,5 +4098,5 @@ MaintainerNotes: |-
 ArchivePolicy: 6
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 131.0.2
-CurrentVersionCode: 21310220
+CurrentVersion: 131.0.3
+CurrentVersionCode: 21310320
