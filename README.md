@@ -44,7 +44,7 @@ Setting up the VM
 Getting a working fdroidserver is a bit tricky.
 Here are some steps to get you in the right direction.
 - Setup a VM, you'll want at least 16GB RAM and 64GB of storage
-- Fedora 39 has been tested to work
+- Fedora 41 has been tested to work
 - `git clone https://gitlab.com/fdroid/fdroidserver.git`
 - `git clone https://gitlab.com/fdroid/fdroiddata.git`
 - Install JDK 8 and 17, set 17 as default
@@ -63,14 +63,14 @@ wget https://dl.google.com/android/repository/tools_r25.2.3-linux.zip
 unzip tools_r*-linux.zip -d android/
 android update sdk --no-ui
 android update sdk --no-ui --filter build-tools-30.0.2,android-30,build-tools-30.0.0-preview,build-tools-29.0.3,android-29,build-tools-28.0.3,android-28 --all
-wget https://dl.google.com/android/repository/android-ndk-r27-linux.zip
-unzip android-ndk-r27-linux.zip -d android-ndk/
-echo "ndk_paths = { 'r27': \"\$ANDROID_NDK\" }" >> fdroiddata/config.py
+wget https://dl.google.com/android/repository/android-ndk-r27b-linux.zip
+unzip android-ndk-r27b-linux.zip -d android-ndk/
+echo "ndk_paths = { '27.1.12297006': \"\$ANDROID_NDK\" }" >> fdroiddata/config.py
 ```
 - Add the following to your .bashrc
 ```
 export ANDROID_HOME=~/android
-export ANDROID_NDK=~/android-ndk/android-ndk-r27
+export ANDROID_NDK=~/android-ndk/android-ndk-r27b
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 export PATH=$PATH:~/fdroidserver
 ```

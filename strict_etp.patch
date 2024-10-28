@@ -1,7 +1,7 @@
-diff -r 99b346d993c8 mobile/android/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
---- a/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt	Wed May 15 08:29:32 2024 -0400
-+++ b/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt	Wed May 15 08:30:20 2024 -0400
-@@ -739,12 +739,12 @@
+diff -r 5cafe8ddd023 -r a29897d2381c mobile/android/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt
+--- a/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt	Mon Oct 28 08:38:19 2024 -0400
++++ b/mobile/android/fenix/app/src/main/java/org/mozilla/fenix/utils/Settings.kt	Mon Oct 28 08:39:05 2024 -0400
+@@ -740,12 +740,12 @@
  
      val useStandardTrackingProtection by booleanPreference(
          appContext.getPreferenceKey(R.string.pref_key_tracking_protection_standard_option),
@@ -16,9 +16,9 @@ diff -r 99b346d993c8 mobile/android/fenix/app/src/main/java/org/mozilla/fenix/ut
      )
  
      val useCustomTrackingProtection by booleanPreference(
-diff -r 99b346d993c8 mobile/android/fenix/app/src/main/res/xml/tracking_protection_preferences.xml
---- a/mobile/android/fenix/app/src/main/res/xml/tracking_protection_preferences.xml	Wed May 15 08:29:32 2024 -0400
-+++ b/mobile/android/fenix/app/src/main/res/xml/tracking_protection_preferences.xml	Wed May 15 08:30:20 2024 -0400
+diff -r 5cafe8ddd023 -r a29897d2381c mobile/android/fenix/app/src/main/res/xml/tracking_protection_preferences.xml
+--- a/mobile/android/fenix/app/src/main/res/xml/tracking_protection_preferences.xml	Mon Oct 28 08:38:19 2024 -0400
++++ b/mobile/android/fenix/app/src/main/res/xml/tracking_protection_preferences.xml	Mon Oct 28 08:39:05 2024 -0400
 @@ -16,13 +16,13 @@
          android:title="@string/preference_enhanced_tracking_protection"
          app:iconSpaceReserved="false" />

@@ -104,7 +104,7 @@ sed -i \
 
 # Enable cookie banner handling
 sed -i \
-    -e '175s/channel: developer/channel: release/' app/nimbus.fml.yaml
+    -e '168s/channel: developer/channel: release/' app/nimbus.fml.yaml
 
 # Set up target parameters
 case $(echo "$2" | cut -c 7) in

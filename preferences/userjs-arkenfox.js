@@ -483,7 +483,7 @@ pref("dom.security.https_only_mode", true); // [FF76+]
  * a top-level HTTP request without path in order to check if the server supports HTTPS or not
  * This is done to avoid waiting for a timeout which takes 90 seconds
  * [1] https://bugzilla.mozilla.org/buglist.cgi?bug_id=1642387,1660945 ***/
-   // pref("dom.security.https_only_mode_send_http_background_request", false); //BRACE-COMMENTED: usability, not all sites have HTTPS
+pref("dom.security.https_only_mode_send_http_background_request", false);
 
 /** UI (User Interface) ***/
 /* 1270: display warning on the padlock for "broken security" (if 1201 is false)
@@ -983,6 +983,7 @@ pref("javascript.options.asmjs", false); //BRACE-UNCOMMENTED: attack surface red
  * [2] https://microsoftedge.github.io/edgevr/posts/Super-Duper-Secure-Mode/ ***/
 pref("javascript.options.ion", false); //BRACE-UNCOMMENTED: attack surface reduction
 pref("javascript.options.baselinejit", false); //BRACE-UNCOMMENTED: attack surface reduction
+pref("javascript.options.native_regexp", false); //BRACE-ADDED: attack surface reduction
 pref("javascript.options.jit_trustedprincipals", true); // [FF75+] [HIDDEN PREF]//BRACE-UNCOMMENTED: attack surface reduction
 /* 5506: disable WebAssembly [FF52+]
  * Vulnerabilities [1] have increasingly been found, including those known and fixed
