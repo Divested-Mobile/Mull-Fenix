@@ -3955,58 +3955,6 @@ Builds:
     build: ./build.sh
     ndk: 26.2.11394342
 
-  - versionName: 131.0.3
-    versionCode: 21310300
-    commit: v131.0.3-2
-    timeout: 18000
-    sudo:
-      - echo "deb https://deb.debian.org/debian trixie main" > /etc/apt/sources.list.d/trixie.list
-      - apt-get update
-      - apt-get install -y -t trixie clang-18 llvm-18 lld-18 libssl-dev
-      - apt-get install -y -t bookworm cmake make m4 g++ pkg-config python-is-python3
-        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
-        libsqlite3-dev binutils-dev
-    output: ../srclib/MozFennec/mobile/android/fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
-    srclibs:
-      - MozFennec@FIREFOX_131_0_3_RELEASE
-      - MozAppServices@v131.0
-      - MozGlean@v60.5.0
-      - gmscore@v0.3.2.240913
-      - rustup@1.27.1
-      - wasi-sdk@wasi-sdk-20
-      - llvm@3c92011b600bdf70424e2547594dd461fe411a41
-      - llvm_android@5ab132bd1afa945695853fa093dfcc839e45f97c
-      - toolchain-utils@dd1ee45a84cb07337f9d5d0a6769d9b865c6e620
-    prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
-    build: ./build.sh
-    ndk: 27.0.12077973
-
-  - versionName: 131.0.3
-    versionCode: 21310320
-    commit: v131.0.3-2
-    timeout: 18000
-    sudo:
-      - echo "deb https://deb.debian.org/debian trixie main" > /etc/apt/sources.list.d/trixie.list
-      - apt-get update
-      - apt-get install -y -t trixie clang-18 llvm-18 lld-18 libssl-dev
-      - apt-get install -y -t bookworm cmake make m4 g++ pkg-config python-is-python3
-        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
-        libsqlite3-dev binutils-dev
-    output: ../srclib/MozFennec/mobile/android/fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
-    srclibs:
-      - MozFennec@FIREFOX_131_0_3_RELEASE
-      - MozAppServices@v131.0
-      - MozGlean@v60.5.0
-      - gmscore@v0.3.2.240913
-      - rustup@1.27.1
-      - wasi-sdk@wasi-sdk-20
-      - llvm@3c92011b600bdf70424e2547594dd461fe411a41
-      - llvm_android@5ab132bd1afa945695853fa093dfcc839e45f97c
-      - toolchain-utils@dd1ee45a84cb07337f9d5d0a6769d9b865c6e620
-    prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
-    build: ./build.sh
-    ndk: 27.0.12077973
-
   - versionName: 132.0.0
     versionCode: 21320000
     commit: v132.0.0
