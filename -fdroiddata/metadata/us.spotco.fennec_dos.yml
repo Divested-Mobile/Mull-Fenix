@@ -3957,18 +3957,16 @@ Builds:
 
   - versionName: 132.0.0
     versionCode: 21320000
-    commit: v132.0.0
-    timeout: 18000
+    commit: v132.0.0-2
+    timeout: 36000
     sudo:
-      - echo "deb https://deb.debian.org/debian trixie main" > /etc/apt/sources.list.d/trixie.list
       - apt-get update
-      - apt-get install -y -t trixie clang-18 llvm-18 lld-18 libssl-dev
-      - apt-get install -y -t bookworm cmake make m4 g++ pkg-config python-is-python3
-        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
-        libsqlite3-dev binutils-dev
+      - apt-get install -y cmake make m4 pkg-config python-is-python3 python3-venv
+        tcl gyp ninja-build bzip2 libffi-dev libsqlite3-dev binutils-dev clang-16
+        lld-16 libssl-dev
     output: ../srclib/MozFennec/mobile/android/fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
     srclibs:
-      - MozFennec@FIREFOX_132_0_BUILD1
+      - MozFennec@FIREFOX-ANDROID_132_0_RELEASE
       - MozAppServices@50d90349a4af01553c3e228ef28cbfc46eb8d314
       - MozGlean@v61.2.0
       - gmscore@v0.3.2.240913
@@ -3983,18 +3981,64 @@ Builds:
 
   - versionName: 132.0.0
     versionCode: 21320020
-    commit: v132.0.0
-    timeout: 18000
+    commit: v132.0.0-2
+    timeout: 36000
     sudo:
-      - echo "deb https://deb.debian.org/debian trixie main" > /etc/apt/sources.list.d/trixie.list
       - apt-get update
-      - apt-get install -y -t trixie clang-18 llvm-18 lld-18 libssl-dev
-      - apt-get install -y -t bookworm cmake make m4 g++ pkg-config python-is-python3
-        python3-distutils python3-venv tcl gyp ninja-build bzip2 libz-dev libffi-dev
-        libsqlite3-dev binutils-dev
+      - apt-get install -y cmake make m4 pkg-config python-is-python3 python3-venv
+        tcl gyp ninja-build bzip2 libffi-dev libsqlite3-dev binutils-dev clang-16
+        lld-16 libssl-dev
     output: ../srclib/MozFennec/mobile/android/fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
     srclibs:
-      - MozFennec@FIREFOX_132_0_BUILD1
+      - MozFennec@FIREFOX-ANDROID_132_0_RELEASE
+      - MozAppServices@50d90349a4af01553c3e228ef28cbfc46eb8d314
+      - MozGlean@v61.2.0
+      - gmscore@v0.3.2.240913
+      - rustup@1.27.1
+      - wasi-sdk@wasi-sdk-20
+      - llvm@3c92011b600bdf70424e2547594dd461fe411a41
+      - llvm_android@2a4ee244d6dd0dcb8365590b898f7a40ec3cb87a
+      - toolchain-utils@760c253c1ed00ce9abd48f8546f08516e57485fe
+    prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: ./build.sh
+    ndk: 27.1.12297006
+
+  - versionName: 132.0.1
+    versionCode: 21320100
+    commit: v132.0.1
+    timeout: 36000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 pkg-config python-is-python3 python3-venv
+        tcl gyp ninja-build bzip2 libffi-dev libsqlite3-dev binutils-dev clang-16
+        lld-16 libssl-dev
+    output: ../srclib/MozFennec/mobile/android/fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozFennec@FIREFOX_132_0_1_RELEASE
+      - MozAppServices@50d90349a4af01553c3e228ef28cbfc46eb8d314
+      - MozGlean@v61.2.0
+      - gmscore@v0.3.2.240913
+      - rustup@1.27.1
+      - wasi-sdk@wasi-sdk-20
+      - llvm@3c92011b600bdf70424e2547594dd461fe411a41
+      - llvm_android@2a4ee244d6dd0dcb8365590b898f7a40ec3cb87a
+      - toolchain-utils@760c253c1ed00ce9abd48f8546f08516e57485fe
+    prebuild: ./prebuild.sh $$VERSION$$ $$VERCODE$$
+    build: ./build.sh
+    ndk: 27.1.12297006
+
+  - versionName: 132.0.1
+    versionCode: 21320120
+    commit: v132.0.1
+    timeout: 36000
+    sudo:
+      - apt-get update
+      - apt-get install -y cmake make m4 pkg-config python-is-python3 python3-venv
+        tcl gyp ninja-build bzip2 libffi-dev libsqlite3-dev binutils-dev clang-16
+        lld-16 libssl-dev
+    output: ../srclib/MozFennec/mobile/android/fenix/app/build/outputs/apk/fenix/release/app-*-release-unsigned.apk
+    srclibs:
+      - MozFennec@FIREFOX_132_0_1_RELEASE
       - MozAppServices@50d90349a4af01553c3e228ef28cbfc46eb8d314
       - MozGlean@v61.2.0
       - gmscore@v0.3.2.240913
@@ -4028,5 +4072,5 @@ MaintainerNotes: |-
 ArchivePolicy: 6
 AutoUpdateMode: None
 UpdateCheckMode: None
-CurrentVersion: 132.0.0
-CurrentVersionCode: 21320020
+CurrentVersion: 132.0.1
+CurrentVersionCode: 21320120
